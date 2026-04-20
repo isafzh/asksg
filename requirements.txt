@@ -1,0 +1,8 @@
+requests
+pandas
+python-dotenv
+pdfplumber
+beautifulsoup4
+playwright
+sentence-transformers
+chromadb

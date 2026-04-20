@@ -1,0 +1,2388 @@
+M A C R O E C O N O M I C R E V I E W
+Volume XXIV Issue 1
+April 2025
+
+Macroeconomic Review
+Volume XXIV Issue 1
+April 2025
+The Macroeconomic Review is published quarterly in conjunction with
+the release of the MAS Monetary Policy Statements.
+The Review documents the Economic Policy Group’s (EPG) analysis
+and assessment of macroeconomic developments in the Singapore
+economy, and shares with market participants, analysts and the wider
+public, the basis for the policy decisions conveyed in the Monetary
+Policy Statements. It also features in-depth studies undertaken by EPG,
+and invited guest contributors, on broader issues facing the Singapore
+economy.
+ISSN 0219-8908
+Published in April 2025
+Economic Policy Group
+Monetary Authority of Singapore
+http://www.mas.gov.sg
+© Monetary Authority of Singapore
+All rights reserved. No part of this publication may be
+reproduced, stored in a retrieval system or transmitted in
+any form or by any means, electronic, mechanised,
+photocopying, recording or otherwise, without the prior
+written permission of the copyright owner except in
+accordance with the provisions of the Copyright Act
+(Cap. 63). Application for the copyright owner's written
+permission to reproduce any part of this publication
+should be addressed to:
+Economic Policy Group
+Monetary Authority of Singapore
+10 Shenton Way MAS Building
+Singapore 079117
+
+Contents
+Preface 5
+Key Messages 6-7
+Monetary Policy Statement 8-10
+1 Financial Conditions
+1.1 Global Developments 11
+1.2 Domestic Developments 12
+2 The International Economy
+2.1 Recent Developments 15
+2.2 Outlook 17
+3 The Singapore Economy
+3.1 Recent Developments 19
+3.2 Outlook 20
+Box A The Impact of Policy Uncertainty on the Singapore Economy 25
+Box B Macroeconomic Assessment of Budget 2025 28
+4 Labour Market and Inflation
+4.1 Labour Market 31
+4.2 Inflation Developments 34
+
+Abbreviations
+AE Advanced economy
+AER Arts, entertainment and recreation
+ASEAN Association of Southeast Asian Nations
+AUM Assets under management
+COE Certificate of Entitlement
+COVID-19 Coronavirus disease 2019
+CPI Consumer price index
+ECB European Central Bank
+EM Emerging market
+EPG Economic Policy Group
+FDI Foreign direct investment
+F&B Food and beverage
+GDP Gross domestic product
+GFC Global Financial Crisis
+GST Goods and Services Tax
+IMF International Monetary Fund
+IT Information technology
+MENA Middle East and North Africa economies
+m-o-m month-on-month
+NEA Northeast Asian economies
+NODX Non-oil domestic exports
+OECD Organization for Economic Cooperation and Development
+OPEC Organization of the Petroleum Exporting Countries
+p.a. per annum
+PMET Professionals, Managers, Executives and Technicians
+PMI Purchasing Managers’ Index
+q-o-q quarter-on-quarter
+SA seasonally adjusted
+SME Small and medium enterprises
+TiVA Trade in Value Added
+UN United Nations
+VA Value added
+y-o-y year-on-year
+Data used in the Review are drawn from the following official sources unless
+otherwise stated: Building and Construction Authority (BCA), Civil Aviation Authority
+of Singapore (CAAS), Central Provident Fund Board (CPF), Singapore Department of
+Statistics (DOS), Economic Development Board (EDB), Enterprise Singapore
+(EnterpriseSG), Housing and Development Board (HDB), Infocomm Media
+Development Authority (IMDA), Land Transport Authority (LTA), Ministry of Finance
+(MOF), Ministry of Health (MOH), Manpower Research and Statistics Department
+(MRSD) of Ministry of Manpower (MOM), Ministry of National Development (MND),
+Maritime and Port Authority of Singapore (MPA), Ministry of Trade & Industry (MTI),
+Singapore Tourism Board (STB) and Urban Redevelopment Authority (URA).
+
+Preface 5
+Preface
+The main chapters of this Review provide a comprehensive analysis of
+the conjunctural developments and outlook for the global and
+domestic economies. These are integral components of MAS’
+monetary policy decisions.
+This issue of the Review is produced by:
+Abby Ang, Victoria Birrell, Cheong Wei Si, Cyrene Chew, Sherilyn Chew,
+Chia Yan Min, Adrian Chiu, Marcus Fum, Goh See Ying, Goh Yen Fei,
+Nadya Haifan, Alvin Jason John, Khoo Ye-Min, Koh Zhi Xing, Lee Ming
+Xuan, Leou Jie Dong, Joel Lim, Josiah Lim, Erik Loo, Low Yen Ling,
+Ryousuke Miura, Ng Ding Xuan, Linda Ng, Michael Ng, Priscilla Ng, Ng
+Yi Ping, Desmond Ong, Joshua Ong, Angeline Qiu, Edward Robinson,
+Seah Wee Ting, Sung Eun Jung, Hema Sevakerdasan, Celine Sia, Soh
+Wai Mei, Zac Su, Juliana Sun, Jensen Tan, Tan Siang Meng, Tan Yin
+Ying, Tu Suh Ping, Neha Varma, Christopher Walker, Jazlee Wee, Wu
+Jingyu, Yew Jee Yuen and Desmond Zheng.
+The Special Feature titled "Why is the World Addicted to Debt", kindly
+contributed by Professor Atif Mian, the John H. Laporte, Jr. Class of
+1967 Professor of Economics, Public Policy, and Finance at Princeton
+University, is available at this link.
+
+6 Macroeconomic Review | April 2025
+Key Messages
+The Singapore economy faces headwinds from global trade tensions
+The global economy grew steadily in 2024, underpinned by robust domestic demand in the
+US and strong export performance in Asia. However, prospects for global GDP growth have
+diminished amid the trade conflict. Economies that levy duties on imports will likely
+experience an increase in costs, which will in turn weigh on business and consumer spending.
+Meanwhile, exporting countries which have been hit by tariffs will experience a negative
+external demand shock. As a whole, global GDP growth is expected to slow below trend.
+Against this backdrop, Singapore’s growth outlook has turned more cautious. As a small and
+open economy, Singapore will be heavily impacted by trade conflicts, with external-facing
+industries such as manufacturing likely to see slower demand. The financial sector could see
+reduced credit intermediation activity from a slowdown in investment spending, while a sharp
+rise in risk-off sentiment could affect fees and commissions in the sector.
+Growth in the Singapore economy is expected to slow to 0.0–2.0% in 2025 from 4.4% in 2024.
+As a consequence, Singapore’s output gap will turn negative this year.
+Inflation has fallen significantly and is expected to be low this year
+Both MAS Core and CPI-All Items inflation fell significantly in Q1, reflecting to a large extent
+the broad-based moderation in underlying price pressures. Soft domestic spending on F&B
+services and retail goods as well as receding business cost pressures dampened the pace of
+consumer price increases.
+For the rest of 2025, domestic demand and cost pressures will be more moderate than
+previously anticipated. Higher global tariffs are assessed to be disinflationary for Singapore
+on net, as weaker economic activity abroad and in Singapore weighs on imported and
+domestic cost increases.
+Consequently, both MAS Core Inflation and CPI-All Items inflation are now projected to come
+in lower than previously expected, averaging 0.5–1.5% in 2025. This is a decline from the 2.8%
+and 2.4% recorded for core and headline inflation in 2024, respectively.
+In April, MAS eased monetary policy by reducing the rate of appreciation of
+the S$NEER policy band
+MAS aims to secure low and stable inflation over the medium term by managing the path of
+S$ nominal effective exchange rate (S$NEER) within a policy band.
+In April 2025, MAS reduced the rate of appreciation of the S$NEER policy band slightly. There
+was no change to the width of the policy band or the level at which it is centred. This
+adjustment is consistent with a modest and gradual appreciation path of the S$NEER policy
+band that will ensure medium-term price stability.
+
+Key Messages 7
+There is significant uncertainty over how trade policy actions will unfold in the period ahead.
+Prolonged trade conflicts could pose further downside risks to growth, and thus inflation.
+Conversely, trade tensions may de-escalate over time, which could boost sentiments and
+export activity. MAS is closely monitoring these global and domestic economic
+developments.
+
+8 Macroeconomic Review | April 2025
+14 April 2025
+Monetary Policy Statement
+INTRODUCTION
+1. In January this year, MAS kept the Singapore dollar nominal effective exchange rate (S$NEER)
+policy band on a modest and gradual appreciation path, but reduced its slope slightly. There was no
+change to the width of the policy band or the level at which it was centred. Since then, the S$NEER
+has fluctuated within the upper half of the policy band in response to shifts in the macroeconomic
+outlook and shocks to global trade policies. Notwithstanding the volatility, the average level of the
+S$NEER over the last three months has been broadly unchanged from that in the preceding three
+months.
+Chart 1
+S$ Nominal Effective Exchange Rate (S$NEER)
+GROWTH BACKDROP
+2. Singapore’s key trading partners showed signs of weakening economic activity in the first
+quarter of 2025. Consumer and business confidence in major economies have fallen alongside
+escalating trade policy uncertainty. Concomitantly, retail sales and capex intentions have softened.
+In the region, export performances across economies have turned more uneven, reflecting the
+waning of temporary boosts to production and shipments from trade frontloading, even as underlying
+AI-driven demand for electronics saw some resilience.
+3. MTI’s Advance Estimates show that the Singapore economy expanded by 3.8% year-on-year
+in Q1 2025. At the same time, the growth momentum was weaker than expected, contracting by 0.8%
+on a quarter-on-quarter seasonally-adjusted basis, down from the 0.5% expansion a quarter ago. In
+tandem with the nascent slowdown in some major economies, activity in the external-facing
+manufacturing and modern services sectors declined. Meanwhile, the domestic-oriented sectors
+saw generally tepid activity.
+)001
+=
+egarevA
+2202
+rpA
+8–4(
+xednI
+1
+1
+1
+1
+1
+1
+1
+1
+1
+0
+0
+0
+0
+0
+9
+2
+0
+8
+6
+4
+2
+0
+8
+A2
+0
+in
+p2
+d
+r2
+ic
+↑
+A p p re c ia tio n
+↓ D e p re c ia tio n
+J u l O c t J a n
+2 0 2 3
+a te s th e la s t th re
+A p
+e re
+r
+le a
+J
+s
+u
+e
+l
+s
+O c
+o f M
+t
+o
+J a n
+2 0 2 4
+n e ta ry
+A p r
+P o lic
+J u l
+y S ta
+O
+te
+c
+m
+t
+e
+​
+J a n
+2 0 2 5
+n t
+A p r
+
+Monetary Policy Statement 9
+4 . Prospects for global trade and GDP growth dimmed in early April. The US has imposed tariffs
+on imports from most countries in the world, with some of these countries announcing retaliatory
+tariffs. Economies that levy duties on imports will likely experience an increase in costs and this will
+weigh on their aggregate demand. At the same time, exporting countries which have been hit by
+tariffs will be confronted with weaker demand and pressure to lower prices for their output. In
+addition, global financial conditions have tightened as asset markets have begun repricing risks in
+the global economy. These factors will exert widespread and potentially reinforcing drags on
+production, trade, and investments in Singapore’s major trading partners. Global growth is expected
+to weaken this year, with trade possibly moderating to a greater extent.
+5. For 2025 as a whole, Singapore’s GDP growth is expected to slow to 0.0–2.0% from 4.4% last
+year. Given Singapore’s high trade dependency and deep integration with global supply chains,
+slowing global and regional trade as well as heightened policy uncertainty will weigh on the external-
+facing sectors, which could spill over into the domestic-oriented sectors. Consequently, the
+aggregate level of output will come in below the economy’s potential this year.
+6. The external environment remains uncertain. There are downside risks to Singapore’s
+economic outlook stemming from episodes of financial market volatility and a sharper-than-
+expected fall in final demand abroad. A more abrupt or persistent weakening in global trade will have
+significant ramifications on Singapore’s trade-related sectors, and in turn, the broader economy.
+INFLATION OUTLOOK
+7. MAS Core Inflation1 eased significantly to 0.7% y-o-y in Jan–Feb 2025, from 1.9% in Q4 2024.
+Inflation fell by more than expected across a wide range of goods and services. Soft consumer
+spending on F&B services and retail goods domestically, as well as moderating cost pressures, have
+dampened consumer price increases. Enhanced government subsidies also contributed to lower
+services inflation. The re-basing of the CPI in January this year accounted for only a small part of the
+step down in inflation.
+8. MAS Core Inflation is now forecast to average 0.5–1.5% in 2025, down from 1.0–2.0% in the
+January 2025 MPS. The downgrade reflects the lower-than-expected inflation outturns in Jan–Feb
+as well as an anticipated moderation in the pace of price increases amid the weakening economic
+outlook. On the external front, imported inflation should be modest, as slowing global demand and
+lower energy commodity prices dampen imported costs. Domestic unit labour cost increases are
+also expected to moderate due to easing nominal wage growth and improving labour productivity.
+Together with softer consumer spending, as well as enhanced government subsidies, these factors
+should temper inflation in the quarters ahead.
+9. CPI-All Items inflation in 2025 is similarly expected to average 0.5–1.5%, down from 1.5–2.5%
+previously. This reflects in part the low outturns in Jan–Feb as well as the downgrade to the MAS
+Core Inflation forecast range.
+MONETARY POLICY
+10. Amid the weakening external outlook, Singapore’s output gap will turn negative. Consequently,
+imported and domestic cost pressures will remain low and MAS Core Inflation is forecast to stay
+well below 2%. The risks to inflation are tilted towards the downside.
+1 MAS Core Inflation excludes the costs of accommodation and private transport from CPI-All Items inflation.
+
+10 Macroeconomic Review | April 2025
+11. MAS will continue with the policy of a modest and gradual appreciation of the S$NEER policy
+band. However, the rate of appreciation will be reduced slightly. There will be no change to the width
+of the band and the level at which it is centred.
+12. MAS will closely monitor global and domestic economic developments, and remain vigilant to
+risks to inflation and growth.
+
+Financial Conditions 11
+1 Financial Conditions
+1.1 Global Developments
+Sentiments in global financial markets have weakened since early April
+Following the US imposition of tariffs worldwide in early April, global financial market volatility
+and risk aversion have risen sharply. Since 2 April, the MSCI All Country Index has fallen by
+5%1, bringing losses since the beginning of the year to 6%. The prices of growth-sensitive
+commodities like crude oil and copper have also fallen (Chart 1.1), indicating that global
+growth prospects have dimmed. As a measure of the heightened degree of risk aversion in
+markets, the VIX rose sharply to a level that had previously only been breached during the
+COVID-19 pandemic and the Global Financial Crisis (Chart 1.2).
+Chart 1.1: Selected Growth-sensitive Assets Chart 1.2: VIX Index
+Source: Bloomberg Source: Bloomberg
+In contrast to previous global risk-off episodes, US Treasury yields rose sharply from 2 April.
+At the same time, the US dollar has depreciated against most currencies, in particular the
+Euro, Japanese yen and Swiss franc. On the whole, the Nominal Broad US Dollar Index has
+fallen by around 9% since the beginning of the year (Chart 1.3). In April alone, it depreciated
+by 4% amid the increasingly pessimistic assessment of global trade policies and their likely
+impact on the US economy.
+1 Developments described in this chapter are up till 18 April.
+)001=4202
+tcO
+41(
+xednI
+1
+1
+1
+2
+1
+0
+9
+8
+0
+0
+0
+0
+0
+O2
+0
+c2 t4 N
+C
+o
+o
+v
+Mu S C I A
+n try W
+In d e x
+D e c
+ll
+o rld
+J a n
+2 0 2 5
+F e
+B
+b
+C o p p e r
+re n t C ru
+M a r
+d e
+A p r
+xednI
+1 0
+8
+6
+4
+2
+0
+0
+0
+0
+0
+02
+0 0 0 2 0 0 5 2 0 1 0 2 0 1 5 2 0 2 0 2 0A 2 5p
+r
+
+12 Macroeconomic Review | April 2025
+Chart 1.3: Dollar Index and US Treasury Yield Chart 1.4: Global Interest Rates
+Source: Bloomberg Source: Bloomberg
+Global monetary policy has remained on a broad easing path. While the US Federal Reserve
+paused its series of rate cuts in December 2024, US 2-year yields have moderated since
+January (Chart 1.4). Meanwhile, the European Central Bank has lowered its deposit facility
+rate to 2.25%, while the Bank of Japan paused its rate hike cycle. In the region, the 7-day
+reverse repo rate in China has remained stable since the beginning of this year.
+1.2 Domestic Developments
+The S$NEER has fluctuated within the upper half of the policy band, but its
+average level has remained broadly unchanged since the start of 2025
+Amid the financial market volatility, the S$NEER has fluctuated in the upper half of the policy
+band. It appreciated in January amid broad-based US$ weakness, but depreciated in early
+April as global risk aversion rose, and on market expectations that MAS would ease monetary
+policy (Chart 1.5). Over the last three months, the S$ has strengthened against the US dollar,
+the Indonesian rupiah, Chinese renminbi and Australian dollar, while depreciating against the
+Japanese yen, Swiss franc, and the Euro (Chart 1.6). On average, the level of the S$NEER over
+the last three months has remained broadly unchanged from that in the preceding three
+months.
+xednI
+1
+1
+1
+1
+1
+1
+1
+0
+0
+0
+0
+0
+9
+0
+8
+6
+4
+2
+0
+8
+O2
+0
+c2 t4
+N oD mo
+N
+in a l B ro
+lla r In d e
+o v D e
+ax
+c
+d
+J a
+2 0
+n2
+5
+Y
+F
+U S T 1
+ie ld (R
+e b M
+0 Y
+H S )
+a r A p r
+4
+4
+4
+4
+4
+3
+3
+.8
+.6
+.4
+.2
+.0
+.8
+.6
+munnA
+reP
+%
+,4202
+tcO
+41
+morf
+egnahC
+stnioP
+%
+0
+0
+0
+-0
+-0
+.6
+.3
+.0
+.3
+.6
+O2
+0
+c2 t4
+U S
+N
+T
+E
+o
+2 Y
+U R
+v
+Y ie ld
+2 Y Y ie
+D e c
+C N Y
+ld
+J a n
+2 0 2 5
+2 Y Y
+F e
+ie
+b
+ld
+M
+J G
+a r
+B 2 Y
+A
+Y ie
+p r
+ld
+
+Financial Conditions 13
+Chart 1.5: S$NEER, Weekly Average Chart 1.6: Bilateral Exchange Rates
+112
+Appreciation
+110
+108
+106
+104
+102
+100 Depreciation
+98
+Apr Jul OctJanApr Jul OctJanApr Jul OctJanApr
+2022 2023 2024 2025
+Source: EPG, MAS estimates Source: EPG, MAS estimates
+Note: Vertical dashed lines indicate the last three
+releases of the MPS. Data displayed are up to 11 April.
+Domestic financial conditions were broadly neutral at the end of Q1 2025
+Overall domestic financial conditions2 were mildly supportive of growth over the past six
+months, and turned neutral at the end of Q1 2025 (Chart 1.7). Interest rates, as measured by
+the Singapore Overnight Rate Average (SORA), fell by more than 100 bps over the past two
+quarters, alongside lower bond yields (Chart 1.8). The decline in the cost of financing more
+than offset the impact of lower asset prices on financial conditions. Lending to both
+consumers and businesses continued to expand, while money supply, as measured by M2,
+rose by 6.3% y-o-y in February (Chart 1.9).
+Chart 1.7: Domestic Financial Conditions Chart 1.8: S$ SORA and S$ Government Bond
+Yields
+Source: EPG, MAS estimates Source: MAS
+Note: 2025 Jan–Mar FCI values are estimates, with
+quarterly indicators used in the FCI nowcasted from their
+latest available Dec 2024 data.
+2 Please see Special Feature 2 on “Expanding the Toolkit for Macroprudential Surveillance” in MAS’ 2024 Financial Stability
+Review for more details on the domestic Financial Conditions Index (FCI) and Financial Stress Index (FSI).
+)001
+=
+egarevA
+2202
+rpA
+8–4(
+xednI
+morf
+noitaiveD
+tnioP
+%
+dnerT
+PDG
+-1
+-0
+-0
+0
+0
+.2
+.8
+.4
+.0
+.42
+0 1 9
+T ig h te n in g
+(d ra g o n g ro w
+2 0 2 0 2 0 2 1
+th )
+2 0 2 2 2 0 2 3 2 0 2 4
+F o re c a
+2 0 2 5
+M a
+s
+r
+t
+munnA
+reP
+%
+)001=4202
+tcO
+41(
+xednI
+4
+3
+3
+2
+2
+2
+1 0 9
+1 0 6
+1 0 3
+1 0 0
+9 7
+9 4
+9 11
+4 -O
+2 0 2
+.0
+.6
+.2
+.8
+.4
+.02
+0 2 3
+c t
+4
+S
+A p p re c ia tio n
+E u
+R
+D e p re c ia tio n
+1 5 -N o v 2 0 -D
+$ S O R A
+1 0 Y Y
+M a y S e p
+A $
+ro
+e n m in
+e c 2 4
+2 0 2 5
+ie ld
+2 0 2 4
+b i
+U
+-J a
+M
+S $
+n
+a y
+2
+2
+8
+Y
+-F
+Y
+S
+R u p ia h
+Y e n
+S w is s F ra n
+1 8 -A p e b 0 4 -A p r
+ie ld
+e p 2 0 2 5 M
+c
+r
+a r
+
+14 Macroeconomic Review | April 2025
+Chart 1.9: Total Loans and Monetary Chart 1.10: Financial Stress Index
+Aggregates
+9
+6
+3
+0
+-3
+-6
+-9
+2023 Apr Jul Oct 2024 Apr Jul Oct 2025
+Source: MAS Source: EPG, MAS estimates
+Note: The FSI is normalised to [0,1], with 1 indicating
+historic high levels of stress.
+However, the deterioration in global sentiment and heightened market volatility in April has
+likely filtered through to an incipient tightening of financial conditions in Singapore. The
+Financial Stress Index for Singapore financial markets has started to pick up (Chart 1.10).
+This has manifested as further equity market corrections, slight widening of credit spreads
+and a nascent tightening in lending standards amid heightened uncertainty. Economic growth
+is also expected to slow in the second half of 2025.
+htworG
+%
+YOY
+M3
+M2
+Total Loans
+Feb
+xednI
+1
+0
+0
+0
+0
+0
+.0
+.8
+.6
+.4
+.2
+.02
+0 0 7 2
+H ig
+0 1 0
+h e r s tre s
+2 0 1 3
+s
+2 0 1 6 2 0 1 9 2 0 2 2 2 0 2A 5p
+r
+
+The International Economy 15
+2 The International Economy
+2.1 Recent Developments
+Global growth momentum expanded at a firm pace in 2024
+The global economy expanded at a steady pace in Q4 last year, bringing overall growth for
+2024 to a creditable 3.2%1 (Chart 2.1). The two key growth drivers for the year—robust
+domestic demand in the US and strong export performance in Asia—had underpinned the Q4
+outturn (Chart 2.2). The US economy saw strong consumer spending alongside continued
+investment in ICT equipment and software. Meanwhile, the strength of US final demand
+combined with frontloading by US importers in anticipation of tariffs, had lent support to the
+production and export activities of China and ASEAN.
+Chart 2.1: GDP Growth Chart 2.2: Decomposition of GDP Growth in
+the US and ASEAN-4
+Source: Haver Analytics and EPG, MAS estimates Source: Haver Analytics and EPG, MAS estimates
+Note: ASEAN-5 includes Malaysia, Indonesia, Note: ASEAN-4 includes Malaysia, Indonesia,
+Philippines, Thailand, and Vietnam. Philippines, and Thailand.
+The underlying drivers of global growth have shown nascent signs of plateauing. High
+frequency data suggest that the momentum in consumer and business activity in the US has
+weakened from Q4. Consumer sentiment has sharply deteriorated2, with survey participants
+citing increasing policy uncertainty and tariff-induced price increases as primary concerns
+(Charts 2.3 and 2.4). While consumers frontloaded the purchase of some durables such as
+automobiles, they cut back on discretionary services spending in March.3 At the same time,
+US business sentiment has also continued to worsen with small-business confidence falling
+1 Global GDP growth is weighted by Singapore’s key trading partners’ shares of their value added (VA) in Singapore’s exports
+using the Trade in Value Added (TiVA) approach of the OECD.
+2 In March 2025, the Conference Board's consumer confidence index fell to its lowest level since January 2021, while the
+University of Michigan's consumer sentiment index also declined to a more than 2-year low.
+3 Based on the Bank of America’s report on credit and debit card transactions, spending on durables rose sharply in March,
+led by vehicle sales. However, spending on discretionary services, such as restaurants, travel and leisure, eased in February
+and March.
+AS
+,QOQ
+%
+1
+0
+0
+0
+0
+0
+.0
+.8
+.6
+.4
+.2
+.02
+0 2 3 Q 2 Q 3 Q 4 2 0
+G
+2
+3
+4
+A
+G lo b
+S E A
+C h in
+Q 2
+a l
+N -5 (R
+a (R H S
+Q 3
+H
+)
+S )
+Q 4
+2
+2
+1
+1
+0
+0
+.5
+.0
+.5
+.0
+.5
+.0
+AS
+,QOQ
+%
+ot
+noitubirtnoC
+tnioP
+%
+htworG
+YOY
+PGER riv a te C
+F C F
+x p o rts
+e a l G D
+8
+6
+4
+2
+0
+-2
+-4
+o
+P
+2
+n
+0
+s u m
+2 3
+A
+p tio
+S E A
+n
+N
+2
+-4
+0 2 4
+GInIm o v t C o n
+v e n to ry
+p o rts
+2 0 2 3
+s u m
+A c c
+U S
+pu tio n
+m u la
+2 0 2
+tio
+4
+n
+
+16 Macroeconomic Review | April 2025
+for the third consecutive month in March.4 This could foreshadow a pullback in business
+investment, with capex spending intentions already declining.5
+In Asia, the firm export growth in recent months was probably underpinned by tariff-induced
+front-loading activity. Meanwhile, the global tech cycle is becoming more bifurcated. Chip
+demand from AI-related developments and data centres remained strong, while traditional
+segments, like consumer goods and autos, have been experiencing slower growth.
+Chart 2.3: US Consumer Confidence Chart 2.4: Global Policy Uncertainty
+Source: Haver Analytics, Conference Board, and Source: policyuncertainty.com
+University of Michigan
+Note: For the EPU Index, 100 refers to the average over
+the period 1985–2019, while the 100 in the TPU Index is
+a 1% share of news articles with mention of both “trade
+policy” and “uncertainty”.
+Disinflation proceeded at a slower-than-expected pace, as the G3 economies
+saw some uptick in inflation
+Global headline inflation was unchanged at 2.0% y-o-y in Jan–Feb from H2 2024. However,
+there were disparities across regions. Inflation in the G3 economies picked up, underpinned
+by firmer-than-expected goods inflation in the US, while Japan continued to experience broad-
+based reflation driven by a surge in food prices.
+In contrast, Asia remained in a low-inflation regime, with consumer price increases in most
+economies within or even below their respective central bank targets. Deflationary pressures
+in China persisted, reflecting subdued consumer confidence and significant economic slack.
+Meanwhile, the ASEAN-5 economies saw sustained disinflation into early 2025, on the back
+of the normalisation of food and energy prices. More broadly, the stable core inflation prints
+pointed to limited underlying price pressures in the region.
+4 In March 2025, the National Federation of Independent Business (NFIB) Small Business Optimism Index fell for the third
+straight month to its lowest level since October 2024. This is below its historical average and amounts to the biggest drop
+since June 2022.
+5 Based on surveys conducted by the Federal Reserve Bank of St. Louis, the latest March data showed that US capital
+expenditure intentions over the next 12 months have fallen for the third consecutive month in Philadelphia and New York.
+The surveys also indicated similar declines in Chicago and Texas in February (latest data available for these two regions).
+AS
+,)001=5891(
+xednI
+1
+1
+1
+4
+2
+0
+8
+6
+4
+0
+0
+0
+0
+0
+02
+0 1
+U n iv e rs ity o f M
+C o n s u m e r S e
+9 2 0 2 0 2 0
+C o n fe
+C o n s u m
+ic h ig a n :
+n tim e n t
+2 1 2 0 2 2 2
+re n c
+e r C
+0 2 3
+e B o a rd
+o n fid e n
+2 0 2 4
+:c
+e
+2 0 2A 5p
+r
+xednI
+7
+6
+5
+4
+3
+2
+1
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+02
+0 1 7 2 0
+E c o n o m ic
+P o lic y
+U n c e rta in ty
+(E P U )
+1 8 2 0 1 9 2 0 2 0 2 0 2 1 2 0 2 2 2 0
+U
+2 3
+n
+T ra d e
+P o lic y
+c e rta in ty
+(T P U )
+2 0 2 4 2 0 2 5
+M a r
+
+The International Economy 17
+2.2 Outlook
+The sharp escalation in trade frictions has negatively impacted prospects for
+global trade and growth
+The escalation of trade frictions, involving the increase of import tariffs by the US and
+retaliatory measures by some of its trade partners, will have serious ramifications for the
+global economy. The US is deeply plugged into global trade, accounting for almost a quarter
+of flows in the world’s trade corridors (Chart 2.5).
+Economies that levy duties on imports will likely experience an increase in costs, which will
+in turn weigh on business and consumer spending. Meanwhile, exporting countries which
+have been hit by the US tariffs will experience a negative externally induced shock on export
+production. Beyond the impact from trade channels, heightened policy uncertainty and the
+broader tightening in financial conditions will cause businesses and households to defer
+investment and discretionary spending, exerting further downward pressure on growth.
+The uncertainty surrounding the global growth outlook remains elevated. Global growth could
+slip further if the US broadens and intensifies the tariffs to include other specific products
+such as semiconductors and pharmaceuticals. Retaliatory actions by its trading partners will
+exacerbate the impact on growth. Market sentiments also remain fragile, and further shocks
+could trigger disorderly price adjustments, with the ensuing tightening in financial conditions
+compounding the downturn.
+Global GDP growth is expected to slow significantly to between 2.0–2.5% in 2025, from 3.2%
+last year. There is significant uncertainty around US trade policy and its impact.
+Price pressures should remain contained notwithstanding tariff-induced price
+increases in the US
+Global headline inflation is projected to average 2.3% in 2025, slightly higher than the 2.1%
+seen last year. In the US, the tariffs will impart a fresh and significant shock to prices, even as
+its growth moderates and wage growth eases amid elevated concerns about the negative
+demand impact.
+However, the impact on price pressures should remain contained as the rest of the world
+faces downward price pressures amid the tariff-induced negative demand shock. Commodity
+prices are expected to ease due to softer global demand and positive supply-side factors,
+such as the planned oil supply increases by OPEC countries for crude oil and favourable
+weather conditions for food production.
+Within the region, China’s disinflationary pressures could persist. This reflects subdued
+consumer confidence and significant economic slack. Domestic price pressures in ASEAN
+will also remain modest in view of below-trend growth.
+
+18 Macroeconomic Review | April 2025
+Chart 2.5: Major Trade Corridors in the World
+Source: UN Comtrade and EPG, MAS estimates
+Note: i) The figures in parentheses represent the share of global trade in 2023, while the length of each bar represents
+CAGR over 2017–23; ii) For each corridor label, “economy A-economy B” refers to goods flow from A to B; iii) The
+major trade corridors above account for around 73% of global trade in 2023.
+R O W
+-4
+C h in a -H K
+N E A 3 -C h in a
+-R O W (1 .8 %
+-2
+(1 .2 %
+(1 .5 %
+)
+)
+)
+0
+R
+E
+O
+U
+2
+W
+2
+H K
+-E
+7 -U
+C A G R 2 0 1 7 – 2 3 (% )
+4 6 8 1 0 1 2 1
+C h in a -M E N A (1 .0 %
+​A
+S E A N -U S (1 .2 %
+C h in a -A S E A N
+(2 .3 % )
+C h in a -R O W (2 .5 % )
+M E N A -M E N A (1 .3 % )
+U S -E U 2 7 (1 .6 % )
+C h in a -E U 2 7 (2 .2 % )
+A S E A N -C h in a (1 .3 % )
+E U 2 7 -U S (2 .3 % )
+M E N A -E U 2 7 (1 .1 % )
+M e xico -U S (2 .1 % )
+N E A 3 -U S (1 .5 % )
+C a n a d a -U S (2 .0 % )
+E U 2 7 -E U 2 7 (1 8 .0 % )
+R O W -C h in a (1 .3 % )
+U S -M e xico (1 .4 % )
+C h in a -N E A 3 (1 .7 % )
+A S E A N -A S E A N (1 .8 % )
+E U 2 7 -R O W (3 .6 % )
+A S E A N -N E A 3 (1 .1 % )
+U S -R O W (1 .2 % )
+U S -C a n a d a (1 .6 % )
+E U 2 7 -M E N A (1 .5 % )
+E U 2 7 -C h in a (1 .0 % )
+C h in a -U S (2 .2 % )
+M E N A -R O W (2 .6 % )
+N E A 3 -A S E A N (1 .3 % )
+-C h in a (1 .5 % )
+U 2 7 (2 .6 % )
+K (1 .6 % )
+4
+))
+)%
+(
+3
+2
+0
+2
+n
+i
+e
+d
+a
+rT
+la
+b
+o
+lG
+fo
+e
+ra
+h
+S
+CC hh iinn aa --UU SS TT rraa dd ee FF lloo ww ss OO tthh ee rr UU SS --rree llaa ttee dd TT rraa dd ee FF lloo ww ss NN oo nn --UU SS --rree llaa ttee dd TT rraa dd ee FF lloo ww ss
+
+The Singapore Economy 19
+3 The Singapore Economy
+3.1 Recent Developments
+Growth in the Singapore economy eased in Q1 2025
+Economic activity in Singapore showed signs of softening at the start of this year. Based on
+the Advance Estimates, Singapore’s GDP contracted by 0.8% q-o-q SA in Q1 2025, a pullback
+from the 0.5% expansion in Q4 2024 (Chart 3.1). On a y-o-y basis, GDP growth moderated to
+3.8% from 5.0% in the previous quarter. The weaker performance was driven by the trade-
+related and modern services sectors, while activity in the domestic-facing industries such as
+construction and retail were generally tepid1 (Chart 3.2). While there are nascent indications
+of economic softening at the sectoral level, these weaknesses have yet to become deeply
+entrenched or pervasive.
+Chart 3.1: Singapore’s GDP Growth Chart 3.2: Value Added of Broad Clusters
+Source: DOS Source: EPG, MAS estimates
+* Advance Estimates
+Within the trade-related cluster, activity appeared to have cooled, even as global indicators
+continued to suggest some pre-tariff front-loading and firm electronics demand. Key
+indicators such as US imports of electronics and global chip sales recorded strong growth in
+the first two months of this year. On the domestic front however, Singapore’s Index of
+Industrial Production moderated to 4.0% y-o-y growth in Q1 2025 from 5.5% in Q4, weighed
+down by slower activity in the electronics cluster (Chart 3.3). Non-oil export growth also eased
+over this period, reflecting the weakness in the non-electronics segment (Chart 3.4).
+1 Retail sales rose in January in part due to Chinese New Year but pulled back in February on a y-o-y basis. In particular, retail
+sales of apparel & footwear, watches & jewellery, department stores, supermarket & hypermarkets, as well as at petrol
+service stations saw double-digit declines in February.
+tneC
+reP
+6
+4
+2
+0
+-2
+2 0 2 2
+Y O Y
+2 0 2 3 2 0 2 4
+Q O
+2
+Q
+0
+S
+2 5
+A
+Q 1 *
+AS
+,)001=9102
+4Q(
+xednI
+1
+1
+1
+4 0
+2 0
+0 0
+8 0
+6 0
+4 0
+2 0Q
+4
+2 0 1
+29 0
+T
+2
+ra
+0
+d e
+M o d e rn
+-re la te d
+D o m e s tic -o rie
+T ra v e l-re la te d
+2 0 2 1 2 0 2 2
+S e rv
+n te d
+2 0 2
+ic
+3
+e s
+2 0 2 4 2 0 2 5 Q 1
+
+20 Macroeconomic Review | April 2025
+Chart 3.3: Index of Industrial Production Chart 3.4: Non-oil Exports
+Source: EDB and EPG, MAS estimates Source: EnterpriseSG
+Meanwhile, growth in the modern services cluster softened as global trade tensions
+intensified. As investors moved to reduce risk and unwind positions, financial markets
+experienced broad-based selling pressure and sharp valuation losses. Consequently, the net
+fees & commissions of fund managers and banks grew at a more subdued pace, while the
+effects of falling global interest rates weighed on banks’ net interest income.
+3.2 Outlook
+The external global economic landscape has become more uncertain
+Singapore’s growth outlook has turned more cautious amid an increasingly challenging global
+trade environment. On 2 April, the US imposed reciprocal tariffs of at least 10% on nearly all
+countries, with exemptions on certain products. Singapore was subjected to the 10% baseline
+tariff rate, while various other countries were hit by higher tariffs. Shortly after on 9 April, a 90-
+day pause was announced on the higher-band tariffs except those imposed on China, but the
+baseline 10% tariff and the 25% tariff on all US imports of steel, aluminium, and automobiles
+& parts implemented earlier remain in place.
+The impact of the tariffs will propagate through multiplier effects and generate a broader
+negative income and demand shock to the Singapore economy. GDP growth will also be
+impacted through the confidence channel by the continuing uncertainty surrounding the
+eventual effective tariff, which will induce a broader retraction in global consumption and
+investment spending. (See Box A on an empirical analysis of the impact of policy uncertainty
+on the Singapore economy). The transmissions to production, income, consumption and
+ultimately overall GDP growth for Singapore will occur through three main stages:
+• The increase in the global tariff rate is akin to a production tax on Singapore’s
+producers and exporters who are price takers in world markets. With Singapore’s
+terms of trade (excluding oil) already weakening since mid-2024, additional tariffs
+would only exacerbate the strain by squeezing export margins.
+• Singapore firms then reduce their production levels as the short-term profit
+maximising level of output falls. Consequently, domestic producers are hit by falling
+corporate incomes/profits, which could lead to less demand for factors of
+production.
+htworG
+%
+YOY
+2
+1
+-1
+-2
+-3
+0
+0
+0
+0
+0
+02
+0 2 3
+O
+Q
+v e
+3
+E le c
+ra ll
+tro n ic
+2 0
+s
+2
+N
+4
+o n -e le c tro n
+Q 3
+ic s
+2 0 2 5 Q 1
+htworG
+%
+YOY
+2
+1
+-1
+-2
+-3
+0
+0
+0
+0
+0
+02
+0 2 3 Q 3 2
+E le c tro n ic s
+O v e ra ll
+N o n -e le c tro
+0 2 4 Q
+n ic
+3
+s
+2 0 2 5 Q 1
+
+The Singapore Economy 21
+• This production-induced shock then permeates the domestic income stream and
+constrains aggregate demand in the economy.
+Singapore will also be impacted by its export exposure to trading partners which face similar
+negative effects on their economies.
+Besides the direct impact from tariffs, Singapore will be affected indirectly via
+the impact of tariffs on the region
+Reciprocal tariffs account for the bulk of the direct tariff impact on Singapore. The US is
+Singapore’s second largest market, accounting for 11% of Singapore’s domestic exports in
+2024. Products subject to the baseline tariff accounted for about 55% of Singapore’s
+domestic exports to the US, with product-specific tariffs on steel, aluminium, and automobiles
+& parts comprising a much smaller share of around 5% (Table 3.1). Although exempted
+products such as semiconductors, consumer electronics and pharmaceutical goods, which
+account for about 40% of Singapore’s domestic exports to the US, are currently not subject to
+tariffs, the US administration has initiated trade probes into imports of these goods on
+national security concerns and could impose restrictions in the coming months.
+Table 3.1: Singapore’s Direct Trade Exposure to US Tariff Actions
+Share of Product in
+Tariff Rate
+Tariff Action Singapore’s Domestic
+(%)
+Exports to US, 2024 (%)
+Reciprocal Tariffs
+10 54.6
+(excluding exempted products)
+Product-specific Tariffs: 5.4
+Steel and Aluminium 25 4.1
+Automobiles & Parts 25 1.3
+Exempted Products: 40.0
+Semiconductors 1.6
+Other Electronics & Semiconductor Equipment 15.0
+Pharmaceuticals 12.3
+Energy, Copper, Lumber, Minerals 11.1
+Source: US Customs and Border Protection, EnterpriseSG and EPG, MAS estimates
+Note: Based on the HTS codes published by the US Customs and Border Protection up to 14 April 2025.
+
+22 Macroeconomic Review | April 2025
+Reciprocal tariffs will also be transmitted to Singapore through its trade linkages with other
+countries hit by these tariffs. This indirect exposure can be proxied by Singapore’s VA
+embedded in US imports from partner economies, using the OECD’s Trade in Value Added
+data (Table 3.2). China is Singapore’s largest export market and also accounts for an
+important share in US imports, which are currently subject to an exceptionally high tariff rate.
+The intermediate goods and services that Singapore exports to China are used in the latter’s
+goods exports to the US. There are also other indirect spillovers through regional economies
+including those via ASEAN, given Singapore’s importance in production and trading supply
+chains that leverage on its hub role in areas such as transport and financial services.
+Table 3.2: Singapore’s Indirect VA Exposure to Reciprocal Tariffs by Key Economies
+Singapore’s VA in US
+Reciprocal Tariff Rate (%) Share of US Goods
+Imports from Partner
+Economy Imports, 2024
+Economy (% of
+Pre-9 April Post-9 April (%)*
+Singapore’s GDP)
+China 34** 125** 15.4 0.14
+Vietnam 46 10 5.2 0.10
+EU27 20 10 18.8 0.06
+India 26 10 3.1 0.05
+Thailand 36 10 2.1 0.05
+Malaysia 24 10 1.5 0.03
+Indonesia 32 10 1.4 0.03
+South Korea 25 10 2.6 0.02
+Taiwan 32 10 1.8 0.02
+Source: OECD TiVA, USITC and EPG, MAS estimates
+* This is used to show the relative size of bilateral trade flows between the US and its import source economy.
+** Excludes the existing 20% tariffs levied by the US on China before 2 April.
+Note: Computations of trade shares exclude goods under separate product-specific tariffs (steel, aluminium,
+automobiles & parts) and exempted products (semiconductors, pharmaceuticals, semiconductor equipment,
+smartphones, laptops, TVs and other consumer electronics, energy, copper, lumber, and minerals not found in the
+US).
+From a sectoral perspective, Singapore’s external-facing industries will be the
+most affected
+The global IT industry, which has a close nexus with domestic economic outturns, will be the
+main transmission channel of the slowdown in external demand. Ongoing uncertainties are
+likely to further dampen the already-moderating tech cycle.2 The growth momentum in chip
+sales had eased slightly towards end-2024, dragged down in part by falling prices, notably in
+the low- to mid-range memory chip market (Chart 3.5). Nevertheless, AI-driven demand will
+still provide some underlying support to the global semiconductor industry, as the shift
+towards more advanced and computationally costly algorithms drive the need for high-
+performance hardware. Domestically, while Singapore’s overall purchasing managers’ index
+(PMI) saw a decline from its peak in December 2024, the manufacturing PMI, new orders, and
+exports indices remained in expansion territory in March 2025 (i.e., above 50) (Chart 3.6).
+2 In December 2024, the World Semiconductor Trade Statistics had projected global chip sales growth to moderate to 11.2%
+in 2025 from 20% last year.
+
+The Singapore Economy 23
+Chart 3.5: Chip Prices Chart 3.6: Singapore Manufacturing PMI
+Source: Bloomberg Source: SIPMM
+Growth in modern services is expected to step down from last year. Investor risk appetites
+have deteriorated alongside large gyrations in asset valuations and spikes in volatility across
+financial markets, triggered by fast-evolving trade tensions. Consequently, should investors
+shift towards more passive investment strategies, weaker trading activity would dampen the
+net fees & commissions of the banks, fund management, forex, and security dealing
+segments in Singapore. The uncertain economic backdrop could also curtail firms’ capital
+investment spending and constrain credit intermediation activity. While lending activity has
+exited contractionary territory in recent quarters, there appears to be some near-term
+plateauing of its recovery (Chart 3.7). However, other modern services segments such as
+information & communications are expected to register firm growth, with digital
+transformation of businesses, supported in part by Budget 2025, driving demand for data and
+cloud services.
+Chart 3.7: Loans to Residents and Non-residents
+Source: MAS
+$SU
+5
+4
+3
+2
+1
+02
+0 2 2 J
+N A
+u l
+N D
+2
+F L A
+0 2 3
+S H 5 1 2
+J u l
+G B
+2 0 2
+D
+4
+R A M
+J
+8
+u l
+G B
+2 0M 2a 5r
+noisnapxE=05>
+,xednI
+5
+5
+5
+5
+4
+4
+3
+2
+1
+0
+9
+82
+0 2 2 J u l 2 0 2 3 J
+N
+u
+e
+N
+l
+w
+e
+E x
+w O
+2 0
+p o rts
+O
+rd e rs
+2 4
+v
+J
+e
+u
+ra
+l
+ll
+2 0M 2a 5r
+6
+4
+2
+0
+-2
+-4
+-6
+-8
+2022 2023 Q3 2024 Q3 2025
+Q3 Feb
+htworG
+%
+YOY
+Residents
+Overall
+Non-residents
+
+24 Macroeconomic Review | April 2025
+The domestic-oriented sector will continue to provide an underlying base of activity in the
+economy. The construction sector has a strong pipeline of projects, with firms leveraging on
+government support and adopting solutions such as robotics, digitalisation and sustainability
+advancements to boost productivity (see Box B on the near-term support and structural
+measures announced in Budget 2025). Meanwhile, consumer-facing industries such as retail
+and food & beverages will continue to face a challenging operating environment, especially
+for the smaller firms, given high labour costs, cautious consumer sentiments and increased
+competition. Nevertheless, net firm formation in the F&B industry appears to be on a mild
+uptrend, as the industry continues to reinvent itself.
+Singapore’s GDP growth for 2025 is expected to slow, with uncertainties to
+the outlook remaining
+There is significant uncertainty over how trade policy actions will unfold in the period ahead.
+At this juncture, the Singapore economy is projected to expand by 0.0–2.0% in 2025. This
+step-down from the 4.4% growth in 2024, would be mainly due to the weakness in the trade-
+related and modern services clusters. As a result, Singapore’s output gap will turn negative
+this year (Chart 3.8). Prolonged trade tensions could pose downside risks to growth, through
+further disruptions in trade flows, undermining business investments and dampening global
+demand. Conversely, trade tensions may de-escalate over time, which could boost
+sentiments and export activity.
+Chart 3.8: Output Gap
+Source: EPG, MAS estimates
+PDG
+laitnetoP
+fo
+%
+2
+1
+0
+-1
+-2
+-3
+-4
+-5
+-6
+2 0 1 5 2 0 1 7 2 0 1 9 2 0 2 1 2 0 2 3 2
+-0
+0
+.5
+2 5 F
+
+The Singapore Economy 25
+Box A: The Impact of Policy Uncertainty on the Singapore Economy
+The Global Economic Policy Uncertainty (GEPU) index (Baker, Bloom, and Davis, 2016)
+reached an all-time high in early 2025 (Chart A1), predominantly reflecting a surge in
+uncertainty over US trade policy. Apart from the trade-dampening effects of the implemented
+tariffs itself, uncertainty around the scale, scope and permanence of trade barriers could also
+impact business and consumer spending. Firms are likely to hold back on their investments
+due to the increased level of uncertainty (Dixit and Pindyck, 1994), while borrowing costs
+could also rise with greater risk premia. Meanwhile, households may reduce spending to build
+up precautionary buffers against potential income shocks. This Box explores the quantitative
+effects of global policy uncertainty on the Singapore economy.
+Chart A1 Global Policy Uncertainty Index
+350
+300
+250
+200
+150
+100
+50
+2015 2017 2019 2021 2023 2025
+Jan
+Source: policyuncertainty.com
+Structural Vector Autoregression (SVAR) Model
+To assess the empirical impact of global policy uncertainty on Singapore’s growth, the
+following SVAR model is estimated from Q2 1998 to Q4 2024:
+4 4 3
+𝐘 =𝐜+∑𝐀 𝐘 +∑𝛾 Δ𝑅𝑆𝐹 +∑𝜆 𝑄 +𝐞
+𝑡 𝑖 𝑡−𝑖 𝑗 𝑡−𝑗 𝑘 𝑘,𝑡 𝑡
+𝑖=1 𝑗=1 𝑘=1
+The vector 𝐘 contains six variables: the GEPU index, the excess bond premium (EBP),1
+𝑡
+global real GDP, and Singapore’s private non-residential investment, private consumption and
+real GDP; all variables except the EBP are expressed in q-o-q percent change terms. Lags of
+the change in the US three-month interbank rate (RSF) are included as control variables
+alongside seasonal dummies. A recursive approach is used to identify structural shocks in
+the order of variables mentioned above. In addition, the coefficients on the lags of domestic
+1 The excess bond premium, developed by Gilchrist and Zakrajšek (2012), was included as a measure of credit
+conditions.
+)001=5102
+naJ(
+xednI
+
+26 Macroeconomic Review | April 2025
+variables are restricted to zero in the equations of external variables, under the assumption
+that the Singapore economy has negligible influence on global economic conditions.
+Impulse Response Functions
+The impulse response functions (IRFs) from the SVAR model indicate that global policy
+uncertainty has statistically significant adverse impacts on the Singapore economy. In
+response to a positive one standard deviation (SD) shock to the GEPU index (or a 20.4%
+increase in uncertainty), private non-residential investment registers a cumulative 3.6%
+decline after four quarters while private consumption falls 1.5% within the same period (Chart
+A2). Overall, real GDP is 1.3% below baseline a year after the shock—similar to the 1.0%
+estimated by Luk et al. (2017) for Hong Kong but larger than the 0.5% estimated by the
+European Commission (2024) for the Eurozone.2
+Chart A2 Cumulative Responses to A Positive One SD GEPU Shock from the SVAR Model
+Source: EPG, MAS estimates
+Note: Shaded regions represent the 95% confidence interval.
+The increase in the EBP in Chart A2 indicates that global credit conditions tighten in
+response to higher global policy uncertainty, in line with findings from other studies (e.g.,
+Caldara et al., 2016). This affects Singapore’s GDP and points to the presence of a financial
+channel through which global policy uncertainty affects real economic activity.
+As a robustness check, the IRFs from the SVAR are compared with those from a local
+projection model (Jordà, 2005) where the dependent real variables are, separately,
+Singapore’s private consumption, private non-residential investment and GDP. The IRFs are
+similar; in both models, investment is impacted more greatly than consumption, while the
+impact on Singapore’s GDP is greatest four quarters after the shock. Notably, leveraging on
+the flexibility enabled by the local projection method, there is evidence of an asymmetry in the
+impact of uncertainty. GDP falls by a meaningful extent after a significant increase in
+uncertainty but shows no statistically significant response to declines (Chart A3).
+2 Luk et al. (2017) and the European Commission (2024) adopt similar SVAR models to estimate the
+macroeconomic impact of uncertainty shocks on Hong Kong and the Eurozone using country/region-specific
+Economic Policy Uncertainty indices.
+tneC
+reP
+tneC
+reP
+1
+0
+-1
+-2
+-3
+1
+0
+-1
+-2
+-3
+-4
+0
+0
+1
+1
+2
+2
+P
+R e a l G D P
+3 4 5 6 7
+Q u a rte rs A fte r S
+riv a te C o n s u m
+3 4 5 6 7
+Q u a rte rs A fte r S
+h
+h
+8
+o
+p
+8
+o
+9
+ck
+tio n
+9
+ck
+1
+1
+0
+0
+1
+1
+1
+1
+1
+1
+2
+2
+tneC
+reP
+tnioP
+%
+2
+0
+-2
+-4
+-6
+-8
+2
+1
+0
+-1
+0
+0
+P riv
+1
+1
+a te N
+2 3
+E x
+2 3
+o
+Q
+c
+Q
+n -R e s id e n tia l In v
+4 5 6 7 8 9
+u a rte rs A fte r S h o ck
+e s s B o n d P re m iu
+4 5 6 7 8 9
+u a rte rs A fte r S h o ck
+e
+m
+s
+1
+1
+tm
+0
+0
+e n
+1 1
+1 1
+t
+1
+1
+2
+2
+
+The Singapore Economy 27
+Chart A3 Cumulative Response of GDP to A One SD GEPU Shock: Increasing vs. Decreasing
+Uncertainty
+8
+6
+4
+2
+0
+-2
+-4
+-6
+-8
+0 1 2 3 4 5 6 7 8 9 101112
+Source: EPG, MAS estimates
+Note: Shaded regions represent the 95% confidence interval. A state-dependent local projections was estimated to
+allow for asymmetric responses depending on whether uncertainty is increasing or decreasing.
+Sum-Up
+The analysis in this Box suggests that the sharp rise in global policy uncertainty since
+late last year will weigh on Singapore’s growth. Private non-residential investment is likely to
+pull back by more than consumption. At the same time, the tightening of global financial
+conditions could reinforce the drag on real economic activity in Singapore.
+References
+Baker, Scott R., Nicholas Bloom, and Steven J. Davis. 2016. “Measuring Economic Policy
+Uncertainty.” Quarterly Journal of Economics, 131 (4): 1593–1636.
+Caldara, Dario, Cristina Fuentes-Albero, Simon Gilchrist, and Egon Zakrajšek. 2016. “The
+Macroeconomic Impact of Financial and Uncertainty Shocks.” European Economic Review,
+88: 185–207.
+Dixit, Avinash K., and Robert S. Pindyck. 1994. Investment under Uncertainty. Princeton:
+Princeton University Press.
+European Commission. 2024. “The Cost of Uncertainty – New Estimates.” European
+Economic Forecast, Autumn 2024.
+Gilchrist, Simon, and Egon Zakrajšek. 2012. “Credit Spreads and Business Cycle Fluctuations.”
+American Economic Review, 102 (4): 1692–1720.
+Jordà, Òscar. 2005. “Estimation and Inference of Impulse Responses by Local Projections.”
+American Economic Review, 95 (1): 161–182.
+Luk, Paul, Michael Cheng, Philip Ng, and Ken Wong. 2018. “Economic Policy Uncertainty
+Spillovers in Small Open Economies: The Case of Hong Kong.” Pacific Economic Review, 25
+(1): 21–46.
+tneC
+reP
+Increasing Uncertainty
+8
+6
+4
+2
+0
+-2
+-4
+-6
+-8
+0 1 2 3 4 5 6 7 8 9 101112
+Quarters After Shock
+tneC
+reP
+Decreasing Uncertainty
+Quarters After Shock
+
+28 Macroeconomic Review | April 2025
+Box B: Macroeconomic Assessment of Budget 2025
+This Box item provides an overview and assessment of the key economic initiatives in
+Budget 2025.
+Macroeconomic Backdrop
+Budget 2025 was delivered in February in the context of relative macroeconomic balance,
+compared to the previous years of high inflation and volatile growth. At the end of 2024, GDP
+was estimated to be slightly above the economy’s potential, while labour market conditions
+had largely normalised following a period of tightness. In addition, inflation had fallen
+significantly with MAS Core Inflation coming in below 2% y-o-y after an extended period of
+elevated inflation.
+Nonetheless, elevated costs and prices had remained a concern. In particular, while real
+wages in Singapore grew faster over 2020–24 than in many regional economies as well as
+some advanced economies, the pace of real wage gains has slowed slightly compared to the
+pre-pandemic period (2010–19). Further, heightened geopolitical and trade policy uncertainty
+posed additional downside risks to Singapore’s small and trade-dependent economy, and
+consequently jobs and livelihoods. Indeed, Singapore’s GDP growth is expected to slow in
+2025 amid tariff-related weakening in external demand and heightened uncertainty. The
+balance of risks was therefore tilted towards growth weakening by more than expected, and
+in turn inflation falling more discernibly.
+Near-term Support Measures to Alleviate Cost Pressures
+Against this backdrop, Budget 2025 sought to address near-term cyclical concerns as
+well as longer-term priorities.
+The Budget provided further support for coping with cost-of-living pressures, especially
+to lower- and middle-income households. For instance, there were additional Community
+Development Council (CDC) Vouchers for all Singaporean households, U-Save rebates to help
+with utilities expenses for eligible HDB households, as well as enhanced support for lower-
+income households under the ComCare Assistance schemes.
+This year’s Budget also included an SG60 package to recognise the contributions of all
+Singaporeans, and to share the benefits of the nation’s progress. The package included SG60
+Vouchers for all Singaporeans aged 21 and above this year, as well as a Personal Income Tax
+Rebate of 60% for the Year of Assessment 2025, capped at $200, to mostly benefit middle-
+income workers.
+In a similar vein to previous Budgets, Budget 2025 also continued to provide support for
+firms grappling with higher costs. The Progressive Wage Credit Scheme was enhanced, by
+increasing the Government’s co-funding levels for wage increases. A 50% Corporate Income
+Tax Rebate was also introduced for the Year of Assessment 2025, capped at $40,000, with
+every active company that employed at least one local employee last year receiving a
+minimum benefit of $2,000.
+
+The Singapore Economy 29
+Structural Measures to Sustain Growth and Inclusivity
+Aside from addressing near-term concerns, the Budget continued to build on ongoing
+efforts to strengthen the supply-side of the economy by enhancing labour quality and building
+up the capital stock.
+To boost the potential of the resident workforce, the Budget enhanced the Workfare
+Skills Support (WSS) scheme, to provide lower-wage workers aged 30 years and above with
+monthly training allowances when they enrol in selected long-form part-time or full-time
+courses. This policy will help to alleviate the sharp income trade-off that lower-wage workers
+face when they forgo work to upskill themselves.
+To bolster the capital stock, a significant sum ($19.6 billion, 2.6% of GDP) was set aside
+to top up funds that will finance spending into the medium term on critical areas such as
+preparing the nation for climate change, exploring clean energies, investing in productivity
+and R&D initiatives, as well as the construction of Changi Airport Terminal 5. The use of fund
+top-ups secures the Government’s ability to continue with investments in the Singapore
+economy, to support long-term needs in a sustainable way, regardless of shifting cyclical
+conditions.
+Budget 2025 also enhanced efforts to reduce inequality, support families and improve
+social mobility—important priorities for Singaporeans, as revealed by the Forward Singapore
+exercise. The Budget enhanced the Fresh Start Housing Scheme, which helps families with
+children living in public rental flats to own their own homes by buying a shorter-lease new flat
+with a housing grant. There were also measures to reduce preschool expenses, provide more
+support to large families with three or more children, and improve the affordability of long-
+term care expenses. Labour policies that incentivise employers to hire more vulnerable
+groups who might experience greater difficulties finding employment, such as seniors, ex-
+offenders, and persons with disabilities, were also extended.
+Quantitative Assessment of Budget 2025
+On a calendar year basis, the fiscal impulse (FI), which gauges the net fiscal support to
+GDP from the change in the cyclically adjusted budget balance, is estimated to be a modest
++0.4% of GDP.1 This is a mildly supportive impulse for the economy in 2025.
+To quantify the impact of Budget 2025 in a general equilibrium context and account for
+its dynamic effects, key measures were simulated using the Monetary Model of Singapore
+(MMS), MAS’ flagship macroeconomic model.
+Budget 2025 is estimated to lift real disposable incomes by about 1% in 2025 through
+the SG60 package and cost relief measures. This will boost the level of real GDP by about 0.4%
+(Chart B1), mainly through stronger consumption growth compared to a counterfactual
+scenario without these discretionary fiscal injections.
+1 The CY2025 estimate differs from the fiscal impulse estimate published in MOF’s Analysis of Revenue and
+Expenditure, which is computed for FY2025. On a FY basis, the fiscal impulse is projected to be +0.9% of GDP
+in FY2025. The difference reflects lumpiness in the quarterly profile of projected revenues and spending.
+Adjusting for this difference in timing, the FI estimate over a four-quarter period would be similar.
+
+30 Macroeconomic Review | April 2025
+Chart B1 Simulated Impact of Budget 2025 on Real GDP and Private Consumption in
+CY2025
+0.8 0.7
+0.6
+0.4
+0.4
+0.2
+0.0
+Real GDP Real Private Consumption
+Source: EPG, MAS estimates
+The impact of Budget 2025 on inflation is expected to be negligible this year and only
+modestly positive in 2026 as the delayed transmission from the boost to aggregate demand
+this year raises prices incrementally.2 The muted response of inflation to the fiscal stimulus
+in 2025 also reflects the fact that the bulk of the disbursements are scheduled to be paid out
+only in the latter half of this year.
+MAS’ simulations also suggest that Budget 2025 will continue to provide some support
+to the real economy in the medium term because of measures that seek to lift capital
+accumulation and the quality of the workforce. These injections will enable improvements in
+aggregate supply by raising firm and worker productivity and in turn, bolster the economy’s
+productive potential.
+All in, Budget 2025 is assessed to maintain an appropriately expansionary impulse amid
+the challenging external environment, while supporting longer-term efforts to enhance the
+economy’s resilience and competitiveness.
+2 This estimate also accounts for the disinflationary impact of lower childcare fee caps for government-
+supported preschools in 2026.
+noitaiveD
+%
+Other Measures
+Household Measures: Cost-of-Living & SG60 Package
+Total
+
+Labour Market and Inflation 31
+4 Labour Market and Inflation
+4.1 Labour Market1
+Employment growth slowed amid weaker hiring in the services sectors, while
+labour cost increases remained below their recent peaks
+In Q4 2024, total employment growth excluding migrant domestic workers (MDWs) stepped
+down from the previous quarter. While employment growth in the trade-related sector picked
+up alongside the manufacturing upturn in H2 last year, hiring in both the domestic-oriented
+and outward-facing modern services clusters eased (Chart 4.1). In particular, employment
+growth in the domestic-oriented services sector slowed to its weakest pace since Q1 2022,
+despite the year-end festivities.
+Chart 4.1: Q-O-Q Change in Chart 4.2: Sectoral Demand Indicators
+Total Employment by Broad Sector
+Source: MOM and EPG, MAS estimates Source: DOS
+Note: The I&C business receipts index measures short-
+term change in operating revenue.
+Labour demand in the services industries was likely weighed down by greater uncertainties
+in external growth prospects and subdued consumer spending locally. Persistent softness in
+domestic retail and F&B sales led to tepid hiring in these sectors. In addition, headcount in
+the Information & Communications (I&C) sector contracted in Q4 on the back of weaker
+operating revenue growth, likely as firms in the wider economy saw some consolidation in
+technology investments following robust growth earlier in the year (Chart 4.2).
+Early signs of softening in the labour market emerged in the last quarter of 2024, after several
+years of tightness. The resident unemployment rate, retrenchment rate as well as the number
+of workers placed on short work-week or temporary layoff all ticked up slightly in Q4 2024
+from the previous quarter, while the long-term unemployment rate stayed above its historical
+average. Nevertheless, most indicators remained close to or below their pre-COVID norms,
+indicating that as of Q4 2024, the labour market remained in a state of broad demand-supply
+balance (Chart 4.3).
+1 The commentary in this section is based on labour market data that is available up to Q4 2024, unless otherwise stated.
+dnasuohT
+4
+2
+-2
+0
+0
+0
+0
+CMT o n s tru c tio n
+o d e rn S v c s
+ra d e -re la te d
+2 0 2 3 Q 2 Q 3 Q 4 2 0
+T ra v
+D o m
+T o ta
+2 4
+e l-re la te d
+e s tic -o rie n
+l e x M D W
+Q 2 Q 3
+te d S
+Q
+v
+4
+c s
+htworG
+%
+YOY
+5
+4
+3
+2
+1
+-1
+-2
+0
+0
+0
+0
+0
+0
+0
+02
+0 2 1
+F &V Bo
+B u s in e s
+S a le s lu m e
+2 0 2 2
+s R e c
+(R H
+2
+eS
+0
+ip)
+2
+ts
+3
+fo r I& C
+R e ta S a le
+V o lu m
+2 0 2 4
+ilse
+Q 4
+4
+3
+3
+2
+2
+1
+1
+5
+0
+5
+0
+5
+0
+5
+0
+htworG
+%
+YOY
+
+32 Macroeconomic Review | April 2025
+Chart 4.3: Labour Market Spare Capacity Chart 4.4: Labour Cost Indicators
+Indicators
+Source: MOM and EPG, MAS estimates Source: CPF, DOS, MOM and EPG, MAS estimates
+Note: Total compensation per worker refers to
+compensation of employees normalised by total
+employment. Services unit labour cost (ULC) adjusted by
+trend productivity refers to average labour cost in the
+services sector adjusted by trend services labour
+productivity2 (i.e., VA/employment).
+Amid weakening labour demand, labour cost increases remain below their post-COVID peaks
+(Chart 4.4), even as wages of resident workers were supported. Nominal growth in average
+monthly earnings (AME) for resident workers firmed in Q4 last year, partly as the Progressive
+Wage Model (PWM) and hikes to Local Qualifying Salary (LQS) boosted earnings of lower-
+wage resident workers. Nevertheless, total compensation per worker, which takes into
+account both resident and non-resident labour costs, grew by less than resident wages last
+year, suggesting that non-resident workers saw more modest labour cost increases.
+Unit labour cost increases in the services sector (adjusted by trend labour productivity)
+remained lower than in previous years, on the back of strengthening productivity growth.
+Labour productivity in the services sectors appears to be on an increasing trend as firms have
+possibly been consolidating or economising on their labour inputs. At the same time,
+transitional wage support provided to employers under the Progressive Wage Credit Scheme
+also helped to attenuate unit labour cost pressures.
+Labour demand could soften further this year, accompanied by slower wage
+growth
+Aggregate demand for workers is likely to moderate this year in tandem with the cyclical
+weakening in the economy. As firms pull back on their hiring and expansion plans amid
+economic uncertainty, employment growth for most sectors should step down from last year.
+In particular, the trade-related sectors of manufacturing and wholesale trade could see
+greater employment weakness given the increasingly challenging global trade environment.
+Nonetheless, labour market adjustments along the extensive margin should mostly impact
+non-resident workers. These workers account for a large share of employment in the trade-
+related sectors. Demand for resident workers in manpower-constrained sectors such as
+healthcare should remain resilient. According to the latest ManpowerGroup Employment
+2 Trend labour productivity is an estimate of output per worker excluding the influence of cyclical movements and is a better
+measure of labour productivity. It is determined by long-run factors such as quality of human capital (skills and health) and
+technological progress.
+Q 3 2 0 2 4
+S h o rt W o rk -w e e k
+o r T e m p o ra ry L a y -
+o ff
+R e
+Q 4 2
+R e tre n c h m
+1 2 0
+8 0
+4 0
+0
+s id e n t U n e m
+0 2 4
+e n t R a
+p lo y m
+te
+e n
+2 0 1
+L o n
+U n e
+t R a te
+5
+gm
+– 1 9 A v e ra g
+-te rm R e s id
+p lo y m e n t R
+e
+e n t
+a te
+egnahC
+%
+YOY
+4
+3
+2
+1
+-1
+-2
+-3
+0
+0
+0
+0
+0
+0
+0
+02
+0 1 9
+S
+2 0
+e
+2
+rv ic e s U L
+T re n d P
+0 2 0 2
+C A d ju s te d
+ro d u c tiv ity
+T o ta l C o m
+p e r W
+1 2 0 2 2
+b y
+p e n s a tio
+o rk e r
+2 0 2 3
+n
+2
+A
+0 2
+M
+4
+E
+Q 4
+
+Labour Market and Inflation 33
+Outlook Survey, the net employment outlook reading in the healthcare and life sciences
+segment was higher than that for the overall economy (Chart 4.5).
+Chart 4.5: Sectoral Net Employment Outlook Chart 4.6: Singapore Beveridge Curve,
+Relative to Overall Economy Reading, Q1 2000—Q4 2024
+Q2 2025
+Source: ManpowerGroup Source: MOM and EPG, MAS estimates
+Note: Net employment outlook is defined as proportion
+of employers planning to increase headcount less
+proportion of employers intending to reduce headcount.
+However, if aggregate labour demand were to fall more quickly than expected, slack in the
+labour market could emerge more conspicuously this year. The moderation in the overall job
+vacancy rate thus far has not been accompanied by a significant increase in the
+unemployment rate, as labour demand eased against a tight labour market. A significant
+reduction in labour demand going forward may cause the labour market to move towards a
+more elastic portion of the Beveridge curve, where further declines in job vacancies would
+lead to a greater increase in unemployment (Chart 4.6).
+Against this backdrop, nominal wage growth should ease and in turn cap unit labour cost
+increases in the services sector. Growth in services ULC (adjusted by trend productivity) is
+projected to stay low and exert only modest domestic cost pressures. Overall, wage growth
+should slow in the more cyclically sensitive sectors in the economy even as resident wage
+growth for lower-income workers will continue to be supported by scheduled updates to PWM
+wage requirements.
+etagerggA
+morf
+noitaiveD
+tnioP
+%
+gnidaeR
+ymonocE
+3
+2
+1
+-1
+-2
+-3
+0
+0
+0
+0
+0
+0
+0
+)%(
+AS
+,etaR
+ycnacaV
+boJ
+8
+6
+4
+2
+0
+0
+Q
+Q
+1
+4
+2
+R
+Q 1 2 0 2 0 –
+2 0 2 4
+0 0 0 – Q 4 2 0 1 9
+2
+e s id e n t U n e m p lo
+Q 3
+4y
+m
+2 0 2 4
+e n t R a te
+6
+, S A (% )
+8
+
+34 Macroeconomic Review | April 2025
+4.2 Inflation Developments
+Inflation slowed further and came in below expectations in Q1
+MAS Core Inflation fell significantly to 0.6% y-o-y in Q1 from 1.9% in Q4 2024, while CPI-All
+Items inflation moderated to 1.0% from 1.4% (Chart 4.7). In both instances, the pace of price
+increases was weaker than expected. The decline in core inflation in Q1 compared to the
+previous quarter was driven to a large extent by a broad-based weakening in underlying price
+pressures.
+The low inflation prints reflect a strengthening of the disinflation trend that began in mid-
+2024. By Q4 last year, inflation momentum had fallen to low levels. It has since weakened
+further, turning negative in Q1 (Chart 4.8). Alternative measures of underlying inflation that
+abstract from more volatile price components also indicated continued disinflation.
+Chart 4.7: MAS Core Inflation and CPI-All Chart 4.8: Alternative Measures of
+Items inflation Underlying Inflation
+Source: DOS and EPG, MAS estimates Source: DOS and EPG, MAS estimates
+The current negative momentum in inflation is atypical, having only occurred in two instances
+in the decade before the pandemic. Recent outturns appear more similar to the episode in
+2019, when global trade conflict led to cyclical weakness in the economy, and
+correspondingly, in inflation pressures (Table 4.1). By contrast, the low inflation in 2015 was
+more narrowly based, primarily driven by a large fall in energy- and travel-related prices due to
+sharply lower crude oil prices. While the weighted median inflation is higher than in the
+preceding two episodes as at Q1 this year, it remained significantly below its historical
+average.
+Table 4.1: Previous Episodes of Negative Inflation Momentum (%)
+Weighted
+Inflation Proportion of Core YOY Core Inflation
+Weighted Median
+Momentum Basket Below for Corresponding
+(QOQ SAAR)
+(QOQ SAAR) Historical Average Calendar Year
+YOY Inflation
+2015 Q2 −1.0 −0.2 61 0.5
+2019 Q3 −0.1 0.0 78 1.0
+0.5–1.5
+2025 Q1 −1.2 1.0 78
+(Forecast)
+Source: DOS and EPG, MAS estimates
+YOY
+%
+8
+6
+4
+2
+0
+-22
+0 1 9 2 0 2 0
+C P I-A ll Ite m s
+In fla tio n
+C o re G o o d s
+2 0 2 1 2 0 2 2 2 0 2 3
+M A S C o
+In fla tio
+S
+2 0 2 4
+re
+n
+C o re
+e rv ic e s
+2 0 2 5
+Q 1
+RAAS
+QOQ
+%
+8
+6
+4
+2
+0
+-22
+0 1
+W
+9
+e ig hIn
+2 0
+te d M
+fla tio
+2 0
+e d ia
+n
+2 0 2
+n
+1 2 0 2
+M
+2
+AIn
+2 5 % T rim m e
+M e a n In fla tio
+S C o re
+fla tio n
+2 0 2 3 2 0 2
+dn
+4 2 0Q 21 5
+
+Labour Market and Inflation 35
+Continuing lacklustre consumer spending locally was likely a factor dampening inflation.
+Retail and F&B sales volumes have been tepid for several quarters, with the latter remaining
+well below pre-COVID levels (Chart 4.9). Pressures on real wage growth as well as some
+expenditure switching abroad due to the elevated S$ real effective exchange rate (S$REER)
+have likely been factors dampening consumption expenditure in Singapore. Moreover,
+competitive pressures in sectors such as F&B may have increased, reducing the ability of
+firms to pass through cost increases.3
+Chart 4.9: Retail and F&B Sales Volumes Chart 4.10: Import Price Indices
+Source: DOS Source: DOS
+Meanwhile, business cost pressures have also remained relatively modest. In recent months,
+Singapore’s oil and non-oil import prices have continued to fall on a y-o-y basis, lowering the
+cost of utilities and imported intermediate goods (Chart 4.10). While the cost of food imports
+rose, this was driven mainly by sharp increases in a narrow group of items such as coffee and
+cocoa, the prices of which have risen by over 30% y-o-y in recent months amid poor harvests
+globally. Excluding these items, food import prices have risen more modestly by 2.8% y-o-y in
+Jan–Feb. On the domestic front, commercial rents for retail spaces have also stayed broadly
+flat since 2021, while services ULC grew at a moderate pace of 1.4% y-o-y in 2024, in line with
+its historical average.
+Against this backdrop, inflation fell across a broad range of CPI categories in Q1. Retail &
+other goods prices continued to register outright declines from year-ago levels while
+discretionary services inflation eased. Notably, inflation for food services and essential
+services both fell below their historical norms with the latter partly reflecting enhanced
+government subsidies. Overall, inflation rates for most broad components of the CPI basket
+are now below their historical averages (Chart 4.11).
+3 Chong, Xin Wei. 2025. “Too many cooks: Singapore’s F&B sector at risk of oversupply as openings outpace closures.” The
+Business Times, April 14, 2025.
+AS
+,)001=9102(
+xednI
+1
+1
+2
+0
+8
+6
+4
+0
+0
+0
+0
+02
+0 1 9 2 0 2 0 2 0 2 1 2 0 2 2
+R e ta il S a
+e x M o to
+F & B S a
+V o lu m
+2 0 2 3
+le s V o lu m e
+r V e h ic le s
+le s
+e
+2 0 2 4 2 0
+F
+2 5e
+b
+YOY
+%
+1 2
+8
+4
+0
+-4
+-82
+0 1 9
+O
+2
+il Im
+(R H
+0 2 0
+p o rts
+S )
+2 0 2 1 2
+N
+0 2
+o
+2
+n
+F
+-o il Im
+2 0 2
+o o d Im
+p o rts
+3 2 0
+p o
+2 4
+rts
+2 0 2 5
+F e b
+1 2 0
+8 0
+4 0
+0
+-4 0
+-8 0
+YOY
+%
+
+36 Macroeconomic Review | April 2025
+Chart 4.11: Inflation of Broad CPI Categories
+2025 Q1 2010–19 Average
+6
+4
+Y
+O
+Y
+%
+2
+0
+-2
+Source: DOS and EPG, MAS estimates
+Core and headline inflation are now projected to come in lower
+Both MAS Core and CPI-All Items inflation are now projected to average 0.5–1.5% in 2025.
+The downgrade in the core inflation forecast, from 1.0–2.0% previously, reflects the weaker-
+than-expected inflation outturns in Q1 as well as expectations that domestic demand and
+business cost pressures will come in more moderate than previously anticipated (Chart 4.12).
+The CPI-All Items inflation forecast range has also been lowered, from 1.5–2.5% previously,
+due to both the step-down in the core inflation forecast and softer-than-anticipated headline
+inflation at the beginning of the year.
+Chart 4.12: Core and Headline Inflation Chart 4.13: % Point Contribution to MAS
+Forecasts Core Inflation
+Source: DOS and EPG, MAS estimates Source: DOS and EPG, MAS estimates
+Singapore’s imported inflation should be modest as slowing global demand dampens global
+inflation. Since 2 April, Brent crude oil prices have fallen significantly and are expected to
+average US$68/barrel this year, compared to US$81/barrel last year. Meanwhile, the extent of
+food commodity price increases over the rest of the year should be capped, as global supply
+conditions for most commodities are forecast to remain favourable.
+YOY
+%
+8
+6
+4
+2
+0
+-22
+0 2 0 2 0 2 1
+C P I-A
+M A
+2 0 2
+ll Ite
+S C
+2
+m
+o
+s In fla tio n
+re In fla tio n
+2 0 2 3 2 0 2 4 2 0 2
+F
+5
+o re c
+Q
+a s
+4
+t
+ot
+noitubirtnoC
+tnioP
+%
+noitalfnI
+YOY
+EFEM4
+3
+2
+1
+0
+-1
+le c tric ity & G a
+o o d
+s s e n tia l S v c s
+A S C o re In fla
+s
+tio n
+RDT e ta il & O th e r G o o d
+is c re tio n a ry S v c s
+ra v e l-re la te d S v c s
+s
+
+Labour Market and Inflation 37
+On balance, higher global tariffs are expected to exert broad-based disinflationary impulses.
+While the US imposition of higher import duties on nearly all its trading partners will lift
+imported inflation in the US, its passthrough to consumer prices locally should be limited by
+Singapore’s relatively modest imports of consumer goods from the US. At the same time,
+some global exports originally destined for the US may be redirected to countries that have
+not raised import duties, such as Singapore, increasing the supply of goods and lowering
+import prices for the domestic economy. Further, weaker global aggregate demand will weigh
+on the prices of commodities and manufactured goods, exerting demand-driven
+disinflationary pressure on Singapore’s import costs.
+With the downgrade in Singapore’s GDP growth forecast, domestic demand and cost
+pressures are also expected to moderate. The easing in aggregate labour demand will exert
+a drag on nominal wage growth and thus discretionary spending, which, together with the
+projected negative output gap, will further dampen inflationary pressures. Growth in services
+ULC (adjusted by trend productivity) is also forecast to be slower than last year, and below its
+historical average.
+All in, the anticipated slippage in global and domestic demand will temper inflation across
+several broad CPI components for the year as a whole. In particular, falling global crude oil
+prices will cause electricity and gas prices to decline, while the anticipated below-trend
+services ULC growth will dampen discretionary and essential services inflation (Chart 4.13).
+Cost passthrough to prices should also be mitigated by soft consumer demand.
+The risks to the inflation outlook are tilted to the downside. The near-term disinflationary
+effects of higher global tariffs for Singapore could intensify if the associated negative
+demand effects turn out to be larger or more long-lasting than expected.
