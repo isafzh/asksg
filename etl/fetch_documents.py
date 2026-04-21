@@ -186,7 +186,7 @@ def extract_html_js(url: str) -> str | None:
 # Fetcher
 # ---------------------------------------------------------------------------
 
-def fetch_pdf(urls: list[str]) -> bytes | None:
+def fetch_url(urls: list[str]) -> bytes | None:
     for url in urls:
         try:
             r = requests.get(url, headers=HEADERS, timeout=30)
@@ -233,12 +233,12 @@ def main() -> None:
         text = None
 
         if doc_type == "pdf":
-            content = fetch_pdf(urls)
+            content = fetch_url(urls)
             if content:
                 text = extract_pdf(content)
 
         elif doc_type == "html":
-            content = fetch_pdf(urls)  # reuse simple GET
+            content = fetch_url(urls)  # reuse simple GET
             if content:
                 text = extract_html(content)
 

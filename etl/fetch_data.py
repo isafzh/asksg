@@ -40,6 +40,8 @@ def fetch_all_records() -> pd.DataFrame:
                 continue
             response.raise_for_status()
             break
+        else:
+            raise RuntimeError(f"Gave up after 5 retries (offset={offset})")
         result = response.json()["result"]
 
         records = result["records"]

@@ -106,7 +106,6 @@ def split_text(text: str, chunk_size: int, overlap: int) -> list[str]:
 
 def main() -> None:
     txt_files = sorted(CORPUS_DIR.rglob("*.txt"))
-    txt_files = [f for f in txt_files if f.name != "chunks.jsonl"]
 
     if not txt_files:
         print("No .txt files found in corpus/. Run etl/fetch_documents.py first.")
