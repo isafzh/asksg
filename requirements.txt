@@ -6,3 +6,5 @@ beautifulsoup4
 playwright
 sentence-transformers
 chromadb
+groq
+streamlit

@@ -122,11 +122,12 @@ pip install -r requirements.txt
 echo GROQ_API_KEY=your_key_here > .env
 # Get a free key at https://console.groq.com
 
-# 3. Build the vector index
+# 3. Build the vector index (downloads ~90MB model on first run)
 python etl/build_index.py
 
 # 4. Run the app
 streamlit run app/main.py
+# → opens at http://localhost:8501
 ```
 
 To refresh the document corpus:
@@ -152,9 +153,9 @@ Metrics: **Faithfulness**, **Answer Relevancy**, **Context Precision**, **Contex
 
 - [x] Document ingestion pipeline (11 documents, 4 sources)
 - [x] Text preprocessing and chunking (2,070 chunks)
-- [ ] Embedding and ChromaDB indexing
-- [ ] RAG pipeline (retrieval + Groq LLM)
-- [ ] Streamlit chat interface
+- [x] Embedding and ChromaDB indexing (2,070 vectors, all-MiniLM-L6-v2)
+- [x] RAG pipeline (retrieval + Groq LLM)
+- [x] Streamlit chat interface
 - [ ] Ragas evaluation
 - [ ] FastAPI backend + Docker
 - [ ] AWS EC2 deployment
