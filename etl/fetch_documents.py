@@ -141,6 +141,22 @@ DOCUMENTS = [
             "https://www.cpf.gov.sg/member/home-ownership/using-your-cpf-to-buy-a-home",
         ],
     },
+    {
+        "source": "cpf",
+        "name": "cpf_salary_ceiling_budget2023",
+        "type": "html",
+        "urls": [
+            "https://www.cpf.gov.sg/member/infohub/news/media-news/budget-2023-cpf-monthly-salary-ceiling-to-be-raised-to-8000-by-2026",
+        ],
+    },
+    {
+        "source": "cpf",
+        "name": "cpf_budget_highlights_2023",
+        "type": "html",
+        "urls": [
+            "https://www.cpf.gov.sg/member/infohub/news/cpf-related-announcements/budget-highlights-2023",
+        ],
+    },
 ]
 
 
@@ -252,7 +268,7 @@ def main() -> None:
             continue
 
         path = save(source, name, text.strip())
-        print(f"  Saved {len(text):,} chars → {path.relative_to(Path(__file__).parent.parent)}")
+        print(f"  Saved {len(text):,} chars -> {path.relative_to(Path(__file__).parent.parent)}")
         success.append(name)
         time.sleep(1)
 
@@ -267,9 +283,9 @@ def main() -> None:
             print(f"  [{doc['source']}] {name}")
             print(f"    Visit: {url}")
             if doc["type"] == "pdf":
-                print(f"    → Download PDF → run: python etl/extract_local_pdf.py data/raw_pdfs/<file>.pdf {doc['source']} {name}")
+                print(f"    -> Download PDF -> run: python etl/extract_local_pdf.py data/raw_pdfs/<file>.pdf {doc['source']} {name}")
             else:
-                print(f"    → Copy page text → save as: corpus/{doc['source']}/{name}.txt")
+                print(f"    -> Copy page text -> save as: corpus/{doc['source']}/{name}.txt")
 
 
 if __name__ == "__main__":

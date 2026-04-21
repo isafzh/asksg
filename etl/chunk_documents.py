@@ -133,7 +133,7 @@ def main() -> None:
                 "text": chunk,
             })
 
-        print(f"  {source}/{document}: {len(text):,} chars → {len(chunks)} chunks")
+        print(f"  {source}/{document}: {len(text):,} chars -> {len(chunks)} chunks")
 
     OUTPUT_FILE.write_text(
         "\n".join(json.dumps(c, ensure_ascii=False) for c in all_chunks),
@@ -141,7 +141,7 @@ def main() -> None:
     )
 
     print(f"\nTotal: {len(all_chunks)} chunks from {len(txt_files)} documents")
-    print(f"Saved → {OUTPUT_FILE.relative_to(Path(__file__).parent.parent)}")
+    print(f"Saved -> {OUTPUT_FILE.relative_to(Path(__file__).parent.parent)}")
 
     # Quick stats
     lengths = [len(c["text"]) for c in all_chunks]

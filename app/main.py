@@ -87,7 +87,7 @@ if not st.session_state.messages:
 # Render conversation history
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
-        st.markdown(msg["content"])
+        st.markdown(msg["content"].replace("$", r"\$"))
         if msg.get("sources"):
             with st.expander("Sources", expanded=False):
                 st.markdown(format_sources(msg["sources"]))
@@ -110,7 +110,7 @@ if query:
                 model, collection = get_retriever()
                 result = answer(query, model, collection)
 
-                st.markdown(result["answer"])
+                st.markdown(result["answer"].replace("$", r"\$"))
                 with st.expander("Sources", expanded=False):
                     st.markdown(format_sources(result["sources"]))
 

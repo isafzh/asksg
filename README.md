@@ -48,7 +48,7 @@ Singapore government documents
     [ RAG Pipeline ]             app/rag.py
     User question
     → embed → retrieve top-k chunks
-    → Groq LLM (Llama 3.1 70B)
+    → Groq LLM (Llama 3.3 70B)
     → grounded answer
             │
             ▼
@@ -65,7 +65,7 @@ Singapore government documents
 | [Singapore Budget](https://www.singaporebudget.gov.sg) | Budget speeches 2023, 2024, 2025 | PDF |
 | [MAS](https://www.mas.gov.sg) | Macroeconomic Reviews Apr/Oct 2024, Apr 2025 | PDF |
 | [HDB](https://www.hdb.gov.sg) | Buying guides, resale eligibility, couples & families | HTML |
-| [CPF Board](https://www.cpf.gov.sg) | Contribution rates, housing usage | HTML |
+| [CPF Board](https://www.cpf.gov.sg) | Contribution rates, housing usage, OW ceiling schedule, Budget 2023 CPF highlights | HTML |
 
 All documents are official Singapore government publications, free for public use.
 
@@ -78,7 +78,7 @@ All documents are official Singapore government publications, free for public us
 | Language | Python 3.9+ |
 | Embeddings | `sentence-transformers` — `all-MiniLM-L6-v2` |
 | Vector store | ChromaDB (local, persistent) |
-| LLM | Groq API — `llama-3.1-70b-versatile` (free tier) |
+| LLM | Groq API — `llama-3.3-70b-versatile` (free tier) |
 | PDF parsing | `pdfplumber` |
 | Frontend | Streamlit |
 | Deployment *(planned)* | FastAPI + Docker + AWS EC2 |
@@ -94,7 +94,7 @@ asksg/
 │   ├── mas/                   # MAS Macroeconomic Reviews
 │   ├── hdb/                   # HDB eligibility guides
 │   ├── cpf/                   # CPF contribution and housing guides
-│   └── chunks.jsonl           # 2,070 text chunks ready for embedding
+│   └── chunks.jsonl           # 2,107 text chunks ready for embedding
 ├── etl/
 │   ├── fetch_documents.py     # Downloads source documents
 │   ├── chunk_documents.py     # Cleans and chunks text
@@ -151,9 +151,9 @@ Metrics: **Faithfulness**, **Answer Relevancy**, **Context Precision**, **Contex
 
 ## Roadmap
 
-- [x] Document ingestion pipeline (11 documents, 4 sources)
-- [x] Text preprocessing and chunking (2,070 chunks)
-- [x] Embedding and ChromaDB indexing (2,070 vectors, all-MiniLM-L6-v2)
+- [x] Document ingestion pipeline (13 documents, 4 sources)
+- [x] Text preprocessing and chunking (2,107 chunks)
+- [x] Embedding and ChromaDB indexing (2,107 vectors, all-MiniLM-L6-v2)
 - [x] RAG pipeline (retrieval + Groq LLM)
 - [x] Streamlit chat interface
 - [ ] Ragas evaluation
