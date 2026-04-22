@@ -1,11 +1,13 @@
 """
-Ragas evaluation for AskSG RAG pipeline.
+Lightweight RAG evaluation for AskSG — no LLM judge, zero extra API calls.
 
-Runs 4 metrics on a hand-curated test set of 18 Q&A pairs:
-  - Faithfulness:      Does the answer contain only claims supported by retrieved chunks?
-  - Answer Relevancy:  Is the answer relevant to the question?
-  - Context Precision: Are the retrieved chunks relevant (low noise)?
-  - Context Recall:    Did retrieval find all information needed to answer?
+Metrics (all computed locally):
+  - Faithfulness:       NLI entailment score (cross-encoder/nli-deberta-v3-base)
+                        Checks whether answer sentences are supported by retrieved chunks.
+  - Answer Similarity:  Cosine similarity between answer and ground truth (MiniLM embeddings)
+  - Keyword Recall:     Fraction of ground-truth keywords found in retrieved context
+
+Only the RAG generator calls Groq (1 call per question, 10 total).
 
 Usage:
     python eval/ragas_eval.py
@@ -16,42 +18,105 @@ Results are printed to stdout and saved to eval/results.json.
 from __future__ import annotations
 
 import json
-import os
+import re
 import sys
 import warnings
 from pathlib import Path
 
+import numpy as np
+
 warnings.filterwarnings("ignore")
 
-# Allow importing from app/
 sys.path.insert(0, str(Path(__file__).parent.parent / "app"))
 
 from dotenv import load_dotenv
 load_dotenv()
 
 from rag import load_retriever, answer
-
-from ragas import evaluate, EvaluationDataset, SingleTurnSample
-from ragas.metrics import (  # type: ignore[attr-defined]
-    Faithfulness,
-    AnswerRelevancy,
-    ContextPrecision,
-    ContextRecall,
-)
-from ragas.llms import LangchainLLMWrapper  # type: ignore[attr-defined]
-from ragas.embeddings import LangchainEmbeddingsWrapper  # type: ignore[attr-defined]
-from langchain_groq import ChatGroq
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from sentence_transformers import SentenceTransformer, CrossEncoder
 
 TEST_SET_FILE = Path(__file__).parent / "test_set.json"
 RESULTS_FILE = Path(__file__).parent / "results.json"
-GROQ_MODEL = "llama-3.3-70b-versatile"
-JUDGE_MODEL = "llama-3.1-8b-instant"
+
 EMBED_MODEL = "all-MiniLM-L6-v2"
+NLI_MODEL = "cross-encoder/nli-deberta-v3-base"
+
+STOPWORDS = {
+    "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for",
+    "of", "with", "by", "from", "is", "are", "was", "were", "be", "been",
+    "has", "have", "had", "do", "does", "did", "will", "would", "could",
+    "should", "may", "might", "that", "this", "as", "it", "its", "not",
+    "if", "when", "also", "both", "each", "more", "than", "into", "about",
+    "what", "which", "who", "can", "per", "up", "how",
+}
 
 
-def build_dataset(test_set: list[dict], model, collection) -> EvaluationDataset:
-    samples = []
+def _sentences(text: str) -> list[str]:
+    """Split text into sentences on . ! ? — keep non-empty."""
+    parts = re.split(r"(?<=[.!?])\s+", text.strip())
+    return [p.strip() for p in parts if p.strip()]
+
+
+def _keywords(text: str) -> set[str]:
+    """Lowercase content words longer than 3 chars, not stopwords."""
+    words = re.findall(r"\b[a-zA-Z0-9%$,]+\b", text.lower())
+    return {w for w in words if len(w) > 3 and w not in STOPWORDS}
+
+
+def faithfulness_score(answer_text: str, contexts: list[str], nli: CrossEncoder) -> float:
+    """
+    NLI entailment score: for each answer sentence, score against the full
+    concatenated context. Returns mean entailment probability across sentences.
+
+    NLI label order for nli-deberta-v3-base: [contradiction, entailment, neutral]
+    """
+    sentences = _sentences(answer_text)
+    if not sentences:
+        return 0.0
+
+    context_blob = " ".join(contexts)
+    pairs = [(context_blob, s) for s in sentences]
+    raw_scores = nli.predict(pairs, apply_softmax=True)
+
+    entailment_idx = 1
+    entailment_scores = [float(s[entailment_idx]) for s in raw_scores]
+    return round(float(np.mean(entailment_scores)), 4)
+
+
+def answer_similarity(answer_text: str, ground_truth: str, embedder: SentenceTransformer) -> float:
+    """Cosine similarity between answer and ground truth embeddings."""
+    vecs = embedder.encode([answer_text, ground_truth], normalize_embeddings=True)
+    similarity = float(np.dot(vecs[0], vecs[1]))
+    return round(max(0.0, similarity), 4)
+
+
+def keyword_recall(ground_truth: str, contexts: list[str]) -> float:
+    """Fraction of ground-truth keywords present in the retrieved context."""
+    gt_keywords = _keywords(ground_truth)
+    if not gt_keywords:
+        return 1.0
+    context_text = " ".join(contexts).lower()
+    found = sum(1 for kw in gt_keywords if kw in context_text)
+    return round(found / len(gt_keywords), 4)
+
+
+def main() -> None:
+    print("Loading test set...")
+    test_set = json.loads(TEST_SET_FILE.read_text(encoding="utf-8"))
+    print(f"  {len(test_set)} questions\n")
+
+    print("Loading RAG retriever...")
+    model, collection = load_retriever()
+    print(f"  {collection.count():,} chunks in index\n")
+
+    print(f"Loading NLI model ({NLI_MODEL})...")
+    nli = CrossEncoder(NLI_MODEL)
+    print(f"Loading embedding model ({EMBED_MODEL})...")
+    embedder = SentenceTransformer(EMBED_MODEL)
+    print()
+
+    print("Running RAG pipeline + local evaluation...")
+    rows = []
     total = len(test_set)
     for i, item in enumerate(test_set, 1):
         q = item["question"]
@@ -59,72 +124,38 @@ def build_dataset(test_set: list[dict], model, collection) -> EvaluationDataset:
         print(f"  [{i}/{total}] {q[:70]}...")
 
         result = answer(q, model, collection)
+        ans = result["answer"]
         contexts = [chunk["text"] for chunk in result["sources"]]
 
-        samples.append(SingleTurnSample(
-            user_input=q,
-            response=result["answer"],
-            retrieved_contexts=contexts,
-            reference=gt,
-        ))
+        f = faithfulness_score(ans, contexts, nli)
+        s = answer_similarity(ans, gt, embedder)
+        r = keyword_recall(gt, contexts)
+        rows.append({"faithfulness": f, "answer_similarity": s, "keyword_recall": r})
+        print(f"         faithfulness={f:.3f}  similarity={s:.3f}  recall={r:.3f}")
 
-    return EvaluationDataset(samples=samples)
-
-
-def main() -> None:
-    print("Loading test set...")
-    test_set = json.loads(TEST_SET_FILE.read_text(encoding="utf-8"))
-    print(f"  {len(test_set)} questions loaded\n")
-
-    print("Loading RAG retriever...")
-    model, collection = load_retriever()
-    print(f"  {collection.count():,} chunks in index\n")
-
-    print("Running RAG pipeline on all questions...")
-    dataset = build_dataset(test_set, model, collection)
     print()
-
-    print(f"Configuring Ragas judge LLM ({JUDGE_MODEL}) + MiniLM embeddings...")
-    groq_llm = LangchainLLMWrapper(
-        ChatGroq(
-            model=JUDGE_MODEL,
-            api_key=os.environ["GROQ_API_KEY"],
-            temperature=0,
-        )
-    )
-    hf_embeddings = LangchainEmbeddingsWrapper(
-        HuggingFaceEmbeddings(model_name=EMBED_MODEL, show_progress=False)
-    )
-
-    metrics = [
-        Faithfulness(llm=groq_llm),
-        AnswerRelevancy(llm=groq_llm, embeddings=hf_embeddings),
-        ContextPrecision(llm=groq_llm),
-        ContextRecall(llm=groq_llm),
-    ]
-    print()
-
-    print("Evaluating... (this takes a few minutes — each metric calls the LLM)")
-    results = evaluate(dataset=dataset, metrics=metrics)
-    print()
-
     scores = {
-        "faithfulness":      round(float(results["faithfulness"]), 4),
-        "answer_relevancy":  round(float(results["answer_relevancy"]), 4),
-        "context_precision": round(float(results["context_precision"]), 4),
-        "context_recall":    round(float(results["context_recall"]), 4),
+        "faithfulness":     round(float(np.mean([r["faithfulness"]     for r in rows])), 4),
+        "answer_similarity": round(float(np.mean([r["answer_similarity"] for r in rows])), 4),
+        "keyword_recall":   round(float(np.mean([r["keyword_recall"]   for r in rows])), 4),
     }
 
-    print("=" * 50)
-    print("Ragas Evaluation Results")
-    print("=" * 50)
-    print(f"  Faithfulness:        {scores['faithfulness']:.4f}")
-    print(f"  Answer Relevancy:    {scores['answer_relevancy']:.4f}")
-    print(f"  Context Precision:   {scores['context_precision']:.4f}")
-    print(f"  Context Recall:      {scores['context_recall']:.4f}")
-    print("=" * 50)
+    print("=" * 52)
+    print("Evaluation Results")
+    print("=" * 52)
+    print(f"  Faithfulness (NLI entailment):  {scores['faithfulness']:.4f}")
+    print(f"  Answer Similarity (cosine):     {scores['answer_similarity']:.4f}")
+    print(f"  Keyword Recall:                 {scores['keyword_recall']:.4f}")
+    print("=" * 52)
 
-    output = {"scores": scores, "n_questions": len(test_set), "generator_model": GROQ_MODEL, "judge_model": JUDGE_MODEL}
+    output = {
+        "scores": scores,
+        "per_question": rows,
+        "n_questions": len(test_set),
+        "nli_model": NLI_MODEL,
+        "embed_model": EMBED_MODEL,
+        "note": "All metrics computed locally. Only the RAG generator uses Groq (1 call/question).",
+    }
     RESULTS_FILE.write_text(json.dumps(output, indent=2), encoding="utf-8")
     print(f"\nResults saved -> {RESULTS_FILE.relative_to(Path(__file__).parent.parent)}")
 

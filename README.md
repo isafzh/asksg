@@ -90,17 +90,22 @@ All documents are official Singapore government publications, free for public us
 ```
 asksg/
 ├── corpus/                    # Extracted text documents (tracked in git)
-│   ├── budget/                # Singapore Budget speeches
-│   ├── mas/                   # MAS Macroeconomic Reviews
-│   ├── hdb/                   # HDB eligibility guides
-│   ├── cpf/                   # CPF contribution and housing guides
+│   ├── budget/                # Singapore Budget speeches (3 PDFs)
+│   ├── mas/                   # MAS Macroeconomic Reviews (3 PDFs)
+│   ├── hdb/                   # HDB eligibility guides (3 HTML)
+│   ├── cpf/                   # CPF contribution and housing guides (4 HTML)
 │   └── chunks.jsonl           # 2,107 text chunks ready for embedding
 ├── etl/
 │   ├── fetch_documents.py     # Downloads source documents
 │   ├── chunk_documents.py     # Cleans and chunks text
 │   ├── build_index.py         # Embeds chunks into ChromaDB
 │   └── extract_local_pdf.py   # Helper: extract text from local PDFs
-├── app/                       # Streamlit app (in progress)
+├── app/
+│   ├── rag.py                 # RAG pipeline (retrieve + Groq generate)
+│   └── main.py                # Streamlit chat interface
+├── eval/
+│   ├── ragas_eval.py          # Evaluation script (local NLI + cosine similarity)
+│   └── test_set.json          # 10 curated Q&A pairs with ground truth
 ├── .gitignore
 └── requirements.txt
 ```
@@ -141,11 +146,22 @@ python etl/build_index.py       # re-embed (delete chroma_db/ first)
 
 ## Evaluation
 
-RAG quality is evaluated using [Ragas](https://docs.ragas.io) on a hand-curated test set of 15–20 question-answer pairs drawn from the source documents.
+RAG quality is measured on a hand-curated test set of 10 Q&A pairs drawn from the source documents (`eval/test_set.json`).
 
-Metrics: **Faithfulness**, **Answer Relevancy**, **Context Precision**, **Context Recall**
+All metrics are computed locally — no extra API calls beyond the 10 needed to generate answers:
 
-*(Evaluation results will be published here once the RAG pipeline is complete.)*
+| Metric | What it measures | Method |
+|---|---|---|
+| **Faithfulness** | Are answer claims supported by retrieved chunks? | NLI entailment score (`cross-encoder/nli-deberta-v3-base`) |
+| **Answer Similarity** | Does the answer match the ground truth? | Cosine similarity — MiniLM embeddings |
+| **Keyword Recall** | Does retrieved context contain ground truth facts? | Keyword string matching |
+
+To run:
+```bash
+python eval/ragas_eval.py
+```
+
+*(Evaluation scores will be published here after the first run.)*
 
 ---
 
@@ -156,6 +172,7 @@ Metrics: **Faithfulness**, **Answer Relevancy**, **Context Precision**, **Contex
 - [x] Embedding and ChromaDB indexing (2,107 vectors, all-MiniLM-L6-v2)
 - [x] RAG pipeline (retrieval + Groq LLM)
 - [x] Streamlit chat interface
-- [ ] Ragas evaluation
+- [x] Evaluation framework (local NLI + cosine similarity, 10-question test set)
+- [ ] Evaluation results (pending first run)
 - [ ] FastAPI backend + Docker
 - [ ] AWS EC2 deployment
