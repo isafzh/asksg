@@ -114,6 +114,26 @@ def answer(query: str, model, collection) -> dict:
     }
 
 
+def stream_answer(query: str, model, collection) -> tuple:
+    """RAG pipeline with streaming. Returns (groq_stream, chunks)."""
+    chunks = retrieve(query, model, collection)
+    context = _build_context(chunks)
+    user_message = f"Context:\n{context}\n\nQuestion: {query}"
+
+    client = Groq(api_key=os.environ["GROQ_API_KEY"])
+    stream = client.chat.completions.create(
+        model=GROQ_MODEL,
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": user_message},
+        ],
+        temperature=0.1,
+        max_tokens=1024,
+        stream=True,
+    )
+    return stream, chunks
+
+
 # ---------------------------------------------------------------------------
 # Standalone smoke test
 # ---------------------------------------------------------------------------
