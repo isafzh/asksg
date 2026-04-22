@@ -8,3 +8,7 @@ sentence-transformers
 chromadb
 groq
 streamlit
+ragas
+langchain-groq
+langchain-community
+eval_type_backport
