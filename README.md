@@ -156,17 +156,24 @@ All metrics are computed locally — no extra API calls beyond the 10 needed to 
 | **Answer Similarity** | Does the answer match the ground truth? | Cosine similarity — MiniLM embeddings |
 | **Keyword Recall** | Does retrieved context contain ground truth facts? | Keyword string matching |
 
-| Metric | Score | What it means |
-|---|---|---|
-| Faithfulness (NLI entailment) | 0.33 | Answers sometimes combine info across chunks; room to tighten retrieval |
-| Answer Similarity (cosine) | 0.85 | Answers are semantically close to ground truth |
-| Keyword Recall | 0.74 | Retrieved context covers most ground-truth facts |
+### Results by Top-K
 
-*10 hand-curated Q&A pairs across Budget, CPF, HDB, and MAS sources. All metrics computed locally — only 10 Groq API calls used for generation.*
+The eval script accepts a `--top-k` argument to control how many chunks are retrieved per query:
+
+| Metric | Top-K = 5 | Top-K = 7 | Change |
+|---|---|---|---|
+| Faithfulness (NLI entailment) | 0.4449 | 0.4550 | +0.0101 |
+| Answer Similarity (cosine) | 0.8413 | 0.8768 | **+0.0355** |
+| Keyword Recall | 0.7405 | 0.7664 | +0.0259 |
+
+Increasing Top-K from 5 to 7 improves all three metrics. The largest gain is answer similarity (+4.2%), driven by better context coverage for MAS questions (Q9 inflation: faithfulness 0.333→0.998; Q10 GDP: faithfulness 0.001→0.498). The tradeoff is ~40% more tokens per query sent to Groq.
+
+*10 hand-curated Q&A pairs across Budget, CPF, HDB, and MAS sources. All metrics computed locally — only 10 Groq API calls used per run.*
 
 To run:
 ```bash
-python eval/ragas_eval.py
+python eval/ragas_eval.py              # default top-k=5  → saves eval/results_k5.json
+python eval/ragas_eval.py --top-k 7   # retrieve 7 chunks → saves eval/results_k7.json
 ```
 
 ---
@@ -179,6 +186,7 @@ python eval/ragas_eval.py
 - [x] RAG pipeline (retrieval + Groq LLM)
 - [x] Streamlit chat interface
 - [x] Evaluation framework (local NLI + cosine similarity, 10-question test set)
-- [x] Evaluation results (faithfulness 0.33, answer similarity 0.85, keyword recall 0.74)
+- [x] Evaluation results (Top-K=5: faithfulness 0.44, similarity 0.84, recall 0.74 | Top-K=7: 0.46 / 0.88 / 0.77)
+- [x] Top-K comparison (k=5 vs k=7 via `--top-k` CLI argument)
 - [ ] FastAPI backend + Docker
 - [ ] AWS EC2 deployment

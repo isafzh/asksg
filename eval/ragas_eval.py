@@ -10,13 +10,15 @@ Metrics (all computed locally):
 Only the RAG generator calls Groq (1 call per question, 10 total).
 
 Usage:
-    python eval/ragas_eval.py
+    python eval/ragas_eval.py              # default top-k=5
+    python eval/ragas_eval.py --top-k 7   # retrieve 7 chunks instead
 
-Results are printed to stdout and saved to eval/results.json.
+Results are printed to stdout and saved to eval/results_k{top_k}.json.
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -36,7 +38,6 @@ from rag import load_retriever, answer
 from sentence_transformers import SentenceTransformer, CrossEncoder
 
 TEST_SET_FILE = Path(__file__).parent / "test_set.json"
-RESULTS_FILE = Path(__file__).parent / "results.json"
 
 EMBED_MODEL = "all-MiniLM-L6-v2"
 NLI_MODEL = "cross-encoder/nli-deberta-v3-base"
@@ -107,6 +108,16 @@ def keyword_recall(ground_truth: str, contexts: list[str]) -> float:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="AskSG RAG evaluation")
+    parser.add_argument(
+        "--top-k", type=int, default=5,
+        help="Number of chunks to retrieve per query (default: 5)"
+    )
+    args = parser.parse_args()
+    top_k = args.top_k
+
+    results_file = Path(__file__).parent / f"results_k{top_k}.json"
+
     print("Loading test set...")
     test_set = json.loads(TEST_SET_FILE.read_text(encoding="utf-8"))
     print(f"  {len(test_set)} questions\n")
@@ -121,7 +132,7 @@ def main() -> None:
     embedder = SentenceTransformer(EMBED_MODEL)
     print()
 
-    print("Running RAG pipeline + local evaluation...")
+    print(f"Running RAG pipeline + local evaluation  [top-k={top_k}]...")
     rows = []
     total = len(test_set)
     for i, item in enumerate(test_set, 1):
@@ -129,7 +140,7 @@ def main() -> None:
         gt = item["ground_truth"]
         print(f"  [{i}/{total}] {q[:70]}...")
 
-        result = answer(q, model, collection)
+        result = answer(q, model, collection, k=top_k)
         ans = result["answer"]
         contexts = [chunk["text"] for chunk in result["sources"]]
 
@@ -147,7 +158,7 @@ def main() -> None:
     }
 
     print("=" * 52)
-    print("Evaluation Results")
+    print(f"Evaluation Results  [top-k={top_k}]")
     print("=" * 52)
     print(f"  Faithfulness (NLI entailment):  {scores['faithfulness']:.4f}")
     print(f"  Answer Similarity (cosine):     {scores['answer_similarity']:.4f}")
@@ -155,6 +166,7 @@ def main() -> None:
     print("=" * 52)
 
     output = {
+        "top_k": top_k,
         "scores": scores,
         "per_question": rows,
         "n_questions": len(test_set),
@@ -162,8 +174,8 @@ def main() -> None:
         "embed_model": EMBED_MODEL,
         "note": "All metrics computed locally. Only the RAG generator uses Groq (1 call/question).",
     }
-    RESULTS_FILE.write_text(json.dumps(output, indent=2), encoding="utf-8")
-    print(f"\nResults saved -> {RESULTS_FILE.relative_to(Path(__file__).parent.parent)}")
+    results_file.write_text(json.dumps(output, indent=2), encoding="utf-8")
+    print(f"\nResults saved -> {results_file.relative_to(Path(__file__).parent.parent)}")
 
 
 if __name__ == "__main__":

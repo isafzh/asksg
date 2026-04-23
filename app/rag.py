@@ -91,9 +91,9 @@ def _build_context(chunks: list[dict]) -> str:
     return "\n\n---\n\n".join(parts)
 
 
-def answer(query: str, model, collection) -> dict:
+def answer(query: str, model, collection, k: int = TOP_K) -> dict:
     """Full RAG pipeline. Returns answer string and list of source chunks."""
-    chunks = retrieve(query, model, collection)
+    chunks = retrieve(query, model, collection, k=k)
     context = _build_context(chunks)
     user_message = f"Context:\n{context}\n\nQuestion: {query}"
 
