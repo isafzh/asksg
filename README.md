@@ -148,13 +148,18 @@ python etl/build_index.py       # re-embed (delete chroma_db/ first)
 
 RAG quality is measured on a hand-curated test set of 10 Q&A pairs drawn from the source documents (`eval/test_set.json`).
 
-All metrics are computed locally — no extra API calls beyond the 10 needed to generate answers:
+Two-tier evaluation: local metrics (zero extra API calls) plus LLM-as-judge (one Groq call per question):
 
-| Metric | What it measures | Method |
+| Metric | Method | API cost |
 |---|---|---|
-| **Faithfulness** | Are answer claims supported by retrieved chunks? | NLI entailment score (`cross-encoder/nli-deberta-v3-base`) |
-| **Answer Similarity** | Does the answer match the ground truth? | Cosine similarity — MiniLM embeddings |
-| **Keyword Recall** | Does retrieved context contain ground truth facts? | Keyword string matching |
+| **NLI Faithfulness** | NLI entailment (`cross-encoder/nli-deberta-v3-base`) | 0 extra calls |
+| **Context Relevance** | Cosine similarity: query vs retrieved chunks (MiniLM) | 0 extra calls |
+| **Answer Similarity** | Cosine similarity: answer vs ground truth (MiniLM) | 0 extra calls |
+| **Keyword Recall** | Ground-truth keyword presence in retrieved context | 0 extra calls |
+| **Faithfulness (LLM)** | LLM-as-judge: is every claim grounded in the context? | 1 call/question |
+| **Answer Relevance (LLM)** | LLM-as-judge: does the answer address the question? | 1 call/question |
+
+Total per run: **20 Groq API calls** (10 generation + 10 judge). Original Ragas approach required 1,300+ calls and exhausted the free-tier quota in one run.
 
 ### Results by Top-K
 
