@@ -65,8 +65,12 @@ def _keywords(text: str) -> set[str]:
 
 def faithfulness_score(answer_text: str, contexts: list[str], nli: CrossEncoder) -> float:
     """
-    NLI entailment score: for each answer sentence, score against the full
-    concatenated context. Returns mean entailment probability across sentences.
+    NLI entailment score: for each answer sentence, score against each retrieved
+    chunk individually and take the max (best-matching chunk). A sentence is
+    considered faithful if at least one chunk entails it.
+
+    Scoring each chunk separately avoids exceeding the model's 512-token limit,
+    which would cause truncation and artificially low scores.
 
     NLI label order for nli-deberta-v3-base: [contradiction, entailment, neutral]
     """
@@ -74,13 +78,15 @@ def faithfulness_score(answer_text: str, contexts: list[str], nli: CrossEncoder)
     if not sentences:
         return 0.0
 
-    context_blob = " ".join(contexts)
-    pairs = [(context_blob, s) for s in sentences]
-    raw_scores = nli.predict(pairs, apply_softmax=True)
-
     entailment_idx = 1
-    entailment_scores = [float(s[entailment_idx]) for s in raw_scores]
-    return round(float(np.mean(entailment_scores)), 4)
+    sentence_scores = []
+    for s in sentences:
+        pairs = [(ctx, s) for ctx in contexts]
+        raw_scores = nli.predict(pairs, apply_softmax=True)
+        max_entailment = max(float(row[entailment_idx]) for row in raw_scores)
+        sentence_scores.append(max_entailment)
+
+    return round(float(np.mean(sentence_scores)), 4)
 
 
 def answer_similarity(answer_text: str, ground_truth: str, embedder: SentenceTransformer) -> float:

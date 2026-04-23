@@ -156,12 +156,18 @@ All metrics are computed locally — no extra API calls beyond the 10 needed to 
 | **Answer Similarity** | Does the answer match the ground truth? | Cosine similarity — MiniLM embeddings |
 | **Keyword Recall** | Does retrieved context contain ground truth facts? | Keyword string matching |
 
+| Metric | Score | What it means |
+|---|---|---|
+| Faithfulness (NLI entailment) | 0.33 | Answers sometimes combine info across chunks; room to tighten retrieval |
+| Answer Similarity (cosine) | 0.85 | Answers are semantically close to ground truth |
+| Keyword Recall | 0.74 | Retrieved context covers most ground-truth facts |
+
+*10 hand-curated Q&A pairs across Budget, CPF, HDB, and MAS sources. All metrics computed locally — only 10 Groq API calls used for generation.*
+
 To run:
 ```bash
 python eval/ragas_eval.py
 ```
-
-*(Evaluation scores will be published here after the first run.)*
 
 ---
 
@@ -173,6 +179,6 @@ python eval/ragas_eval.py
 - [x] RAG pipeline (retrieval + Groq LLM)
 - [x] Streamlit chat interface
 - [x] Evaluation framework (local NLI + cosine similarity, 10-question test set)
-- [ ] Evaluation results (pending first run)
+- [x] Evaluation results (faithfulness 0.33, answer similarity 0.85, keyword recall 0.74)
 - [ ] FastAPI backend + Docker
 - [ ] AWS EC2 deployment
