@@ -158,15 +158,15 @@ All metrics are computed locally — no extra API calls beyond the 10 needed to 
 
 ### Results by Top-K
 
-The eval script accepts a `--top-k` argument to control how many chunks are retrieved per query:
+The eval script accepts a `--top-k` argument to control how many chunks are retrieved per query. Four values were tested to find the diminishing-returns curve:
 
-| Metric | Top-K = 5 | Top-K = 7 | Change |
-|---|---|---|---|
-| Faithfulness (NLI entailment) | 0.4449 | 0.4550 | +0.0101 |
-| Answer Similarity (cosine) | 0.8413 | 0.8768 | **+0.0355** |
-| Keyword Recall | 0.7405 | 0.7664 | +0.0259 |
+| Metric | K=5 | K=7 | K=9 | K=11 |
+|---|---|---|---|---|
+| Faithfulness (NLI entailment) | 0.4449 | 0.4550 | **0.4922** | 0.4659 |
+| Answer Similarity (cosine) | 0.8413 | 0.8768 | 0.8777 | **0.8906** |
+| Keyword Recall | 0.7405 | 0.7664 | 0.8453 | **0.8958** |
 
-Increasing Top-K from 5 to 7 improves all three metrics. The largest gain is answer similarity (+4.2%), driven by better context coverage for MAS questions (Q9 inflation: faithfulness 0.333→0.998; Q10 GDP: faithfulness 0.001→0.498). The tradeoff is ~40% more tokens per query sent to Groq.
+**K=9 is the sweet spot**: faithfulness peaks here then falls at K=11 (noise from weakly-related chunks causes the LLM to synthesise beyond what any single chunk supports). Answer similarity and keyword recall keep rising, but the faithfulness drop signals retrieval quality declining. Each extra chunk adds ~130 tokens to every Groq API call, so higher K also reduces daily query capacity on the free tier.
 
 *10 hand-curated Q&A pairs across Budget, CPF, HDB, and MAS sources. All metrics computed locally — only 10 Groq API calls used per run.*
 
@@ -174,6 +174,8 @@ To run:
 ```bash
 python eval/ragas_eval.py              # default top-k=5  → saves eval/results_k5.json
 python eval/ragas_eval.py --top-k 7   # retrieve 7 chunks → saves eval/results_k7.json
+python eval/ragas_eval.py --top-k 9   # optimal           → saves eval/results_k9.json
+python eval/ragas_eval.py --top-k 11  # diminishing gains → saves eval/results_k11.json
 ```
 
 ---
@@ -186,7 +188,7 @@ python eval/ragas_eval.py --top-k 7   # retrieve 7 chunks → saves eval/results
 - [x] RAG pipeline (retrieval + Groq LLM)
 - [x] Streamlit chat interface
 - [x] Evaluation framework (local NLI + cosine similarity, 10-question test set)
-- [x] Evaluation results (Top-K=5: faithfulness 0.44, similarity 0.84, recall 0.74 | Top-K=7: 0.46 / 0.88 / 0.77)
-- [x] Top-K comparison (k=5 vs k=7 via `--top-k` CLI argument)
+- [x] Top-K curve (k=5/7/9/11): faithfulness peaks at k=9, similarity/recall peak at k=11; k=9 chosen as optimal
+- [x] Temporal disambiguation gap diagnosed: Q5 CDC Vouchers ranked behind 2023/2024 Budget chunks due to same-topic multi-year corpus
 - [ ] FastAPI backend + Docker
 - [ ] AWS EC2 deployment
