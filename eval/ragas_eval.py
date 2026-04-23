@@ -1,25 +1,38 @@
 """
-Lightweight RAG evaluation for AskSG — no LLM judge, zero extra API calls.
+RAG evaluation for AskSG — two tiers.
 
-Metrics (all computed locally):
-  - Faithfulness:       NLI entailment score (cross-encoder/nli-deberta-v3-base)
-                        Checks whether answer sentences are supported by retrieved chunks.
-  - Answer Similarity:  Cosine similarity between answer and ground truth (MiniLM embeddings)
-  - Keyword Recall:     Fraction of ground-truth keywords found in retrieved context
+  Local metrics (zero extra API calls beyond generation):
+    - NLI Faithfulness:    NLI entailment score per answer sentence vs retrieved chunks
+                           (cross-encoder/nli-deberta-v3-base, local model)
+    - Context Relevance:   Cosine similarity between query and retrieved chunks (MiniLM)
+    - Answer Similarity:   Cosine similarity between answer and ground truth (MiniLM)
+    - Keyword Recall:      Fraction of ground-truth keywords found in retrieved context
 
-Only the RAG generator calls Groq (1 call per question, 10 total).
+  LLM-as-judge metrics (10 extra Groq API calls — one structured prompt per question):
+    - Faithfulness (LLM):    Is every answer claim grounded in the retrieved context?
+    - Answer Relevance (LLM): Does the answer directly address the question asked?
+    Unlike NLI, the LLM judge reads all chunks together and handles multi-chunk synthesis.
+    This is the standard RAG Triad evaluation approach (RAGAS / TruLens).
+
+Total API calls per run: 10 (generation) + 10 (LLM judge) = 20.
+
+Why not just Ragas? Ragas (Plan A, tried first) made 1,300+ API calls per run —
+multiple LLM calls per metric per claim per question. One run exhausted the entire
+100k token/day Groq free-tier quota. This implementation achieves the same conceptual
+coverage with a single structured JSON prompt per question.
 
 Usage:
     python eval/ragas_eval.py              # default top-k=5
-    python eval/ragas_eval.py --top-k 7   # retrieve 7 chunks instead
+    python eval/ragas_eval.py --top-k 9   # optimal retrieval depth
 
-Results are printed to stdout and saved to eval/results_k{top_k}.json.
+Results saved to eval/results_k{top_k}.json.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import warnings
@@ -34,7 +47,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "app"))
 from dotenv import load_dotenv
 load_dotenv()
 
-from rag import load_retriever, answer
+from groq import Groq
+from rag import load_retriever, answer, GROQ_MODEL
 from sentence_transformers import SentenceTransformer, CrossEncoder
 
 TEST_SET_FILE = Path(__file__).parent / "test_set.json"
@@ -52,33 +66,35 @@ STOPWORDS = {
 }
 
 
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
 def _sentences(text: str) -> list[str]:
-    """Split text into sentences on . ! ? — keep non-empty."""
     parts = re.split(r"(?<=[.!?])\s+", text.strip())
     return [p.strip() for p in parts if p.strip()]
 
 
 def _keywords(text: str) -> set[str]:
-    """Lowercase content words longer than 3 chars, not stopwords."""
     words = re.findall(r"\b[a-zA-Z0-9%$,]+\b", text.lower())
     return {w for w in words if len(w) > 3 and w not in STOPWORDS}
 
 
-def faithfulness_score(answer_text: str, contexts: list[str], nli: CrossEncoder) -> float:
+# ---------------------------------------------------------------------------
+# Local metrics
+# ---------------------------------------------------------------------------
+
+def faithfulness_nli(answer_text: str, contexts: list[str], nli: CrossEncoder) -> float:
     """
-    NLI entailment score: for each answer sentence, score against each retrieved
-    chunk individually and take the max (best-matching chunk). A sentence is
-    considered faithful if at least one chunk entails it.
+    NLI entailment score: score each answer sentence against each chunk individually,
+    take the max entailment across chunks per sentence, then average across sentences.
 
-    Scoring each chunk separately avoids exceeding the model's 512-token limit,
-    which would cause truncation and artificially low scores.
-
-    NLI label order for nli-deberta-v3-base: [contradiction, entailment, neutral]
+    Per-chunk scoring avoids the 512-token limit of nli-deberta-v3-base.
+    Label order: [contradiction=0, entailment=1, neutral=2]
     """
     sentences = _sentences(answer_text)
     if not sentences:
         return 0.0
-
     entailment_idx = 1
     sentence_scores = []
     for s in sentences:
@@ -86,15 +102,27 @@ def faithfulness_score(answer_text: str, contexts: list[str], nli: CrossEncoder)
         raw_scores = nli.predict(pairs, apply_softmax=True)
         max_entailment = max(float(row[entailment_idx]) for row in raw_scores)
         sentence_scores.append(max_entailment)
-
     return round(float(np.mean(sentence_scores)), 4)
+
+
+def context_relevance(query: str, contexts: list[str], embedder: SentenceTransformer) -> float:
+    """
+    Average cosine similarity between the query and each retrieved chunk.
+    Measures retrieval quality: are the chunks actually relevant to the question?
+    High score = retriever found on-topic chunks. Low score = off-topic retrieval.
+    """
+    texts = [query] + contexts
+    vecs = embedder.encode(texts, normalize_embeddings=True)
+    query_vec = vecs[0]
+    chunk_vecs = vecs[1:]
+    scores = [float(np.dot(query_vec, cv)) for cv in chunk_vecs]
+    return round(float(np.mean(scores)), 4)
 
 
 def answer_similarity(answer_text: str, ground_truth: str, embedder: SentenceTransformer) -> float:
     """Cosine similarity between answer and ground truth embeddings."""
     vecs = embedder.encode([answer_text, ground_truth], normalize_embeddings=True)
-    similarity = float(np.dot(vecs[0], vecs[1]))
-    return round(max(0.0, similarity), 4)
+    return round(max(0.0, float(np.dot(vecs[0], vecs[1]))), 4)
 
 
 def keyword_recall(ground_truth: str, contexts: list[str]) -> float:
@@ -106,6 +134,81 @@ def keyword_recall(ground_truth: str, contexts: list[str]) -> float:
     found = sum(1 for kw in gt_keywords if kw in context_text)
     return round(found / len(gt_keywords), 4)
 
+
+# ---------------------------------------------------------------------------
+# LLM-as-judge (standard RAG Triad evaluation)
+# ---------------------------------------------------------------------------
+
+_JUDGE_PROMPT = """\
+You are evaluating a RAG (Retrieval-Augmented Generation) system.
+
+Question asked by the user:
+{question}
+
+Context retrieved from the knowledge base:
+{context}
+
+Answer generated by the system:
+{answer}
+
+Score on two dimensions using a 1–5 scale:
+
+faithfulness: Is every factual claim in the answer directly supported by the \
+retrieved context above? Do not credit background knowledge the model may have — \
+only what is explicitly present in the context.
+  1 = answer contains major claims not in the context (hallucination)
+  3 = most claims supported but some details added from outside context
+  5 = every claim is fully traceable to the context
+
+answer_relevance: Does the answer directly address what the question asked?
+  1 = answer is off-topic or addresses a different question entirely
+  3 = answer partially addresses the question but drifts or omits key aspects
+  5 = answer squarely and completely addresses the question
+
+Respond with valid JSON only — no explanation outside the JSON:
+{{"faithfulness": <1-5>, "answer_relevance": <1-5>, "reasoning": "<one sentence>"}}"""
+
+
+def llm_judge(question: str, answer_text: str, contexts: list[str]) -> dict:
+    """
+    LLM-as-judge: one Groq API call per question.
+    Returns faithfulness_llm and answer_relevance_llm normalised to 0–1 (score/5).
+
+    Unlike NLI, the LLM reads all chunks together and can credit multi-chunk synthesis.
+    This is the standard approach used in RAGAS and TruLens.
+    """
+    context_text = "\n\n---\n\n".join(
+        f"[Chunk {i+1}]\n{ctx}" for i, ctx in enumerate(contexts)
+    )
+    prompt = _JUDGE_PROMPT.format(
+        question=question,
+        context=context_text,
+        answer=answer_text,
+    )
+    client = Groq(api_key=os.environ["GROQ_API_KEY"])
+    response = client.chat.completions.create(
+        model=GROQ_MODEL,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.0,
+        max_tokens=300,
+    )
+    raw = response.choices[0].message.content.strip()
+    try:
+        parsed = json.loads(raw)
+        return {
+            "faithfulness_llm": round(parsed["faithfulness"] / 5, 4),
+            "answer_relevance_llm": round(parsed["answer_relevance"] / 5, 4),
+            "reasoning": parsed.get("reasoning", ""),
+        }
+    except (json.JSONDecodeError, KeyError):
+        return {"faithfulness_llm": None, "answer_relevance_llm": None, "reasoning": raw}
+    except Exception as e:
+        return {"faithfulness_llm": None, "answer_relevance_llm": None, "reasoning": str(e)}
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="AskSG RAG evaluation")
@@ -132,7 +235,10 @@ def main() -> None:
     embedder = SentenceTransformer(EMBED_MODEL)
     print()
 
-    print(f"Running RAG pipeline + local evaluation  [top-k={top_k}]...")
+    print(f"Running evaluation  [top-k={top_k}]  —  20 Groq API calls total")
+    print("  (10 for generation, 10 for LLM-as-judge)")
+    print()
+
     rows = []
     total = len(test_set)
     for i, item in enumerate(test_set, 1):
@@ -140,30 +246,67 @@ def main() -> None:
         gt = item["ground_truth"]
         print(f"  [{i}/{total}] {q[:70]}...")
 
+        # Generation — 1 Groq call
         result = answer(q, model, collection, k=top_k)
         ans = result["answer"]
         contexts = [chunk["text"] for chunk in result["sources"]]
 
-        f = faithfulness_score(ans, contexts, nli)
-        s = answer_similarity(ans, gt, embedder)
-        r = keyword_recall(gt, contexts)
-        rows.append({"faithfulness": f, "answer_similarity": s, "keyword_recall": r})
-        print(f"         faithfulness={f:.3f}  similarity={s:.3f}  recall={r:.3f}")
+        # Local metrics — 0 API calls
+        f_nli  = faithfulness_nli(ans, contexts, nli)
+        ctx_r  = context_relevance(q, contexts, embedder)
+        sim    = answer_similarity(ans, gt, embedder)
+        recall = keyword_recall(gt, contexts)
+
+        # LLM-as-judge — 1 Groq call (skipped gracefully if quota is exhausted)
+        try:
+            judge = llm_judge(q, ans, contexts)
+        except Exception as e:
+            print(f"    LLM judge skipped: {e}")
+            judge = {"faithfulness_llm": None, "answer_relevance_llm": None, "reasoning": str(e)}
+        f_llm  = judge["faithfulness_llm"]
+        rel    = judge["answer_relevance_llm"]
+
+        rows.append({
+            "faithfulness_nli":    f_nli,
+            "context_relevance":   ctx_r,
+            "answer_similarity":   sim,
+            "keyword_recall":      recall,
+            "faithfulness_llm":    f_llm,
+            "answer_relevance_llm": rel,
+            "judge_reasoning":     judge["reasoning"],
+        })
+
+        print(f"    Local  — faithfulness(NLI)={f_nli:.3f}  ctx_relevance={ctx_r:.3f}  "
+              f"similarity={sim:.3f}  recall={recall:.3f}")
+        print(f"    LLM    — faithfulness={f_llm}  answer_relevance={rel}")
 
     print()
+
+    def _mean(key):
+        vals = [r[key] for r in rows if r[key] is not None]
+        return round(float(np.mean(vals)), 4) if vals else None
+
     scores = {
-        "faithfulness":     round(float(np.mean([r["faithfulness"]     for r in rows])), 4),
-        "answer_similarity": round(float(np.mean([r["answer_similarity"] for r in rows])), 4),
-        "keyword_recall":   round(float(np.mean([r["keyword_recall"]   for r in rows])), 4),
+        "faithfulness_nli":    _mean("faithfulness_nli"),
+        "context_relevance":   _mean("context_relevance"),
+        "answer_similarity":   _mean("answer_similarity"),
+        "keyword_recall":      _mean("keyword_recall"),
+        "faithfulness_llm":    _mean("faithfulness_llm"),
+        "answer_relevance_llm": _mean("answer_relevance_llm"),
     }
 
-    print("=" * 52)
+    print("=" * 60)
     print(f"Evaluation Results  [top-k={top_k}]")
-    print("=" * 52)
-    print(f"  Faithfulness (NLI entailment):  {scores['faithfulness']:.4f}")
-    print(f"  Answer Similarity (cosine):     {scores['answer_similarity']:.4f}")
-    print(f"  Keyword Recall:                 {scores['keyword_recall']:.4f}")
-    print("=" * 52)
+    print("=" * 60)
+    print("  --- Local metrics (0 extra API calls) ---")
+    print(f"  NLI Faithfulness:          {scores['faithfulness_nli']:.4f}")
+    print(f"  Context Relevance:         {scores['context_relevance']:.4f}")
+    print(f"  Answer Similarity:         {scores['answer_similarity']:.4f}")
+    print(f"  Keyword Recall:            {scores['keyword_recall']:.4f}")
+    print("  --- LLM-as-judge (10 extra API calls) ---")
+    print(f"  Faithfulness (LLM):        {scores['faithfulness_llm']:.4f}")
+    print(f"  Answer Relevance (LLM):    {scores['answer_relevance_llm']:.4f}")
+    print("=" * 60)
 
     output = {
         "top_k": top_k,
@@ -172,7 +315,12 @@ def main() -> None:
         "n_questions": len(test_set),
         "nli_model": NLI_MODEL,
         "embed_model": EMBED_MODEL,
-        "note": "All metrics computed locally. Only the RAG generator uses Groq (1 call/question).",
+        "judge_model": GROQ_MODEL,
+        "note": (
+            "Local metrics: NLI faithfulness, context relevance, answer similarity, keyword recall. "
+            "LLM-as-judge metrics: faithfulness and answer relevance (one Groq call per question). "
+            "Total API calls: 10 generation + 10 judge = 20."
+        ),
     }
     results_file.write_text(json.dumps(output, indent=2), encoding="utf-8")
     print(f"\nResults saved -> {results_file.relative_to(Path(__file__).parent.parent)}")
