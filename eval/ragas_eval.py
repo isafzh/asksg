@@ -214,19 +214,27 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="AskSG RAG evaluation")
     parser.add_argument(
         "--top-k", type=int, default=5,
-        help="Number of chunks to retrieve per query (default: 5)"
+        help="Number of chunks passed to LLM (default: 5)"
+    )
+    parser.add_argument(
+        "--mode", choices=["baseline", "hybrid"], default="baseline",
+        help=(
+            "baseline = dense-only retrieval, no rerank (original pipeline); "
+            "hybrid   = BM25 + dense + RRF + cross-encoder rerank (upgraded pipeline)"
+        ),
     )
     args = parser.parse_args()
     top_k = args.top_k
+    mode = args.mode
 
-    results_file = Path(__file__).parent / f"results_k{top_k}.json"
+    results_file = Path(__file__).parent / f"results_k{top_k}_{mode}.json"
 
     print("Loading test set...")
     test_set = json.loads(TEST_SET_FILE.read_text(encoding="utf-8"))
     print(f"  {len(test_set)} questions\n")
 
     print("Loading RAG retriever...")
-    model, collection = load_retriever()
+    model, collection, bm25, all_chunks, reranker = load_retriever()
     print(f"  {collection.count():,} chunks in index\n")
 
     print(f"Loading NLI model ({NLI_MODEL})...")
@@ -235,7 +243,7 @@ def main() -> None:
     embedder = SentenceTransformer(EMBED_MODEL)
     print()
 
-    print(f"Running evaluation  [top-k={top_k}]  —  20 Groq API calls total")
+    print(f"Running evaluation  [top-k={top_k}]  [mode={mode}]  —  20 Groq API calls total")
     print("  (10 for generation, 10 for LLM-as-judge)")
     print()
 
@@ -247,7 +255,7 @@ def main() -> None:
         print(f"  [{i}/{total}] {q[:70]}...")
 
         # Generation — 1 Groq call
-        result = answer(q, model, collection, k=top_k)
+        result = answer(q, model, collection, bm25, all_chunks, reranker, k=top_k, mode=mode)
         ans = result["answer"]
         contexts = [chunk["text"] for chunk in result["sources"]]
 
@@ -310,6 +318,7 @@ def main() -> None:
 
     output = {
         "top_k": top_k,
+        "mode": mode,
         "scores": scores,
         "per_question": rows,
         "n_questions": len(test_set),

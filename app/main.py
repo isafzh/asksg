@@ -91,7 +91,7 @@ div[data-testid="stButton"] {
 
 @st.cache_resource(show_spinner="Loading document index...")
 def get_retriever():
-    return load_retriever()
+    return load_retriever()  # returns (model, collection, bm25, all_chunks, reranker)
 
 
 # ---------------------------------------------------------------------------
@@ -183,8 +183,8 @@ if query:
 
     with st.chat_message("assistant"):
         try:
-            model, collection = get_retriever()
-            groq_stream, chunks = stream_answer(query, model, collection)
+            model, collection, bm25, all_chunks, reranker = get_retriever()
+            groq_stream, chunks = stream_answer(query, model, collection, bm25, all_chunks, reranker)
 
             def _token_gen():
                 for event in groq_stream:

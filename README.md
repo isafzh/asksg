@@ -77,7 +77,9 @@ All documents are official Singapore government publications, free for public us
 |---|---|
 | Language | Python 3.9+ |
 | Embeddings | `sentence-transformers` — `all-MiniLM-L6-v2` |
+| Keyword index | `rank-bm25` — BM25Okapi over all 2,107 chunks |
 | Vector store | ChromaDB (local, persistent) |
+| Reranker | `cross-encoder/ms-marco-MiniLM-L-6-v2` |
 | LLM | Groq API — `llama-3.3-70b-versatile` (free tier) |
 | PDF parsing | `pdfplumber` |
 | Frontend | Streamlit |
@@ -101,7 +103,7 @@ asksg/
 │   ├── build_index.py         # Embeds chunks into ChromaDB
 │   └── extract_local_pdf.py   # Helper: extract text from local PDFs
 ├── app/
-│   ├── rag.py                 # RAG pipeline (retrieve + Groq generate)
+│   ├── rag.py                 # RAG pipeline (hybrid retrieve + rerank + Groq generate)
 │   └── main.py                # Streamlit chat interface
 ├── eval/
 │   ├── ragas_eval.py          # Evaluation script (local NLI + cosine similarity)
@@ -148,22 +150,21 @@ python etl/build_index.py       # re-embed (delete chroma_db/ first)
 
 RAG quality is measured on a hand-curated test set of 10 Q&A pairs drawn from the source documents (`eval/test_set.json`).
 
-Two-tier evaluation: local metrics (zero extra API calls) plus LLM-as-judge (one Groq call per question):
+Two-tier evaluation covering the full RAG Triad (Context Relevance, Faithfulness, Answer Relevance):
 
-| Metric | Method | API cost |
-|---|---|---|
-| **NLI Faithfulness** | NLI entailment (`cross-encoder/nli-deberta-v3-base`) | 0 extra calls |
-| **Context Relevance** | Cosine similarity: query vs retrieved chunks (MiniLM) | 0 extra calls |
-| **Answer Similarity** | Cosine similarity: answer vs ground truth (MiniLM) | 0 extra calls |
-| **Keyword Recall** | Ground-truth keyword presence in retrieved context | 0 extra calls |
-| **Faithfulness (LLM)** | LLM-as-judge: is every claim grounded in the context? | 1 call/question |
-| **Answer Relevance (LLM)** | LLM-as-judge: does the answer address the question? | 1 call/question |
+| Metric | What it measures | Method | API cost |
+|---|---|---|---|
+| Context Relevance | Are retrieved chunks on-topic? | Cosine similarity: query vs chunks (MiniLM) | 0 extra calls |
+| Answer Similarity | Does the answer match ground truth? | Cosine similarity: answer vs ground truth (MiniLM) | 0 extra calls |
+| Keyword Recall | Does the context contain key facts? | Ground-truth keyword presence in retrieved chunks | 0 extra calls |
+| Faithfulness (LLM) | Is every claim grounded in the context? | LLM-as-judge structured prompt | 1 call/question |
+| Answer Relevance (LLM) | Does the answer address the question? | LLM-as-judge structured prompt | 1 call/question |
 
-Total per run: **20 Groq API calls** (10 generation + 10 judge). Original Ragas approach required 1,300+ calls and exhausted the free-tier quota in one run.
+Total per run: **20 Groq API calls** (10 generation + 10 judge). The original Ragas library required 1,300+ calls per run and exhausted the free-tier daily quota in a single run — this implementation achieves the same conceptual coverage at 1.5% of the cost.
 
-### Results by Top-K
+### Step 1 — Top-K Curve (dense-only baseline)
 
-The eval script accepts a `--top-k` argument to control how many chunks are retrieved per query. Four values were tested to find the diminishing-returns curve:
+The eval script accepts a `--top-k` argument. Four values were tested on the original dense-only pipeline to find the diminishing-returns point:
 
 | Metric | K=5 | K=7 | K=9 | K=11 |
 |---|---|---|---|---|
@@ -173,14 +174,37 @@ The eval script accepts a `--top-k` argument to control how many chunks are retr
 
 **K=9 is the sweet spot**: faithfulness peaks here then falls at K=11 (noise from weakly-related chunks causes the LLM to synthesise beyond what any single chunk supports). Answer similarity and keyword recall keep rising, but the faithfulness drop signals retrieval quality declining. Each extra chunk adds ~130 tokens to every Groq API call, so higher K also reduces daily query capacity on the free tier.
 
-*10 hand-curated Q&A pairs across Budget, CPF, HDB, and MAS sources. All metrics computed locally — only 10 Groq API calls used per run.*
+### Step 2 — Hybrid Pipeline Upgrade (k=9)
+
+The k-curve experiment revealed a temporal disambiguation failure on Q5 (CDC Vouchers Budget 2025): `budget_2025_speech` was absent from the top-9 retrieved chunks because dense retrieval treats same-topic chunks from 2023/2024/2025 as semantically equivalent. The fix: **hybrid BM25 + dense + RRF + cross-encoder reranking**. BM25 keyword scoring on "2025" pulls the right document into the candidate pool; the cross-encoder reranker confirms its relevance.
+
+| Metric | Baseline (dense-only, k=9) | Hybrid (BM25+dense+rerank, k=9) | Change |
+|---|---|---|---|
+| Context Relevance | 0.6326 | 0.6110 | -0.022 |
+| **Answer Similarity** | 0.8761 | **0.9162** | **+0.040** |
+| **Keyword Recall** | 0.8453 | **0.9285** | **+0.083** |
+| Faithfulness (LLM) | 1.0000 | 0.9600 | -0.040 |
+| **Answer Relevance (LLM)** | 0.9200 | **1.0000** | **+0.080** |
+
+**Q5 (temporal disambiguation) — the specific failure fixed:**
+
+| Metric | Baseline | Hybrid |
+|---|---|---|
+| Answer Similarity | 0.647 | **0.939** |
+| Keyword Recall | 0.588 | **1.000** |
+| LLM Answer Relevance | 0.6 | **1.0** |
+
+**Trade-off:** Q7 (HDB PR eligibility) LLM faithfulness dropped from 1.0 to 0.6 — the hybrid candidate pool introduced a noisier chunk mix for that question. A more targeted fix (metadata filter by source when the query explicitly names a document category) would avoid this regression.
+
+*10 hand-curated Q&A pairs across Budget, CPF, HDB, and MAS sources.*
 
 To run:
 ```bash
-python eval/ragas_eval.py              # default top-k=5  → saves eval/results_k5.json
-python eval/ragas_eval.py --top-k 7   # retrieve 7 chunks → saves eval/results_k7.json
-python eval/ragas_eval.py --top-k 9   # optimal           → saves eval/results_k9.json
-python eval/ragas_eval.py --top-k 11  # diminishing gains → saves eval/results_k11.json
+# Dense-only baseline (original pipeline)
+python eval/ragas_eval.py --top-k 9 --mode baseline   # saves eval/results_k9_baseline.json
+
+# Hybrid (BM25 + dense + RRF + rerank) — current production pipeline
+python eval/ragas_eval.py --top-k 9 --mode hybrid     # saves eval/results_k9_hybrid.json
 ```
 
 ---
@@ -192,8 +216,12 @@ python eval/ragas_eval.py --top-k 11  # diminishing gains → saves eval/results
 - [x] Embedding and ChromaDB indexing (2,107 vectors, all-MiniLM-L6-v2)
 - [x] RAG pipeline (retrieval + Groq LLM)
 - [x] Streamlit chat interface
-- [x] Evaluation framework (local NLI + cosine similarity, 10-question test set)
+- [x] Evaluation framework: two-tier (local NLI + LLM-as-judge), 20 Groq calls/run vs 1,300+ for Ragas
 - [x] Top-K curve (k=5/7/9/11): faithfulness peaks at k=9, similarity/recall peak at k=11; k=9 chosen as optimal
-- [x] Temporal disambiguation gap diagnosed: Q5 CDC Vouchers ranked behind 2023/2024 Budget chunks due to same-topic multi-year corpus
+- [x] Temporal disambiguation diagnosed: Q5 CDC Vouchers absent from baseline top-9 due to year-agnostic dense embeddings
+- [x] Hybrid retrieval: BM25 + dense + RRF fixes Q5 (answer similarity 0.647 → 0.939, answer relevance 0.6 → 1.0)
+- [x] Cross-encoder reranking: `ms-marco-MiniLM-L-6-v2` re-scores fused candidates before generation
+- [x] Eval `--mode` flag: `baseline` vs `hybrid` for reproducible before/after comparison
+- [ ] Metadata filtering: constrain dense retrieval by source/year for targeted queries (would fix Q7 regression)
 - [ ] FastAPI backend + Docker
 - [ ] AWS EC2 deployment

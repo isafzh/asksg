@@ -1,0 +1,109 @@
+{
+  "top_k": 9,
+  "mode": "hybrid",
+  "scores": {
+    "faithfulness_nli": 0.4222,
+    "context_relevance": 0.611,
+    "answer_similarity": 0.9162,
+    "keyword_recall": 0.9285,
+    "faithfulness_llm": 0.96,
+    "answer_relevance_llm": 1.0
+  },
+  "per_question": [
+    {
+      "faithfulness_nli": 0.9934,
+      "context_relevance": 0.6657,
+      "answer_similarity": 0.9831,
+      "keyword_recall": 0.9167,
+      "faithfulness_llm": 1.0,
+      "answer_relevance_llm": 1.0,
+      "judge_reasoning": "The answer directly quotes the total CPF contribution rate for employees aged 55 and below from 1 January 2026 as 37% from the retrieved context in Chunk 1."
+    },
+    {
+      "faithfulness_nli": 0.2559,
+      "context_relevance": 0.6563,
+      "answer_similarity": 0.9394,
+      "keyword_recall": 1.0,
+      "faithfulness_llm": 1.0,
+      "answer_relevance_llm": 1.0,
+      "judge_reasoning": "The answer directly addresses the question and all factual claims are supported by the retrieved context."
+    },
+    {
+      "faithfulness_nli": 0.0974,
+      "context_relevance": 0.535,
+      "answer_similarity": 0.8761,
+      "keyword_recall": 0.9375,
+      "faithfulness_llm": 1.0,
+      "answer_relevance_llm": 1.0,
+      "judge_reasoning": "The answer directly quotes and summarizes information from Chunk 1, which explicitly addresses the question about what happens to CPF savings used for a property when the property is sold."
+    },
+    {
+      "faithfulness_nli": 0.4988,
+      "context_relevance": 0.549,
+      "answer_similarity": 0.9361,
+      "keyword_recall": 0.875,
+      "faithfulness_llm": 1.0,
+      "answer_relevance_llm": 1.0,
+      "judge_reasoning": "The answer directly quotes the context and fully addresses the question about the maximum total grant eligible families can receive when buying an HDB resale flat."
+    },
+    {
+      "faithfulness_nli": 0.0007,
+      "context_relevance": 0.5007,
+      "answer_similarity": 0.939,
+      "keyword_recall": 1.0,
+      "faithfulness_llm": 1.0,
+      "answer_relevance_llm": 1.0,
+      "judge_reasoning": "The answer directly addresses the question and is fully supported by the context provided in Chunk 5."
+    },
+    {
+      "faithfulness_nli": 0.5981,
+      "context_relevance": 0.6486,
+      "answer_similarity": 0.9551,
+      "keyword_recall": 1.0,
+      "faithfulness_llm": 1.0,
+      "answer_relevance_llm": 1.0,
+      "judge_reasoning": "The answer is fully supported by the context and directly addresses the question about the change to the minimum CPF monthly payout for non-CPF LIFE members."
+    },
+    {
+      "faithfulness_nli": 0.3581,
+      "context_relevance": 0.553,
+      "answer_similarity": 0.9158,
+      "keyword_recall": 0.8182,
+      "faithfulness_llm": 0.6,
+      "answer_relevance_llm": 1.0,
+      "judge_reasoning": "The answer partially relies on the context to address the question about a Singapore Permanent Resident buying an HDB resale flat, but it also adds some details not explicitly present in the context."
+    },
+    {
+      "faithfulness_nli": 0.5239,
+      "context_relevance": 0.6219,
+      "answer_similarity": 0.9889,
+      "keyword_recall": 0.8966,
+      "faithfulness_llm": 1.0,
+      "answer_relevance_llm": 1.0,
+      "judge_reasoning": "The answer is directly supported by Chunk 5 in the retrieved context, which explicitly states the uses of CPF Ordinary Account savings when buying a home."
+    },
+    {
+      "faithfulness_nli": 0.5597,
+      "context_relevance": 0.6514,
+      "answer_similarity": 0.8354,
+      "keyword_recall": 0.9,
+      "faithfulness_llm": 1.0,
+      "answer_relevance_llm": 1.0,
+      "judge_reasoning": "The answer directly quotes the inflation projections from the context, making it fully faithful and relevant to the question."
+    },
+    {
+      "faithfulness_nli": 0.3358,
+      "context_relevance": 0.7289,
+      "answer_similarity": 0.7927,
+      "keyword_recall": 0.9412,
+      "faithfulness_llm": 1.0,
+      "answer_relevance_llm": 1.0,
+      "judge_reasoning": "The answer directly addresses the question and all claims are fully traceable to the provided context."
+    }
+  ],
+  "n_questions": 10,
+  "nli_model": "cross-encoder/nli-deberta-v3-base",
+  "embed_model": "all-MiniLM-L6-v2",
+  "judge_model": "llama-3.3-70b-versatile",
+  "note": "Local metrics: NLI faithfulness, context relevance, answer similarity, keyword recall. LLM-as-judge metrics: faithfulness and answer relevance (one Groq call per question). Total API calls: 10 generation + 10 judge = 20."
+}
