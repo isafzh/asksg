@@ -4,7 +4,7 @@ A Retrieval-Augmented Generation (RAG) assistant for Singapore public policy doc
 
 Ask questions in natural language about Singapore's Budget, housing policies, CPF rules, and monetary policy — and get answers grounded in official government sources.
 
-**Live demo:** *(coming soon)*
+![AskSG demo](docs/demo.gif)
 
 ---
 
