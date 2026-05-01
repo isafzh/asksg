@@ -1,5 +1,6 @@
 requests
 pandas
+numpy
 python-dotenv
 pdfplumber
 beautifulsoup4

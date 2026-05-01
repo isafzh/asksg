@@ -47,7 +47,10 @@ Singapore government documents
             ▼
     [ RAG Pipeline ]             app/rag.py
     User question
-    → embed → retrieve top-k chunks
+    → embed query (MiniLM)
+    → BM25 keyword retrieval  ─┐
+    → dense vector retrieval  ─┴─ RRF fusion (top-25)
+    → cross-encoder rerank (top-9)
     → Groq LLM (Llama 3.3 70B)
     → grounded answer
             │

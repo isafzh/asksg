@@ -22,10 +22,11 @@ multiple LLM calls per metric per claim per question. One run exhausted the enti
 coverage with a single structured JSON prompt per question.
 
 Usage:
-    python eval/ragas_eval.py              # default top-k=5
-    python eval/ragas_eval.py --top-k 9   # optimal retrieval depth
+    python eval/ragas_eval.py                           # hybrid pipeline, top-k=9 (recommended)
+    python eval/ragas_eval.py --mode baseline           # dense-only, for before/after comparison
+    python eval/ragas_eval.py --top-k 9 --mode hybrid  # explicit (same as default)
 
-Results saved to eval/results_k{top_k}.json.
+Results saved to eval/results_k{top_k}_{mode}.json.
 """
 
 from __future__ import annotations
@@ -213,11 +214,11 @@ def llm_judge(question: str, answer_text: str, contexts: list[str]) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description="AskSG RAG evaluation")
     parser.add_argument(
-        "--top-k", type=int, default=5,
-        help="Number of chunks passed to LLM (default: 5)"
+        "--top-k", type=int, default=9,
+        help="Number of chunks passed to LLM (default: 9, optimal from k-curve eval)"
     )
     parser.add_argument(
-        "--mode", choices=["baseline", "hybrid"], default="baseline",
+        "--mode", choices=["baseline", "hybrid"], default="hybrid",
         help=(
             "baseline = dense-only retrieval, no rerank (original pipeline); "
             "hybrid   = BM25 + dense + RRF + cross-encoder rerank (upgraded pipeline)"

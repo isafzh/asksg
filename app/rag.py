@@ -25,7 +25,6 @@ import os
 import re
 from pathlib import Path
 
-import numpy as np
 from dotenv import load_dotenv
 from groq import Groq
 import chromadb
