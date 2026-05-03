@@ -12,7 +12,7 @@
   {
     "source": "cpf",
     "question": "What happens to CPF savings used for a property when the property is sold?",
-    "ground_truth": "When selling a property, the owner must refund to CPF the amount of OA savings used for the property plus the accrued interest. This is to restore retirement savings. If the property was pledged to make up a retirement sum, the pledged amount must also be refunded."
+    "ground_truth": "When selling a property, the owner must refund to CPF the amount of OA savings used for the property plus the accrued interest. If the property was pledged to make up a retirement sum, the pledged amount must also be refunded."
   },
   {
     "source": "budget",
@@ -22,7 +22,7 @@
   {
     "source": "budget",
     "question": "What CDC Voucher amount was announced in Budget 2025 and when will it be disbursed?",
-    "ground_truth": "Budget 2025 announced $500 in CDC Vouchers for all Singaporean households, to be disbursed in January 2027. Half can be used at participating supermarkets, and the other half at participating heartland merchants and hawkers."
+    "ground_truth": "Budget 2025 announced $500 in CDC Vouchers for all Singaporean households, to be disbursed in January 2027."
   },
   {
     "source": "budget",
@@ -42,11 +42,11 @@
   {
     "source": "mas",
     "question": "What is MAS's inflation projection for 2025?",
-    "ground_truth": "MAS projects both core inflation and CPI-All Items (headline) inflation to average 0.5 to 1.5% in 2025, lower than the 2.8% core and 2.4% headline inflation recorded in 2024."
+    "ground_truth": "MAS projects both core inflation and CPI-All Items (headline) inflation to average 0.5 to 1.5% in 2025."
   },
   {
     "source": "mas",
     "question": "What is Singapore's GDP growth forecast for 2025 according to MAS?",
-    "ground_truth": "MAS forecasts Singapore's GDP growth to slow to 0.0 to 2.0% in 2025, down from 4.4% in 2024, due to slowing global and regional trade and Singapore's high trade dependency and deep integration with global supply chains."
+    "ground_truth": "MAS forecasts Singapore's GDP growth to slow to 0.0 to 2.0% in 2025."
   }
 ]

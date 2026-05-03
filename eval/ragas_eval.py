@@ -276,6 +276,8 @@ def main() -> None:
         rel    = judge["answer_relevance_llm"]
 
         rows.append({
+            "question":            q,
+            "generated_answer":    ans,
             "faithfulness_nli":    f_nli,
             "context_relevance":   ctx_r,
             "answer_similarity":   sim,
