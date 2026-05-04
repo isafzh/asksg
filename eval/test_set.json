@@ -21,8 +21,8 @@
   },
   {
     "source": "budget",
-    "question": "What CDC Voucher amount was announced in Budget 2025 and when will it be disbursed?",
-    "ground_truth": "Budget 2025 announced $500 in CDC Vouchers for all Singaporean households, to be disbursed in January 2027."
+    "question": "What CDC Voucher amount was announced in Budget 2025 and when will they be disbursed?",
+    "ground_truth": "Budget 2025 announced $800 in CDC Vouchers for every Singaporean household — $500 to be disbursed in May 2025 and the remaining $300 in January 2026."
   },
   {
     "source": "budget",
@@ -32,7 +32,7 @@
   {
     "source": "hdb",
     "question": "Can a Singapore Permanent Resident buy an HDB resale flat?",
-    "ground_truth": "Yes, a Singapore Permanent Resident (SPR) can buy an HDB resale flat as part of an SC (Singapore Citizen) or SPR household, such as with a married spouse who is a Singapore Citizen."
+    "ground_truth": "Yes, a Singapore Permanent Resident (SPR) can buy an HDB resale flat as part of an SC (Singapore Citizen) or SPR household. For an SPR household with no SC applicant (i.e., both applicant and occupant are SPR), all SPR household members must have held SPR status for at least 3 years."
   },
   {
     "source": "hdb",
