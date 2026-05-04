@@ -63,14 +63,46 @@ Singapore government documents
 
 ## Data Sources
 
-| Source | Documents | Format |
-|---|---|---|
-| [Singapore Budget](https://www.singaporebudget.gov.sg) | Budget speeches 2023, 2024, 2025 | PDF |
-| [MAS](https://www.mas.gov.sg) | Macroeconomic Reviews Apr/Oct 2024, Apr 2025 | PDF |
-| [HDB](https://www.hdb.gov.sg) | Buying guides, resale eligibility, couples & families | HTML |
-| [CPF Board](https://www.cpf.gov.sg) | Contribution rates, housing usage, OW ceiling schedule, Budget 2023 CPF highlights | HTML |
+AskSG draws from 20 official Singapore government documents across 6 source types, totalling ~764K characters of extracted policy text.
 
-All documents are official Singapore government publications, free for public use.
+| Source | Documents | Format | Topics covered |
+|---|---|---|---|
+| [Singapore Budget](https://www.singaporebudget.gov.sg) | Budget speeches 2023, 2024, 2025, 2026 | PDF | Fiscal policy, grants, cost-of-living transfers, CPF and HDB enhancements |
+| [MAS](https://www.mas.gov.sg) | Macroeconomic Reviews Oct 2024, Apr 2025 | PDF | Monetary policy statements, GDP and inflation forecasts, labour market, exchange rate policy |
+| [HDB](https://www.hdb.gov.sg) | Eligibility guides — couples & families; singles | JS-rendered HTML | BTO/resale eligibility rules, CPF housing grants, income ceilings, SPR household rules |
+| [CPF Board](https://www.cpf.gov.sg) | Contribution rates, housing usage, OW ceiling, Budget 2023 highlights, retirement sums (BRS/FRS/ERS), milestones at 55 and 65, CPF LIFE, retirement withdrawals, CPFIS options | HTML | Full CPF lifecycle — contributions, housing, retirement planning, investment scheme |
+| [IRAS](https://www.iras.gov.sg) | SRS tax relief overview | HTML | Supplementary Retirement Scheme — contribution limits, tax relief, withdrawal rules |
+| [MAS](https://www.mas.gov.sg) | Singapore Savings Bonds overview | HTML | SSB features, step-up interest structure, application and redemption rules |
+
+All documents are official Singapore government publications, freely accessible to the public.
+
+### Why these sources?
+
+**Budget speeches (2023–2026):** The annual Budget is the primary vehicle for fiscal policy announcements — grants, CPF rule changes, HDB grant amounts, cost-of-living transfers, and tax adjustments. Four consecutive years gives the system temporal context so it can distinguish what was announced in which year, and answer comparison questions across budgets.
+
+**MAS Macroeconomic Reviews:** Published twice yearly alongside the Monetary Policy Statement (MPS), each review documents MAS's assessment of Singapore's growth, inflation, labour market, and external outlook. Apr 2025 is the most recent and contains 2025 growth and inflation forecasts. Oct 2024 provides the prior half-year policy context and baseline. *Only the main policy chapters (MPS, economic outlook, inflation, monetary and fiscal policy) are included — the academic Special Feature articles were excluded to reduce retrieval noise from off-topic research content.*
+
+**HDB eligibility guides:** HDB's website is JavaScript-rendered and required Playwright for content extraction. The couples & families page (59K chars) covers eligibility by household type, CPF housing grants (Enhanced, Proximity, Step-Up), income ceilings, and the SPR 3-year rule for SPR-only households buying resale flats. The singles page (21K chars) covers the Single Singapore Citizen scheme. *HDB redesigned their site in 2025 — old URL paths now return a "We have moved" page; ETL uses the current `/flat-grant-and-loan-eligibility/` paths.*
+
+**CPF guides (10 pages):** CPF is the most common topic for Singapore personal finance questions. Coverage spans the full CPF lifecycle: contribution rates by age band, OA savings for housing purchases, retirement sum milestones (BRS $106,500 / FRS $213,000 / ERS $426,000 for 2025), CPF LIFE monthly payouts, what happens at 55 and 65, retirement withdrawal rules, and investing OA/SA savings via CPFIS.
+
+**SRS (IRAS):** The Supplementary Retirement Scheme lets members voluntarily top up savings for additional tax relief — up to $15,300/year for Singapore Citizens and PRs, $35,700 for foreigners. Covers contribution caps, eligible SRS investments, and the withdrawal rules at retirement age (63).
+
+**Singapore Savings Bonds (MAS):** Risk-free, flexible government bonds with step-up interest rates backed by the Singapore Government. The MAS page explains the application process, the $200,000 individual limit, and no-penalty early redemption — a common question from risk-averse savers.
+
+### Corpus composition
+
+| Source | Files | Chars | Share |
+|---|---|---|---|
+| Budget | 4 | 345,862 | 45.3% |
+| MAS | 2 | 249,002 | 32.6% |
+| HDB | 2 | 81,134 | 10.6% |
+| CPF | 10 | 71,676 | 9.4% |
+| SRS | 1 | 9,321 | 1.2% |
+| SSB | 1 | 7,070 | 0.9% |
+| **Total** | **20** | **764,065** | |
+
+Chunks are 500-character overlapping windows with 50-char overlap, generated by `etl/chunk_documents.py`.
 
 ---
 
@@ -80,7 +112,7 @@ All documents are official Singapore government publications, free for public us
 |---|---|
 | Language | Python 3.9+ |
 | Embeddings | `sentence-transformers` — `all-MiniLM-L6-v2` |
-| Keyword index | `rank-bm25` — BM25Okapi over all 2,107 chunks |
+| Keyword index | `rank-bm25` — BM25Okapi over all corpus chunks |
 | Vector store | ChromaDB (local, persistent) |
 | Reranker | `cross-encoder/ms-marco-MiniLM-L-6-v2` |
 | LLM | Groq API — `llama-3.3-70b-versatile` (free tier) |
@@ -95,11 +127,13 @@ All documents are official Singapore government publications, free for public us
 ```
 asksg/
 ├── corpus/                    # Extracted text documents (tracked in git)
-│   ├── budget/                # Singapore Budget speeches (3 PDFs)
-│   ├── mas/                   # MAS Macroeconomic Reviews (3 PDFs)
-│   ├── hdb/                   # HDB eligibility guides (3 HTML)
-│   ├── cpf/                   # CPF contribution and housing guides (4 HTML)
-│   └── chunks.jsonl           # 2,107 text chunks ready for embedding
+│   ├── budget/                # Singapore Budget speeches 2023–2026 (4 PDFs)
+│   ├── mas/                   # MAS Macroeconomic Reviews Oct 2024, Apr 2025 (2 PDFs)
+│   ├── hdb/                   # HDB eligibility guides — couples/families, singles (2 HTML)
+│   ├── cpf/                   # CPF guides — contributions, housing, retirement, CPFIS (10 HTML)
+│   ├── srs/                   # IRAS SRS tax relief overview (1 HTML)
+│   ├── ssb/                   # MAS Singapore Savings Bonds overview (1 HTML)
+│   └── chunks.jsonl           # Text chunks ready for embedding (rebuilt after corpus refresh)
 ├── etl/
 │   ├── fetch_documents.py     # Downloads source documents
 │   ├── chunk_documents.py     # Cleans and chunks text
@@ -152,6 +186,8 @@ python etl/build_index.py       # re-embed (delete chroma_db/ first)
 ## Evaluation
 
 RAG quality is measured on a hand-curated test set of 10 Q&A pairs drawn from the source documents (`eval/test_set.json`).
+
+> **Note:** The results below were produced on the original corpus (13 documents). The corpus has since been expanded to 20 documents across 6 sources, ground truths for Q5 and Q7 have been corrected, and MAS Oct 2024 has been trimmed. A re-run of evaluation on the refreshed corpus and index is in progress.
 
 Two-tier evaluation covering the full RAG Triad (Context Relevance, Faithfulness, Answer Relevance):
 
@@ -214,9 +250,9 @@ python eval/ragas_eval.py --top-k 9 --mode hybrid     # saves eval/results_k9_hy
 
 ## Roadmap
 
-- [x] Document ingestion pipeline (13 documents, 4 sources)
-- [x] Text preprocessing and chunking (2,107 chunks)
-- [x] Embedding and ChromaDB indexing (2,107 vectors, all-MiniLM-L6-v2)
+- [x] Document ingestion pipeline (20 documents, 6 sources, ~764K chars)
+- [x] Text preprocessing and chunking (500-char overlapping windows)
+- [x] Embedding and ChromaDB indexing (all-MiniLM-L6-v2)
 - [x] RAG pipeline (retrieval + Groq LLM)
 - [x] Streamlit chat interface
 - [x] Evaluation framework: two-tier (local NLI + LLM-as-judge), 20 Groq calls/run vs 1,300+ for Ragas
