@@ -63,7 +63,7 @@ Singapore government documents
 
 ## Data Sources
 
-AskSG draws from 20 official Singapore government documents across 6 source types, totalling ~764K characters of extracted policy text.
+AskSG draws from 25 official Singapore government documents across 6 source types, totalling ~784K characters of extracted policy text.
 
 | Source | Documents | Format | Topics covered |
 |---|---|---|---|
@@ -133,7 +133,7 @@ asksg/
 │   ├── budget/                # Singapore Budget speeches 2023–2026 (4 PDFs)
 │   ├── mas/                   # MAS Macroeconomic Reviews Oct 2024, Apr 2025 (2 PDFs)
 │   ├── hdb/                   # HDB eligibility guides — couples/families, singles (2 HTML)
-│   ├── cpf/                   # CPF guides — contributions, housing, retirement, CPFIS (10 HTML)
+│   ├── cpf/                   # CPF guides — contributions, housing, retirement, CPFIS (15 HTML)
 │   ├── srs/                   # IRAS SRS tax relief overview (1 HTML)
 │   ├── ssb/                   # MAS Singapore Savings Bonds overview (1 HTML)
 │   └── chunks.jsonl           # Text chunks ready for embedding (rebuilt after corpus refresh)
@@ -190,7 +190,7 @@ python etl/build_index.py       # re-embed (delete chroma_db/ first)
 
 RAG quality is measured on a hand-curated test set of 10 Q&A pairs drawn from the source documents (`eval/test_set.json`).
 
-> **Note:** The results below were produced on the original corpus (13 documents). The corpus has since been expanded to 20 documents across 6 sources, ground truths for Q5 and Q7 have been corrected, and MAS Oct 2024 has been trimmed. A re-run of evaluation on the refreshed corpus and index is in progress.
+> **Note:** The results below were produced on the original corpus (13 documents). The corpus has since been expanded to 25 documents across 6 sources, ground truths for Q5 and Q7 have been corrected, and MAS Oct 2024 has been trimmed. A re-run of evaluation on the refreshed corpus and index is in progress.
 
 Two-tier evaluation covering the full RAG Triad (Context Relevance, Faithfulness, Answer Relevance):
 
@@ -253,7 +253,7 @@ python eval/ragas_eval.py --top-k 9 --mode hybrid     # saves eval/results_k9_hy
 
 ## Roadmap
 
-- [x] Document ingestion pipeline (20 documents, 6 sources, ~764K chars)
+- [x] Document ingestion pipeline (25 documents, 6 sources, ~784K chars)
 - [x] Text preprocessing and chunking (500-char overlapping windows)
 - [x] Embedding and ChromaDB indexing (all-MiniLM-L6-v2)
 - [x] RAG pipeline (retrieval + Groq LLM)
