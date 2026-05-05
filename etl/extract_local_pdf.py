@@ -9,7 +9,6 @@ Example:
 """
 
 import sys
-import io
 import pdfplumber
 from pathlib import Path
 
@@ -43,7 +42,7 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{name}.txt"
     out_path.write_text(text, encoding="utf-8")
-    print(f"Saved → {out_path}")
+    print(f"Saved -> {out_path}")
 
 
 if __name__ == "__main__":

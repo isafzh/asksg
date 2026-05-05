@@ -30,13 +30,8 @@ BATCH_SIZE = 64  # embed this many chunks at a time
 
 
 def load_chunks() -> list[dict]:
-    chunks = []
     with open(CHUNKS_FILE, encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if line:
-                chunks.append(json.loads(line))
-    return chunks
+        return [json.loads(line) for line in f if line.strip()]
 
 
 def main() -> None:
@@ -96,7 +91,8 @@ def main() -> None:
         done = min(start + BATCH_SIZE, len(chunks))
         print(f"  {done:,} / {len(chunks):,}", end="\r")
 
-    print(f"\nDone. {collection.count():,} chunks stored in {CHROMA_DIR.name}/")
+    print()
+    print(f"Done. {collection.count():,} chunks stored in {CHROMA_DIR.name}/")
 
     # --- Quick sanity check ---
     print("\nSanity check — querying: 'CPF housing grant eligibility'")
