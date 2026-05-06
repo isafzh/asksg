@@ -9,7 +9,12 @@ chroma_db/
 data/raw/
 data/interim/cleaned_tables/
 data/indexes/
+data/*.csv
+data/*.parquet
 
 # Extracted text corpus and chunks ARE tracked (needed for deployment)
 # data/interim/extracted_text/ — tracked
 # data/processed/chunks.jsonl  — tracked
+
+# Claude Code session memory — not part of the project
+memory/

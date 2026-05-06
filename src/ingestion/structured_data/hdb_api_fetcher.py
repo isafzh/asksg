@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[4]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from configs.sources.hdb_transactions import API_URL, DATASET_ID, RECORDS_PER_PAGE
+from configs.sources.structured_sources import API_URL, DATASET_ID, RECORDS_PER_PAGE
 
 OUTPUT_PATH = ROOT / "data" / "interim" / "cleaned_tables" / "hdb_resale.csv"
 

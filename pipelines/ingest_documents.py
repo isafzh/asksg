@@ -1,7 +1,7 @@
 """
 Pipeline: fetch and extract all policy documents.
 
-  [configs/sources/policy_docs.py]
+  [configs/sources/document_sources.py]
        → [fetchers: http / playwright]
        → [extractors: pdf / html]
        → [data/interim/extracted_text/<source>/<name>.txt]

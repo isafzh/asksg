@@ -1,7 +1,7 @@
 """
 Document ingestion pipeline: source registry → fetch → extract → save.
 
-Reads DOCUMENTS from configs/sources/policy_docs.py and routes each entry
+Reads DOCUMENTS from configs/sources/document_sources.py and routes each entry
 through the appropriate fetcher and extractor.  Extracted text is saved to
 data/interim/extracted_text/<source>/<name>.txt.
 
@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[4]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from configs.sources.policy_docs import DOCUMENTS
+from configs.sources.document_sources import DOCUMENTS
 from src.ingestion.documents.fetchers.http_fetcher import fetch_url
 from src.ingestion.documents.fetchers.playwright_fetcher import fetch_with_playwright
 from src.ingestion.documents.extractors.pdf_extractor import extract_pdf

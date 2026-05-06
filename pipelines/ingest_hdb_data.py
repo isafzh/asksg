@@ -1,7 +1,7 @@
 """
 Pipeline: fetch HDB resale transaction data and clean it for the Agentic RAG tool.
 
-  [configs/sources/hdb_transactions.py]
+  [configs/sources/structured_sources.py]
        → [src/ingestion/structured_data/hdb_api_fetcher.py]
        → [data/interim/cleaned_tables/hdb_resale.csv]
        → [src/processing/clean_hdb_resale.py]

@@ -1,12 +1,21 @@
 """
-Source registry: what policy documents to fetch and how to fetch them.
+Source registry for policy documents (unstructured text corpus).
 
-Each entry declares a document identity and the URLs to try in order.
-The ingestion pipeline reads this list — no fetch or parse logic lives here.
+Covers Singapore government publications: Budget speeches (MoF), CPF guides,
+HDB eligibility pages, MAS Macroeconomic Reviews, SRS overview (IRAS), and
+Singapore Savings Bonds (MAS).  These documents are fetched, extracted to
+plain text, chunked, and indexed into the vector store for policy Q&A retrieval.
 
-type: "pdf"     — downloaded as bytes, parsed by pdf_extractor
-      "html"    — downloaded as bytes, parsed by html_extractor
-      "html_js" — JavaScript-rendered via Playwright, parsed by html_extractor
+Each entry declares what to fetch — no fetch or parse logic lives here.
+The ingestion pipeline (src/ingestion/documents/pipeline.py) reads this list
+and routes each document through the appropriate fetcher and extractor.
+
+Maps to: data/raw/documents/             (downloaded raw files)
+         data/interim/extracted_text/    (parsed .txt output)
+
+type: "pdf"     — downloaded as bytes via http_fetcher, parsed by pdf_extractor
+      "html"    — downloaded as bytes via http_fetcher, parsed by html_extractor
+      "html_js" — JavaScript-rendered via playwright_fetcher, parsed by html_extractor
 """
 
 DOCUMENTS: list[dict] = [
