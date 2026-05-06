@@ -1,9 +1,15 @@
 .env
-data/
 __pycache__/
 .venv/
-chroma_db/
 *.pyc
 .DS_Store
+chroma_db/
 
-# corpus/ is intentionally NOT ignored — text files go into git for deployment
+# Generated/downloaded data — not tracked
+data/raw/
+data/interim/cleaned_tables/
+data/indexes/
+
+# Extracted text corpus and chunks ARE tracked (needed for deployment)
+# data/interim/extracted_text/ — tracked
+# data/processed/chunks.jsonl  — tracked

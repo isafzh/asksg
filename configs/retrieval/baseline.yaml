@@ -1,0 +1,6 @@
+# Baseline pipeline: dense-only vector retrieval, no BM25, no reranker.
+# Used as the comparison baseline in eval/results/.
+
+embed_model: all-MiniLM-L6-v2
+top_k: 9
+mode: baseline

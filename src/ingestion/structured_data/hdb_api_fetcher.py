@@ -1,24 +1,31 @@
 """
-Fetches HDB Resale Flat Prices (2017-present) from data.gov.sg
-and saves to data/hdb_resale.csv.
+HDB Resale Flat Prices fetcher: paginated pull from the data.gov.sg CKAN API.
 
-Dataset ID: d_8b84c4ee58e3cfc0ece0d773c8ca6abc
-Docs: https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view
+This structured dataset feeds the Agentic RAG tool (hdb_resale_query),
+not the vector index.  Output: data/interim/cleaned_tables/hdb_resale.csv
 """
 
+from __future__ import annotations
+
+import sys
 import time
-import requests
-import pandas as pd
 from pathlib import Path
 
-DATASET_ID = "d_8b84c4ee58e3cfc0ece0d773c8ca6abc"
-API_URL = f"https://data.gov.sg/api/action/datastore_search"
-OUTPUT_PATH = Path(__file__).parent.parent / "data" / "hdb_resale.csv"
-LIMIT = 10000  # records per page
+import requests
+import pandas as pd
+
+ROOT = Path(__file__).resolve().parents[4]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from configs.sources.hdb_transactions import API_URL, DATASET_ID, RECORDS_PER_PAGE
+
+OUTPUT_PATH = ROOT / "data" / "interim" / "cleaned_tables" / "hdb_resale.csv"
 
 
 def fetch_all_records() -> pd.DataFrame:
-    all_records = []
+    """Paginate through the full dataset and return a single DataFrame."""
+    all_records: list[dict] = []
     offset = 0
 
     print("Fetching HDB resale data from data.gov.sg...")
@@ -29,7 +36,7 @@ def fetch_all_records() -> pd.DataFrame:
                 API_URL,
                 params={
                     "resource_id": DATASET_ID,
-                    "limit": LIMIT,
+                    "limit": RECORDS_PER_PAGE,
                     "offset": offset,
                 },
             )
@@ -42,14 +49,13 @@ def fetch_all_records() -> pd.DataFrame:
             break
         else:
             raise RuntimeError(f"Gave up after 5 retries (offset={offset})")
-        result = response.json()["result"]
 
+        result = response.json()["result"]
         records = result["records"]
         total = result["total"]
 
         all_records.extend(records)
         offset += len(records)
-
         print(f"  Fetched {offset:,} / {total:,} records")
 
         if offset >= total:
@@ -58,12 +64,12 @@ def fetch_all_records() -> pd.DataFrame:
     return pd.DataFrame(all_records)
 
 
-def main():
+def main() -> None:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     df = fetch_all_records()
     df.to_csv(OUTPUT_PATH, index=False)
-    print(f"\nSaved {len(df):,} records to {OUTPUT_PATH}")
-    print("\nColumns:", list(df.columns))
+    print(f"\nSaved {len(df):,} records -> {OUTPUT_PATH.relative_to(ROOT)}")
+    print("Columns:", list(df.columns))
     print("\nSample row:")
     print(df.iloc[0].to_dict())
 

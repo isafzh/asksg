@@ -10,10 +10,13 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
+ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 import streamlit as st
-from rag import load_retriever, stream_answer
+from src.retrieval.loader import load
+from src.generation.answer import stream_answer
 
 # ---------------------------------------------------------------------------
 # Page config
@@ -91,7 +94,7 @@ div[data-testid="stButton"] {
 
 @st.cache_resource(show_spinner="Loading document index...")
 def get_retriever():
-    return load_retriever()  # returns (model, collection, bm25, all_chunks, reranker)
+    return load()
 
 
 # ---------------------------------------------------------------------------

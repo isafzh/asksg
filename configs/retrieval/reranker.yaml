@@ -1,0 +1,9 @@
+# Full pipeline: hybrid retrieval (BM25 + dense + RRF) followed by cross-encoder reranking.
+# The reranker jointly encodes (query, chunk) pairs, catching relevance that cosine misses.
+
+embed_model: all-MiniLM-L6-v2
+reranker_model: cross-encoder/ms-marco-MiniLM-L-6-v2
+top_k: 9
+fetch: 25
+rrf_k: 60
+mode: hybrid_rerank

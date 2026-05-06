@@ -1,0 +1,8 @@
+# Hybrid pipeline: BM25 (keyword) + dense (vector) fused with Reciprocal Rank Fusion.
+# Each retriever fetches `fetch` candidates; RRF merges them without score normalisation.
+
+embed_model: all-MiniLM-L6-v2
+top_k: 9
+fetch: 25        # candidates per retriever before fusion
+rrf_k: 60        # RRF constant; higher = flatter score distribution
+mode: hybrid

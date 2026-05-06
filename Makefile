@@ -1,0 +1,53 @@
+.PHONY: fetch fetch-hdb index app eval baseline hybrid reranker compare clean help
+
+help:
+	@echo "AskSG — available targets:"
+	@echo ""
+	@echo "  Data pipeline:"
+	@echo "    make fetch      Fetch and extract all policy documents"
+	@echo "    make fetch-hdb  Fetch HDB resale transaction data"
+	@echo "    make index      Chunk documents and build vector + keyword indexes"
+	@echo ""
+	@echo "  Experiments:"
+	@echo "    make baseline   Run dense-only retrieval experiment"
+	@echo "    make hybrid     Run hybrid (BM25 + dense + RRF) experiment"
+	@echo "    make reranker   Run full pipeline (hybrid + cross-encoder) experiment"
+	@echo "    make compare    Print comparison table of all scored results"
+	@echo ""
+	@echo "  Application:"
+	@echo "    make app        Launch Streamlit app"
+	@echo "    make eval       Run RAGAS evaluation"
+	@echo ""
+	@echo "  Maintenance:"
+	@echo "    make clean      Delete generated indexes (forces full rebuild)"
+
+fetch:
+	python pipelines/ingest_documents.py
+
+fetch-hdb:
+	python pipelines/ingest_hdb_data.py
+
+index:
+	python pipelines/build_indexes.py
+
+app:
+	streamlit run app/main.py
+
+eval:
+	python pipelines/run_eval.py
+
+baseline:
+	python experiments/baseline.py
+
+hybrid:
+	python experiments/hybrid_retrieval.py
+
+reranker:
+	python experiments/with_reranker.py
+
+compare:
+	python experiments/compare_results.py
+
+clean:
+	rm -rf data/indexes/chroma
+	@echo "Vector index deleted. Run 'make index' to rebuild."
