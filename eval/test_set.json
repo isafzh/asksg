@@ -143,5 +143,10 @@
     "source": "cpf,budget",
     "question": "How has the government used both CPF policy changes and Budget measures to improve retirement adequacy for lower-income Singaporeans?",
     "ground_truth": "Budget 2023 raised the minimum CPF monthly payout for non-CPF LIFE members (on the Retirement Sum Scheme) from $250 to $350 per month from June 2023. For lower-income members, the Matched Retirement Savings Scheme (MRSS) provides a dollar-for-dollar government matching grant of up to $2,000 per year (lifetime cap $20,000) for voluntary top-ups to the Retirement Account."
+  },
+  {
+    "source": "cpf,hdb",
+    "question": "How can CPF Ordinary Account savings be used when buying an HDB flat, and what refund obligation arises when the flat is sold?",
+    "ground_truth": "CPF Ordinary Account (OA) savings can be used for the downpayment, housing loan repayments, stamp and legal fees, and Home Protection Scheme premiums when buying an HDB flat. When the flat is subsequently sold, the owner must refund to CPF the full amount of OA savings used, plus the accrued interest."
   }
 ]
