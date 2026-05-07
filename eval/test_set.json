@@ -2,7 +2,7 @@
   {
     "source": "cpf",
     "question": "What is the total CPF contribution rate for employees aged 55 and below from 1 January 2026?",
-    "ground_truth": "From 1 January 2026, the total CPF contribution rate for employees aged 55 and below is 37% of wages — 17% contributed by the employer and 20% by the employee."
+    "ground_truth": "From 1 January 2026, the total CPF contribution rate for employees aged 55 and below is 37% of wages."
   },
   {
     "source": "cpf",
@@ -12,12 +12,12 @@
   {
     "source": "cpf",
     "question": "What happens to CPF savings used for a property when the property is sold?",
-    "ground_truth": "When selling a property, the owner must refund to CPF the amount of OA savings used for the property plus the accrued interest. If the property was pledged to make up a retirement sum, the pledged amount must also be refunded."
+    "ground_truth": "When the property is sold, the owner must refund to CPF the OA savings used for the property, plus accrued interest."
   },
   {
     "source": "budget",
     "question": "What is the maximum total grant eligible families can receive when buying an HDB resale flat, as announced in Budget 2023?",
-    "ground_truth": "Under Budget 2023, eligible families can receive up to $190,000 in grants when buying a resale flat, combining the Enhanced CPF Housing Grant and the Proximity Housing Grant."
+    "ground_truth": "Under Budget 2023, eligible families can receive up to $190,000 in grants when buying an HDB resale flat."
   },
   {
     "source": "budget",
@@ -47,7 +47,7 @@
   {
     "source": "mas",
     "question": "What is Singapore's GDP growth forecast for 2025 according to MAS?",
-    "ground_truth": "MAS forecasts Singapore's GDP growth to slow to 0.0 to 2.0% in 2025."
+    "ground_truth": "MAS forecasts Singapore's GDP growth at 0.0% to 2.0% in 2025."
   },
   {
     "source": "srs",
@@ -82,7 +82,7 @@
   {
     "source": "hdb",
     "question": "What are the eligibility conditions for a single Singapore Citizen to buy an HDB flat on their own?",
-    "ground_truth": "A single Singapore Citizen buying alone must be at least 35 years old if unmarried or divorced, or at least 21 years old if widowed or an orphan (with at least one deceased parent who was an SC or SPR). They can apply for a 2-room Flexi flat from HDB, or buy any resale flat type (up to 5-room if applying for CPF housing grants). They must not own or have an interest in any private residential property."
+    "ground_truth": "A single Singapore Citizen buying alone must be at least 35 years old if unmarried or divorced, or at least 21 years old if widowed or an orphan (with at least one deceased parent who was an SC or SPR). They must not own or have an interest in any private residential property."
   },
   {
     "source": "hdb",
