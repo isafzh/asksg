@@ -256,18 +256,24 @@ RAG quality is measured on a hand-curated test set of 30 Q&A pairs drawn from th
 
 ### Test set composition
 
-| Source | Questions | Which | Rationale |
+| Source | How many | Which questions | Rationale |
 |---|---|---|---|
-| CPF | 6 | Q1, Q2, Q3, Q19, Q20, Q21 | Largest corpus, most complex rules |
-| Budget | 5 | Q4, Q5, Q6, Q22, Q23 | Temporal disambiguation is the key story |
-| HDB | 4 | Q7, Q8, Q17, Q18 | Two modalities (policy + transaction data) |
-| MAS | 3 | Q9, Q10, Q24 | Macro policy needs multi-chunk synthesis |
-| SRS | 3 | Q11, Q12, Q13 | — |
-| SSB | 3 | Q14, Q15, Q16 | — |
-| Cross-source | 6 | Q25–Q30 | Hardest; showcases hybrid retrieval strength |
+| CPF | 6 | Q1, Q2, Q3, Q19, Q20, Q21 | Most rule-heavy domain; tests contribution, housing, retirement, and LIFE rules |
+| Budget | 5 | Q4, Q5, Q6, Q22, Q23 | Temporal disambiguation and year-specific policy announcements |
+| HDB | 4 | Q7, Q8, Q17, Q18 | Core housing eligibility and grant questions; HDB also has a planned structured transaction-data modality for the agentic tool |
+| MAS | 3 | Q9, Q10, Q24 | Macro forecasts and monetary policy framework; tests numeric projection retrieval and policy-mechanism explanation |
+| SRS | 3 | Q11, Q12, Q13 | Smaller but distinct retirement/tax-relief source |
+| SSB | 3 | Q14, Q15, Q16 | Smaller but distinct investment product source |
+| Cross-source | 6 | Q25–Q30 | Hardest set; tests synthesis across related policy domains; showcases hybrid retrieval strength |
 | **Total** | **30** | | |
 
-Cross-source pairs: `srs+cpf` (Q25) · `ssb+srs` (Q26) · `budget+mas` (Q27) · `hdb+budget` (Q28) · `cpf+budget` (Q29) · `cpf+hdb` (Q30)
+Cross-source pairs:
+- **Q25** `srs+cpf` — comparing SRS contributions vs CPF RA top-ups for tax relief
+- **Q26** `ssb+srs` — using SRS funds to invest in SSBs, and how returns are taxed
+- **Q27** `budget+mas` — MAS's April 2025 GDP projection vs Budget 2026's reported actual 5% outcome
+- **Q28** `hdb+budget` — housing options and grants for singles buying near parents
+- **Q29** `cpf+budget` — CPF and Budget measures for lower-income retirement adequacy
+- **Q30** `cpf+hdb` — CPF OA usage when buying an HDB flat, plus CPF refund obligation when the flat is sold
 
 > **Note:** The results below were produced on the original corpus (13 documents) with 10 questions. The corpus has since been expanded to 25 documents across 6 sources, the test set expanded to 30 questions, ground truths for Q5 and Q7 have been corrected, and MAS Oct 2024 has been trimmed. A re-run of evaluation on the refreshed corpus and index is in progress.
 
