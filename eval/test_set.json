@@ -131,7 +131,7 @@
   },
   {
     "source": "budget,mas",
-    "question": "How did MAS's 2025 GDP projection at the start of the year compare to the actual outcome reported in Budget 2026?",
+    "question": "How did MAS's April 2025 GDP projection compare to the actual outcome reported in Budget 2026?",
     "ground_truth": "In April 2025, MAS projected Singapore's GDP growth would slow to 0.0–2.0% in 2025. Budget 2026, presented in early 2026, reported that Singapore actually achieved growth of 5% in 2025. The outcome significantly outperformed MAS's projection."
   },
   {
