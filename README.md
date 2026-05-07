@@ -252,9 +252,24 @@ python etl/build_index.py       # re-embed (delete chroma_db/ first)
 
 ## Evaluation
 
-RAG quality is measured on a hand-curated test set of 10 Q&A pairs drawn from the source documents (`eval/test_set.json`).
+RAG quality is measured on a hand-curated test set of 30 Q&A pairs drawn from the source documents (`eval/test_set.json`).
 
-> **Note:** The results below were produced on the original corpus (13 documents). The corpus has since been expanded to 25 documents across 6 sources, ground truths for Q5 and Q7 have been corrected, and MAS Oct 2024 has been trimmed. A re-run of evaluation on the refreshed corpus and index is in progress.
+### Test set composition
+
+| Source | Questions | Which | Rationale |
+|---|---|---|---|
+| CPF | 6 | Q1, Q2, Q3, Q19, Q20, Q21 | Largest corpus, most complex rules |
+| Budget | 5 | Q4, Q5, Q6, Q22, Q23 | Temporal disambiguation is the key story |
+| HDB | 4 | Q7, Q8, Q17, Q18 | Two modalities (policy + transaction data) |
+| MAS | 3 | Q9, Q10, Q24 | Macro policy needs multi-chunk synthesis |
+| SRS | 3 | Q11, Q12, Q13 | — |
+| SSB | 3 | Q14, Q15, Q16 | — |
+| Cross-source | 6 | Q25–Q30 | Hardest; showcases hybrid retrieval strength |
+| **Total** | **30** | | |
+
+Cross-source pairs: `srs+cpf` (Q25) · `ssb+srs` (Q26) · `budget+mas` (Q27) · `hdb+budget` (Q28) · `cpf+budget` (Q29) · `cpf+hdb` (Q30)
+
+> **Note:** The results below were produced on the original corpus (13 documents) with 10 questions. The corpus has since been expanded to 25 documents across 6 sources, the test set expanded to 30 questions, ground truths for Q5 and Q7 have been corrected, and MAS Oct 2024 has been trimmed. A re-run of evaluation on the refreshed corpus and index is in progress.
 
 Two-tier evaluation covering the full RAG Triad (Context Relevance, Faithfulness, Answer Relevance):
 
@@ -302,7 +317,7 @@ The k-curve experiment revealed a temporal disambiguation failure on Q5 (CDC Vou
 
 **Trade-off:** Q7 (HDB PR eligibility) LLM faithfulness dropped from 1.0 to 0.6 — the hybrid candidate pool introduced a noisier chunk mix for that question. A more targeted fix (metadata filter by source when the query explicitly names a document category) would avoid this regression.
 
-*10 hand-curated Q&A pairs across Budget, CPF, HDB, and MAS sources.*
+*30 hand-curated Q&A pairs across all 6 sources — Budget, CPF, HDB, MAS, SRS, SSB — including 6 cross-source questions.*
 
 To run:
 ```bash
