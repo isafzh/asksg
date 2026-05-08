@@ -1,152 +1,460 @@
-[
-  {
-    "source": "cpf",
-    "question": "What is the total CPF contribution rate for employees aged 55 and below from 1 January 2026?",
-    "ground_truth": "From 1 January 2026, the total CPF contribution rate for employees aged 55 and below is 37% of wages."
-  },
-  {
-    "source": "cpf",
-    "question": "What were the four steps in raising the CPF monthly salary ceiling from 2023 to 2026?",
-    "ground_truth": "The CPF monthly salary ceiling was raised in four steps: to $6,300 from 1 September 2023, to $6,800 from 1 January 2024, to $7,400 from 1 January 2025, and to $8,000 from 1 January 2026."
-  },
-  {
-    "source": "cpf",
-    "question": "What happens to CPF savings used for a property when the property is sold?",
-    "ground_truth": "When the property is sold, the owner must refund to CPF the OA savings used for the property, plus accrued interest."
-  },
-  {
-    "source": "budget",
-    "question": "What is the maximum total grant eligible families can receive when buying an HDB resale flat, as announced in Budget 2023?",
-    "ground_truth": "Under Budget 2023, eligible families can receive up to $190,000 in grants when buying an HDB resale flat."
-  },
-  {
-    "source": "budget",
-    "question": "What CDC Voucher amount was announced in Budget 2025 and when will they be disbursed?",
-    "ground_truth": "Budget 2025 announced $800 in CDC Vouchers for every Singaporean household — $500 to be disbursed in May 2025 and the remaining $300 in January 2026."
-  },
-  {
-    "source": "budget",
-    "question": "What change did Budget 2023 make to the minimum CPF monthly payout for non-CPF LIFE members?",
-    "ground_truth": "From June 2023, the minimum CPF monthly payout for non-CPF LIFE members (those on the Retirement Sum Scheme) was raised from $250 to $350 per month."
-  },
-  {
-    "source": "hdb",
-    "question": "Can a Singapore Permanent Resident buy an HDB resale flat?",
-    "ground_truth": "Yes, a Singapore Permanent Resident (SPR) can buy an HDB resale flat as part of an SC (Singapore Citizen) or SPR household. For an SPR household with no SC applicant (i.e., both applicant and occupant are SPR), all SPR household members must have held SPR status for at least 3 years."
-  },
-  {
-    "source": "hdb",
-    "question": "What can CPF Ordinary Account savings be used for when buying a home?",
-    "ground_truth": "CPF Ordinary Account (OA) savings can be used to buy an HDB flat or private residential properties in Singapore. They can be used for the downpayment, housing loan repayments, stamp and legal fees, Home Protection Scheme premiums (for HDB flats), and for loans for construction of a house and purchase of vacant land (for private properties only)."
-  },
-  {
-    "source": "mas",
-    "question": "What is MAS's inflation projection for 2025?",
-    "ground_truth": "MAS projects both core inflation and CPI-All Items (headline) inflation to average 0.5 to 1.5% in 2025."
-  },
-  {
-    "source": "mas",
-    "question": "What is Singapore's GDP growth forecast for 2025 according to MAS?",
-    "ground_truth": "MAS forecasts Singapore's GDP growth at 0.0% to 2.0% in 2025."
-  },
-  {
-    "source": "srs",
-    "question": "What is the maximum annual SRS contribution for Singapore Citizens and Permanent Residents versus foreigners?",
-    "ground_truth": "The maximum annual SRS contribution is $15,300 for Singapore Citizens and Permanent Residents, and $35,700 for foreigners."
-  },
-  {
-    "source": "srs",
-    "question": "How are SRS withdrawals taxed at the statutory retirement age?",
-    "ground_truth": "At the statutory retirement age, only 50% of SRS withdrawals are taxable."
-  },
-  {
-    "source": "srs",
-    "question": "Under what circumstances can a person no longer make contributions to their SRS account?",
-    "ground_truth": "SRS contributions cannot be made once withdrawals have commenced — specifically, after the member starts withdrawing at or after the statutory retirement age that was prevailing when they made their first SRS contribution, or if they begin withdrawing on medical grounds."
-  },
-  {
-    "source": "ssb",
-    "question": "How are Singapore Savings Bond interest rates determined, and what is the step-up feature?",
-    "ground_truth": "SSB coupon rates are set so that the average annual compounded return over the investor's holding period is linked to the yield of a Singapore Government Securities (SGS) bond of a corresponding tenor — for example, the 5-year average return is tied to the 5-year SGS yield. The interest steps up over time so that the longer the bond is held, the higher the return, up to a maximum of 10 years."
-  },
-  {
-    "source": "ssb",
-    "question": "What is the minimum investment amount for Singapore Savings Bonds, and through which channels can they be purchased?",
-    "ground_truth": "The minimum investment in Singapore Savings Bonds is $500. SSBs can be purchased through DBS/POSB, OCBC, and UOB ATMs or internet banking, or via OCBC's mobile application. SRS investors may apply through their respective SRS operator's internet banking portal."
-  },
-  {
-    "source": "ssb",
-    "question": "Can Singapore Savings Bond investors exit their investment early, and how quickly are redemption proceeds paid?",
-    "ground_truth": "Yes — SSBs can be redeemed in any given month before maturity with no penalty for early exit. Redemption proceeds, including principal and any accrued interest, are paid by the 2nd business day of the following month."
-  },
-  {
-    "source": "hdb",
-    "question": "What are the eligibility conditions for a single Singapore Citizen to buy an HDB flat on their own?",
-    "ground_truth": "A single Singapore Citizen buying alone must be at least 35 years old if unmarried or divorced, or at least 21 years old if widowed or an orphan (with at least one deceased parent who was an SC or SPR). They must not own or have an interest in any private residential property."
-  },
-  {
-    "source": "hdb",
-    "question": "What CPF housing grants can single Singapore Citizens apply for when buying a resale HDB flat?",
-    "ground_truth": "Single Singapore Citizens buying a resale HDB flat may be eligible for the CPF Housing Grant (Singles), the Enhanced CPF Housing Grant (Singles), the Proximity Housing Grant (Singles), and the Top-up Grant (at a later stage if eligible)."
-  },
-  {
-    "source": "cpf",
-    "question": "What are the CPF interest rates for the Ordinary Account and the Special, MediSave, and Retirement Accounts, and is any extra interest paid?",
-    "ground_truth": "The CPF Ordinary Account earns 2.5% per annum, while the Special, MediSave, and Retirement Accounts earn 4% per annum. The Government also pays extra interest on the first $60,000 of combined CPF balances (capped at $20,000 for the OA): 1% per annum for members below age 55. For members aged 55 and above, extra interest is 2% per annum on the first $30,000 and 1% per annum on the next $30,000 (capped at $20,000 for OA)."
-  },
-  {
-    "source": "cpf",
-    "question": "What are the three CPF LIFE plans and how do they differ?",
-    "ground_truth": "CPF LIFE offers three plans: the Escalating Plan, where monthly payouts start lower but grow by 2% per year for life; the Standard Plan, which provides steady fixed monthly payouts; and the Basic Plan, where payouts start low and fall when CPF balances drop below $60,000."
-  },
-  {
-    "source": "cpf",
-    "question": "What are the CPF Full Retirement Sum amounts for members turning 55 in 2025, 2026, and 2027?",
-    "ground_truth": "The CPF Full Retirement Sum (FRS) for members turning age 55 is $213,000 in 2025, $220,400 in 2026, and $228,200 in 2027."
-  },
-  {
-    "source": "budget",
-    "question": "What was Singapore's GDP growth in 2025 and what is the official growth projection for 2026 as stated in Budget 2026?",
-    "ground_truth": "According to Budget 2026, Singapore achieved GDP growth of 5% in 2025. For 2026, growth is projected at 2% to 4%."
-  },
-  {
-    "source": "budget",
-    "question": "What Corporate Income Tax rebate was announced in Budget 2026, and who benefits?",
-    "ground_truth": "Budget 2026 announced a 40% Corporate Income Tax rebate for the Year of Assessment 2026. Every active company that employed at least one local employee in the previous year will receive a minimum benefit of $1,500. The total benefit for each company is capped at $30,000."
-  },
-  {
-    "source": "mas",
-    "question": "What monetary policy tool does MAS use, and how is the policy stance adjusted?",
-    "ground_truth": "MAS uses the Singapore dollar nominal effective exchange rate (S$NEER) as its primary monetary policy tool. The S$NEER is managed against an undisclosed basket of currencies within a policy band. MAS adjusts the monetary policy stance by changing the rate of appreciation of the band (slope), the level at which it is centred (midpoint), or the width of the band."
-  },
-  {
-    "source": "srs,cpf",
-    "question": "How do SRS contributions and CPF Retirement Account top-ups compare as tax-relief strategies for Singaporeans saving for retirement?",
-    "ground_truth": "Both offer tax relief but with different structures. CPF cash top-ups to the Special or Retirement Account give up to $8,000 tax relief for topping up your own account and another $8,000 for topping up a loved one's account — a total of up to $16,000 per year, subject to a shared cap with MediSave top-ups. SRS contributions provide dollar-for-dollar tax relief up to $15,300 per year for Singapore Citizens and PRs (or $35,700 for foreigners), subject to the overall personal income tax relief cap of $80,000."
-  },
-  {
-    "source": "ssb,srs",
-    "question": "Can SRS funds be used to invest in Singapore Savings Bonds, and how are the returns treated for tax?",
-    "ground_truth": "Yes — SRS investors can apply for Singapore Savings Bonds through their SRS operator's internet banking portal. Because the investment is held within SRS, all returns (interest) are tax-free before withdrawal."
-  },
-  {
-    "source": "budget,mas",
-    "question": "How did MAS's April 2025 GDP projection compare to the actual outcome reported in Budget 2026?",
-    "ground_truth": "In April 2025, MAS projected Singapore's GDP growth would slow to 0.0–2.0% in 2025. Budget 2026, presented in early 2026, reported that Singapore actually achieved growth of 5% in 2025. The outcome significantly outperformed MAS's projection."
-  },
-  {
-    "source": "hdb,budget",
-    "question": "What housing options and grants are specifically available for single Singapore Citizens who want to buy an HDB flat close to their parents?",
-    "ground_truth": "Single Singapore Citizens aged 35 and above can buy a 2-room Flexi flat from HDB or any resale flat (up to 5-room if applying for CPF housing grants). For those buying near parents, the Proximity Housing Grant (Singles) is available for resale flat purchases. Singles buying resale flats can also stack the CPF Housing Grant (Singles) and Enhanced CPF Housing Grant (Singles) alongside the Proximity Housing Grant (Singles)."
-  },
-  {
-    "source": "cpf,budget",
-    "question": "How has the government used both CPF policy changes and Budget measures to improve retirement adequacy for lower-income Singaporeans?",
-    "ground_truth": "Budget 2023 raised the minimum CPF monthly payout for non-CPF LIFE members (on the Retirement Sum Scheme) from $250 to $350 per month from June 2023. For lower-income members, the Matched Retirement Savings Scheme (MRSS) provides a dollar-for-dollar government matching grant of up to $2,000 per year (lifetime cap $20,000) for voluntary top-ups to the Retirement Account."
-  },
-  {
-    "source": "cpf,hdb",
-    "question": "How can CPF Ordinary Account savings be used when buying an HDB flat, and what refund obligation arises when the flat is sold?",
-    "ground_truth": "CPF Ordinary Account (OA) savings can be used for the downpayment, housing loan repayments, stamp and legal fees, and Home Protection Scheme premiums when buying an HDB flat. When the flat is subsequently sold, the owner must refund to CPF the full amount of OA savings used, plus the accrued interest."
-  }
-]
+{
+  "schema_version": "2.0",
+  "questions": [
+    {
+      "id": "cpf_contribution_rate_001",
+      "source": "cpf",
+      "category": "cpf_contributions",
+      "question": "What is the total CPF contribution rate for employees aged 55 and below from 1 January 2026?",
+      "ground_truth": "From 1 January 2026, the total CPF contribution rate for employees aged 55 and below is 37% of wages.",
+      "expected_sources": [
+        {"source": "cpf", "document": "cpf_contribution_rates.txt"}
+      ],
+      "must_contain": ["55 and below", "37"],
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "cpf_salary_ceiling_001",
+      "source": "cpf",
+      "category": "cpf_contributions",
+      "question": "What were the four steps in raising the CPF monthly salary ceiling from 2023 to 2026?",
+      "ground_truth": "The CPF monthly salary ceiling was raised in four steps: to $6,300 from 1 September 2023, to $6,800 from 1 January 2024, to $7,400 from 1 January 2025, and to $8,000 from 1 January 2026.",
+      "expected_sources": [
+        {"source": "cpf", "document": "cpf_salary_ceiling_budget2023.txt"}
+      ],
+      "must_contain": ["$6,300", "$6,800", "$7,400", "$8,000"],
+      "difficulty": "temporal",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "cpf_property_refund_001",
+      "source": "cpf",
+      "category": "cpf_housing",
+      "question": "What happens to CPF savings used for a property when the property is sold?",
+      "ground_truth": "When the property is sold, the owner must refund to CPF the OA savings used for the property, plus accrued interest.",
+      "expected_sources": [
+        {"source": "cpf", "document": "cpf_housing_usage.txt"}
+      ],
+      "must_contain": ["refund the amount that you have used plus the interest accrued"],
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "budget_hdb_resale_grant_001",
+      "source": "budget",
+      "category": "budget_housing",
+      "question": "What is the maximum total grant eligible families can receive when buying an HDB resale flat, as announced in Budget 2023?",
+      "ground_truth": "Under Budget 2023, eligible families can receive up to $190,000 in grants when buying an HDB resale flat.",
+      "expected_sources": [
+        {"source": "budget", "document": "budget_2023_speech.txt"}
+      ],
+      "must_contain": ["$190,000"],
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "budget_cdc_vouchers_2025_001",
+      "source": "budget",
+      "category": "budget_social_support",
+      "question": "What CDC Voucher amount was announced in Budget 2025 and when will they be disbursed?",
+      "ground_truth": "Budget 2025 announced $800 in CDC Vouchers for every Singaporean household — $500 to be disbursed in May 2025 and the remaining $300 in January 2026.",
+      "expected_sources": [
+        {"source": "budget", "document": "budget_2025_speech.txt"}
+      ],
+      "must_contain": ["$800 in CDC Vouchers", "The first $500 will be disbursed in May"],
+      "difficulty": "temporal",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "budget_cpf_min_payout_001",
+      "source": "budget",
+      "category": "budget_retirement",
+      "question": "What change did Budget 2023 make to the minimum CPF monthly payout for non-CPF LIFE members?",
+      "ground_truth": "From June 2023, the minimum CPF monthly payout for non-CPF LIFE members (those on the Retirement Sum Scheme) was raised from $250 to $350 per month.",
+      "expected_sources": [
+        {"source": "budget", "document": "budget_2023_speech.txt"}
+      ],
+      "must_contain": ["Retirement Sum Scheme to $350"],
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "hdb_spr_eligibility_001",
+      "source": "hdb",
+      "category": "hdb_eligibility",
+      "question": "Can a Singapore Permanent Resident buy an HDB resale flat?",
+      "ground_truth": "Yes, a Singapore Permanent Resident (SPR) can buy an HDB resale flat as part of an SC (Singapore Citizen) or SPR household. For an SPR household with no SC applicant (i.e., both applicant and occupant are SPR), all SPR household members must have held SPR status for at least 3 years.",
+      "expected_sources": [
+        {"source": "hdb", "document": "hdb_eligibility_couples_families.txt"}
+      ],
+      "must_contain": ["SPR status for at least 3 years"],
+      "difficulty": "standard",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "hdb_cpf_oa_usage_001",
+      "source": "hdb",
+      "category": "cpf_housing",
+      "question": "What can CPF Ordinary Account savings be used for when buying a home?",
+      "ground_truth": "CPF Ordinary Account (OA) savings can be used to buy an HDB flat or private residential properties in Singapore. They can be used for the downpayment, housing loan repayments, stamp and legal fees, Home Protection Scheme premiums (for HDB flats), and for loans for construction of a house and purchase of vacant land (for private properties only).",
+      "expected_sources": [
+        {"source": "cpf", "document": "cpf_housing_usage.txt"}
+      ],
+      "must_contain": ["downpayment and housing loan", "stamp and legal fees", "Home Protection Scheme premiums"],
+      "difficulty": "multi_chunk",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured",
+      "retrieval_notes": "Question is tagged hdb but answer lives in a CPF document; tests cross-bucket retrieval."
+    },
+    {
+      "id": "mas_inflation_2025_001",
+      "source": "mas",
+      "category": "mas_economic_outlook",
+      "question": "What is MAS's inflation projection for 2025?",
+      "ground_truth": "MAS projects both core inflation and CPI-All Items (headline) inflation to average 0.5 to 1.5% in 2025.",
+      "expected_sources": [
+        {"source": "mas", "document": "mas_macro_review_apr2025.txt"}
+      ],
+      "must_contain": ["0.5–1.5%"],
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "mas_gdp_forecast_2025_001",
+      "source": "mas",
+      "category": "mas_economic_outlook",
+      "question": "What is Singapore's GDP growth forecast for 2025 according to MAS?",
+      "ground_truth": "MAS forecasts Singapore's GDP growth at 0.0% to 2.0% in 2025.",
+      "expected_sources": [
+        {"source": "mas", "document": "mas_macro_review_apr2025.txt"}
+      ],
+      "must_contain": ["0.0–2.0%"],
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "srs_contribution_limit_001",
+      "source": "srs",
+      "category": "srs_contributions",
+      "question": "What is the maximum annual SRS contribution for Singapore Citizens and Permanent Residents versus foreigners?",
+      "ground_truth": "The maximum annual SRS contribution is $15,300 for Singapore Citizens and Permanent Residents, and $35,700 for foreigners.",
+      "expected_sources": [
+        {"source": "srs", "document": "iras_srs_overview.txt"}
+      ],
+      "must_contain": ["$15,300", "$35,700"],
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "srs_withdrawal_tax_001",
+      "source": "srs",
+      "category": "srs_withdrawals",
+      "question": "How are SRS withdrawals taxed at the statutory retirement age?",
+      "ground_truth": "At the statutory retirement age, only 50% of SRS withdrawals are taxable.",
+      "expected_sources": [
+        {"source": "srs", "document": "iras_srs_overview.txt"}
+      ],
+      "must_contain": ["only 50% of the withdrawals from SRS are taxable"],
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "srs_contribution_cessation_001",
+      "source": "srs",
+      "category": "srs_contributions",
+      "question": "Under what circumstances can a person no longer make contributions to their SRS account?",
+      "ground_truth": "SRS contributions cannot be made once withdrawals have commenced — specifically, after the member starts withdrawing at or after the statutory retirement age that was prevailing when they made their first SRS contribution, or if they begin withdrawing on medical grounds.",
+      "expected_sources": [
+        {"source": "srs", "document": "iras_srs_overview.txt"}
+      ],
+      "must_contain": [
+        "contributions cannot be made if you start withdrawing",
+        "statutory retirement age that was prevailing when you made your first SRS contribution"
+      ],
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "ssb_interest_structure_001",
+      "source": "ssb",
+      "category": "ssb_mechanics",
+      "question": "How are Singapore Savings Bond interest rates determined, and what is the step-up feature?",
+      "ground_truth": "SSB coupon rates are set so that the average annual compounded return over the investor's holding period is linked to the yield of a Singapore Government Securities (SGS) bond of a corresponding tenor — for example, the 5-year average return is tied to the 5-year SGS yield. The interest steps up over time so that the longer the bond is held, the higher the return, up to a maximum of 10 years.",
+      "expected_sources": [
+        {"source": "ssb", "document": "mas_ssb_overview.txt"}
+      ],
+      "must_contain": [
+        "average annual compounded return",
+        "linked to the yield of an SGS of a corresponding tenor"
+      ],
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "ssb_purchase_channels_001",
+      "source": "ssb",
+      "category": "ssb_mechanics",
+      "question": "What is the minimum investment amount for Singapore Savings Bonds, and through which channels can they be purchased?",
+      "ground_truth": "The minimum investment in Singapore Savings Bonds is $500. SSBs can be purchased through DBS/POSB, OCBC, and UOB ATMs or internet banking, or via OCBC's mobile application. SRS investors may apply through their respective SRS operator's internet banking portal.",
+      "expected_sources": [
+        {"source": "ssb", "document": "mas_ssb_overview.txt"}
+      ],
+      "must_contain": ["S$500", "DBS/POSB, OCBC and UOB ATMs or internet banking"],
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "ssb_early_redemption_001",
+      "source": "ssb",
+      "category": "ssb_mechanics",
+      "question": "Can Singapore Savings Bond investors exit their investment early, and how quickly are redemption proceeds paid?",
+      "ground_truth": "Yes — SSBs can be redeemed in any given month before maturity with no penalty for early exit. Redemption proceeds, including principal and any accrued interest, are paid by the 2nd business day of the following month.",
+      "expected_sources": [
+        {"source": "ssb", "document": "mas_ssb_overview.txt"}
+      ],
+      "must_contain": [
+        "no penalty for exiting your investment early",
+        "2nd business day of the following month"
+      ],
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "hdb_singles_eligibility_001",
+      "source": "hdb",
+      "category": "hdb_eligibility",
+      "question": "What are the eligibility conditions for a single Singapore Citizen to buy an HDB flat on their own?",
+      "ground_truth": "A single Singapore Citizen buying alone must be at least 35 years old if unmarried or divorced, or at least 21 years old if widowed or an orphan (with at least one deceased parent who was an SC or SPR). They must not own or have an interest in any private residential property.",
+      "expected_sources": [
+        {"source": "hdb", "document": "hdb_eligibility_singles.txt"}
+      ],
+      "must_contain": [
+        "At least 35 years old (unmarried or divorced)",
+        "At least 21 years old (widowed or an orphan"
+      ],
+      "difficulty": "multi_chunk",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "hdb_singles_grants_001",
+      "source": "hdb",
+      "category": "hdb_eligibility",
+      "question": "What CPF housing grants can single Singapore Citizens apply for when buying a resale HDB flat?",
+      "ground_truth": "Single Singapore Citizens buying a resale HDB flat may be eligible for the CPF Housing Grant (Singles), the Enhanced CPF Housing Grant (Singles), the Proximity Housing Grant (Singles), and the Top-up Grant (at a later stage if eligible).",
+      "expected_sources": [
+        {"source": "hdb", "document": "hdb_eligibility_singles.txt"}
+      ],
+      "must_contain": [
+        "CPF Housing Grant (Singles)",
+        "Enhanced CPF Housing Grant (Singles)",
+        "Proximity Housing Grant (Singles)"
+      ],
+      "difficulty": "standard",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "cpf_interest_rates_001",
+      "source": "cpf",
+      "category": "cpf_savings",
+      "question": "What are the CPF interest rates for the Ordinary Account and the Special, MediSave, and Retirement Accounts, and is any extra interest paid?",
+      "ground_truth": "The CPF Ordinary Account earns 2.5% per annum, while the Special, MediSave, and Retirement Accounts earn 4% per annum. The Government also pays extra interest on the first $60,000 of combined CPF balances (capped at $20,000 for the OA): 1% per annum for members below age 55. For members aged 55 and above, extra interest is 2% per annum on the first $30,000 and 1% per annum on the next $30,000 (capped at $20,000 for OA).",
+      "expected_sources": [
+        {"source": "cpf", "document": "cpf_interest_rates.txt"}
+      ],
+      "must_contain": ["2.5%", "4%", "1% per annum on the first $60,000"],
+      "difficulty": "multi_chunk",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "cpf_life_plans_001",
+      "source": "cpf",
+      "category": "cpf_retirement",
+      "question": "What are the three CPF LIFE plans and how do they differ?",
+      "ground_truth": "CPF LIFE offers three plans: the Escalating Plan, where monthly payouts start lower but grow by 2% per year for life; the Standard Plan, which provides steady fixed monthly payouts; and the Basic Plan, where payouts start low and fall when CPF balances drop below $60,000.",
+      "expected_sources": [
+        {"source": "cpf", "document": "cpf_life.txt"}
+      ],
+      "must_contain": [
+        "Escalating",
+        "grow by 2% a year for life",
+        "Monthly payouts start low and fall when your CPF balances fall below $60,000"
+      ],
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "cpf_frs_amounts_001",
+      "source": "cpf",
+      "category": "cpf_retirement",
+      "question": "What are the CPF Full Retirement Sum amounts for members turning 55 in 2025, 2026, and 2027?",
+      "ground_truth": "The CPF Full Retirement Sum (FRS) for members turning age 55 is $213,000 in 2025, $220,400 in 2026, and $228,200 in 2027.",
+      "expected_sources": [
+        {"source": "cpf", "document": "cpf_retirement_sums.txt"}
+      ],
+      "must_contain": ["$213,000", "$220,400", "$228,200"],
+      "difficulty": "temporal",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "budget_gdp_2025_actual_001",
+      "source": "budget",
+      "category": "budget_fiscal_policy",
+      "question": "What was Singapore's GDP growth in 2025 and what is the official growth projection for 2026 as stated in Budget 2026?",
+      "ground_truth": "According to Budget 2026, Singapore achieved GDP growth of 5% in 2025. For 2026, growth is projected at 2% to 4%.",
+      "expected_sources": [
+        {"source": "budget", "document": "budget_2026_speech.txt"}
+      ],
+      "must_contain": ["better-than-expected growth of 5%", "projected at 2% to"],
+      "difficulty": "temporal",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "budget_cit_rebate_2026_001",
+      "source": "budget",
+      "category": "budget_fiscal_policy",
+      "question": "What Corporate Income Tax rebate was announced in Budget 2026, and who benefits?",
+      "ground_truth": "Budget 2026 announced a 40% Corporate Income Tax rebate for the Year of Assessment 2026. Every active company that employed at least one local employee in the previous year will receive a minimum benefit of $1,500. The total benefit for each company is capped at $30,000.",
+      "expected_sources": [
+        {"source": "budget", "document": "budget_2026_speech.txt"}
+      ],
+      "must_contain": ["40% Corporate Income Tax rebate", "minimum benefit of $1,500"],
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "mas_monetary_policy_tool_001",
+      "source": "mas",
+      "category": "mas_monetary_policy",
+      "question": "What monetary policy tool does MAS use, and how is the policy stance adjusted?",
+      "ground_truth": "MAS uses the Singapore dollar nominal effective exchange rate (S$NEER) as its primary monetary policy tool. The S$NEER is managed against an undisclosed basket of currencies within a policy band. MAS adjusts the monetary policy stance by changing the rate of appreciation of the band (slope), the level at which it is centred (midpoint), or the width of the band.",
+      "expected_sources": [
+        {"source": "mas", "document": "mas_macro_review_oct2024.txt"}
+      ],
+      "must_contain": [
+        "undisclosed basket of currencies",
+        "rate of appreciation of the S$NEER"
+      ],
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "cross_srs_cpf_tax_relief_001",
+      "source": "srs,cpf",
+      "category": "cross_tax_relief",
+      "question": "How do SRS contributions and CPF Retirement Account top-ups compare as tax-relief strategies for Singaporeans saving for retirement?",
+      "ground_truth": "Both offer tax relief but with different structures. CPF cash top-ups to the Special or Retirement Account give up to $8,000 tax relief for topping up your own account and another $8,000 for topping up a loved one's account — a total of up to $16,000 per year, subject to a shared cap with MediSave top-ups. SRS contributions provide dollar-for-dollar tax relief up to $15,300 per year for Singapore Citizens and PRs (or $35,700 for foreigners), subject to the overall personal income tax relief cap of $80,000.",
+      "expected_sources": [
+        {"source": "srs", "document": "iras_srs_overview.txt"},
+        {"source": "cpf", "document": "cpf_topup_tax_relief.txt"}
+      ],
+      "must_contain": ["up to $16,000 in tax relief per year", "$15,300"],
+      "difficulty": "cross_source",
+      "answer_type": "comparison",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "cross_ssb_srs_investment_001",
+      "source": "ssb,srs",
+      "category": "cross_investment",
+      "question": "Can SRS funds be used to invest in Singapore Savings Bonds, and how are the returns treated for tax?",
+      "ground_truth": "Yes — SRS investors can apply for Singapore Savings Bonds through their SRS operator's internet banking portal. Because the investment is held within SRS, all returns (interest) are tax-free before withdrawal.",
+      "expected_sources": [
+        {"source": "ssb", "document": "mas_ssb_overview.txt"},
+        {"source": "srs", "document": "iras_srs_overview.txt"}
+      ],
+      "must_contain": ["SRS Operator's internet banking portal", "tax-free before withdrawal"],
+      "difficulty": "cross_source",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "cross_budget_mas_gdp_001",
+      "source": "budget,mas",
+      "category": "cross_economic_data",
+      "question": "How did MAS's April 2025 GDP projection compare to the actual outcome reported in Budget 2026?",
+      "ground_truth": "In April 2025, MAS projected Singapore's GDP growth would slow to 0.0–2.0% in 2025. Budget 2026, presented in early 2026, reported that Singapore actually achieved growth of 5% in 2025. The outcome significantly outperformed MAS's projection.",
+      "expected_sources": [
+        {"source": "mas", "document": "mas_macro_review_apr2025.txt"},
+        {"source": "budget", "document": "budget_2026_speech.txt"}
+      ],
+      "must_contain": ["0.0–2.0%", "better-than-expected growth of 5%"],
+      "difficulty": "cross_source",
+      "answer_type": "comparison",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "cross_hdb_singles_proximity_001",
+      "source": "hdb,budget",
+      "category": "cross_housing",
+      "question": "What housing options and grants are specifically available for single Singapore Citizens who want to buy an HDB flat close to their parents?",
+      "ground_truth": "Single Singapore Citizens aged 35 and above can buy a 2-room Flexi flat from HDB or any resale flat (up to 5-room if applying for CPF housing grants). For those buying near parents, the Proximity Housing Grant (Singles) is available for resale flat purchases. Singles buying resale flats can also stack the CPF Housing Grant (Singles) and Enhanced CPF Housing Grant (Singles) alongside the Proximity Housing Grant (Singles).",
+      "expected_sources": [
+        {"source": "hdb", "document": "hdb_eligibility_singles.txt"}
+      ],
+      "must_contain": ["Proximity Housing Grant (Singles)", "CPF Housing Grant (Singles)"],
+      "difficulty": "cross_source",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "cross_cpf_budget_lower_income_001",
+      "source": "cpf,budget",
+      "category": "cross_retirement",
+      "question": "How has the government used both CPF policy changes and Budget measures to improve retirement adequacy for lower-income Singaporeans?",
+      "ground_truth": "Budget 2023 raised the minimum CPF monthly payout for non-CPF LIFE members (on the Retirement Sum Scheme) from $250 to $350 per month from June 2023. For lower-income members, the Matched Retirement Savings Scheme (MRSS) provides a dollar-for-dollar government matching grant of up to $2,000 per year (lifetime cap $20,000) for voluntary top-ups to the Retirement Account.",
+      "expected_sources": [
+        {"source": "cpf", "document": "cpf_retirement_sums.txt"},
+        {"source": "budget", "document": "budget_2023_speech.txt"}
+      ],
+      "must_contain": [
+        "dollar-for-dollar grant",
+        "$2,000",
+        "Retirement Sum Scheme to $350"
+      ],
+      "difficulty": "cross_source",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    },
+    {
+      "id": "cross_cpf_hdb_oa_refund_001",
+      "source": "cpf,hdb",
+      "category": "cross_cpf_housing",
+      "question": "How can CPF Ordinary Account savings be used when buying an HDB flat, and what refund obligation arises when the flat is sold?",
+      "ground_truth": "CPF Ordinary Account (OA) savings can be used for the downpayment, housing loan repayments, stamp and legal fees, and Home Protection Scheme premiums when buying an HDB flat. When the flat is subsequently sold, the owner must refund to CPF the full amount of OA savings used, plus the accrued interest.",
+      "expected_sources": [
+        {"source": "cpf", "document": "cpf_housing_usage.txt"}
+      ],
+      "must_contain": [
+        "Home Protection Scheme premiums",
+        "refund the amount that you have used plus the interest accrued"
+      ],
+      "difficulty": "cross_source",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured"
+    }
+  ]
+}
