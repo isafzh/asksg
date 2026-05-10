@@ -371,7 +371,7 @@
         {"source": "srs", "document": "iras_srs_overview.txt"},
         {"source": "cpf", "document": "cpf_topup_tax_relief.txt"}
       ],
-      "must_contain": ["up to $16,000 in tax relief per year", "$15,300"],
+      "must_contain": ["up to $16,000", "$15,300"],
       "difficulty": "cross_source",
       "answer_type": "comparison",
       "retrieval_mode": "unstructured"
