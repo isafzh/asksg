@@ -274,7 +274,7 @@ Cross-source pairs:
 - **Q29** `cpf+budget` — CPF and Budget measures for lower-income retirement adequacy
 - **Q30** `cpf+hdb` — CPF OA usage when buying an HDB flat, plus CPF refund obligation when the flat is sold
 
-### Test question schema (v2.0)
+### Test question schema
 
 Each question carries structured metadata supporting three levels of retrieval evaluation:
 

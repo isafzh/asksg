@@ -111,8 +111,7 @@
       "must_contain": ["downpayment and housing loan", "stamp and legal fees", "Home Protection Scheme premiums"],
       "difficulty": "multi_chunk",
       "answer_type": "eligibility",
-      "retrieval_mode": "unstructured",
-      "retrieval_notes": "Question is tagged hdb but answer lives in a CPF document; tests cross-bucket retrieval."
+      "retrieval_mode": "unstructured"
     },
     {
       "id": "mas_inflation_2025_001",
