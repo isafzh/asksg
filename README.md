@@ -274,6 +274,26 @@ Cross-source pairs:
 - **Q29** `cpf+budget` — CPF and Budget measures for lower-income retirement adequacy
 - **Q30** `cpf+hdb` — CPF OA usage when buying an HDB flat, plus CPF refund obligation when the flat is sold
 
+### Test question schema (v2.0)
+
+Each question carries structured metadata supporting three levels of retrieval evaluation:
+
+| Level | What it checks | Schema field |
+|---|---|---|
+| L1 — Source | Was the right document in the top-k results? | `expected_sources[].document` |
+| L2 — Evidence | Do the retrieved chunks contain the key facts verbatim? | `must_contain[]` |
+| L3 — Chunk | Was the exact chunk retrieved? | deferred — `expected_chunks` added after chunking strategy is locked |
+
+`must_contain` strings are grepped from the actual `.txt` corpus files so they match the exact character sequences the chunker indexes (e.g., tables may store `37` not `37%`; MAS range notation uses an en-dash `–` not a hyphen).
+
+Questions are additionally tagged:
+
+| Field | Values |
+|---|---|
+| `difficulty` | `standard` · `temporal` · `multi_chunk` · `cross_source` |
+| `answer_type` | `numeric` · `policy_fact` · `eligibility` · `comparison` |
+| `retrieval_mode` | `unstructured` (all 30 current questions) · `structured` (reserved for future HDB resale data queries) |
+
 > **Note:** The results below were produced on the original corpus (13 documents) with 10 questions. The corpus has since been expanded to 25 documents across 6 sources, the test set expanded to 30 questions, ground truths for Q5 and Q7 have been corrected, and MAS Oct 2024 has been trimmed. A re-run of evaluation on the refreshed corpus and index is in progress.
 
 Two-tier evaluation covering the full RAG Triad (Context Relevance, Faithfulness, Answer Relevance):
