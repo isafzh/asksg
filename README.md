@@ -268,7 +268,7 @@ RAG quality is measured on a hand-curated test set of 30 Q&A pairs drawn from th
 
 Cross-domain pairs:
 
-Q25–Q27, Q29 require evidence from two source buckets:
+Q25–Q27, Q29 require evidence from two corpus buckets:
 - **Q25** `srs+cpf` — comparing SRS contributions vs CPF RA top-ups for tax relief
 - **Q26** `ssb+srs` — using SRS funds to invest in SSBs, and how returns are taxed
 - **Q27** `budget+mas` — MAS's April 2025 GDP projection vs Budget 2026's reported actual 5% outcome
