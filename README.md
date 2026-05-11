@@ -302,17 +302,21 @@ Questions are additionally tagged:
 
 > **Note:** The results below were produced on the original corpus (13 documents) with 10 questions. The corpus has since been expanded to 25 documents across 6 sources, the test set expanded to 30 questions, ground truths for Q5 and Q7 have been corrected, and MAS Oct 2024 has been trimmed. A re-run of evaluation on the refreshed corpus and index is in progress.
 
-Two-tier evaluation covering the full RAG Triad (Context Relevance, Faithfulness, Answer Relevance):
+I initially evaluated the Ragas library, but it required 1,300+ LLM calls per run and exhausted the Groq free-tier quota (100k tokens/day) in a single run. This is a cost-aware RAG evaluation suite inspired by the RAG triad: retrieval quality, groundedness, and answer relevance.
 
-| Metric | What it measures | Method | API cost |
-|---|---|---|---|
-| Context Relevance | Are retrieved chunks on-topic? | Cosine similarity: query vs chunks (MiniLM) | 0 extra calls |
-| Answer Similarity | Does the answer match ground truth? | Cosine similarity: answer vs ground truth (MiniLM) | 0 extra calls |
-| Keyword Recall | Does the context contain key facts? | Ground-truth keyword presence in retrieved chunks | 0 extra calls |
-| Faithfulness (LLM) | Is every claim grounded in the context? | LLM-as-judge structured prompt | 1 call/question |
-| Answer Relevance (LLM) | Does the answer address the question? | LLM-as-judge structured prompt | 1 call/question |
+| Layer | Metric | What it measures | Method | API cost |
+|---|---|---|---|---|
+| Retrieval | Hit Rate@K | Was the expected document in the top-K results? | `expected_sources` match vs chunk metadata | 0 extra calls |
+| Retrieval | MRR@K | How high was the first correct source ranked? | Reciprocal rank of first hit | 0 extra calls |
+| Retrieval | Evidence Recall | Do retrieved chunks contain the required facts? | `must_contain` strings present in context | 0 extra calls |
+| Retrieval | Context Relevance | Are retrieved chunks on-topic? | Cosine similarity: query vs chunks (MiniLM) | 0 extra calls |
+| Answer | Answer Fact Recall | Does the answer state the required facts? | `must_contain` strings present in answer | 0 extra calls |
+| Answer | Answer Similarity | Does the answer match ground truth semantically? | Cosine similarity: answer vs ground truth (MiniLM) | 0 extra calls |
+| Answer | Faithfulness (NLI) | Is every answer claim entailed by the context? | NLI cross-encoder (nli-deberta-v3-base, local) | 0 extra calls |
+| Answer | Faithfulness (LLM) | Is every claim grounded? (multi-chunk synthesis) | LLM-as-judge structured prompt | 1 call/question |
+| Answer | Answer Relevance (LLM) | Does the answer address the question? | LLM-as-judge structured prompt | 1 call/question |
 
-Total per run: **60 Groq API calls** (30 generation + 30 judge). The original Ragas library required 1,300+ calls per run and exhausted the free-tier daily quota in a single run — this implementation achieves the same conceptual coverage at 4.6% of the cost.
+Total per full run: **40 Groq API calls** (30 generation + 10 LLM judge on a representative sample). The original Ragas library required 1,300+ calls per run — this implementation achieves the same conceptual coverage at 3% of the cost. Use `--judge-sample 0` to skip the LLM judge entirely for free iteration.
 
 ### Step 1 — Top-K Curve (dense-only baseline)
 
@@ -366,7 +370,7 @@ make reranker   # hybrid + cross-encoder → eval/results/hybrid_rerank_k9.json
 - [x] Embedding and ChromaDB indexing (all-MiniLM-L6-v2)
 - [x] RAG pipeline (retrieval + Groq LLM)
 - [x] Streamlit chat interface
-- [x] Evaluation framework: two-tier (local NLI + LLM-as-judge), 60 Groq calls/run vs 1,300+ for Ragas
+- [x] Evaluation framework: retrieval (hit rate, MRR, evidence recall) + answer (fact recall, similarity, NLI) + sampled LLM judge; 40 calls/run vs 1,300+ for Ragas
 - [x] Top-K curve (k=5/7/9/11): faithfulness peaks at k=9, similarity/recall peak at k=11; k=9 chosen as optimal
 - [x] Temporal disambiguation diagnosed: Q5 CDC Vouchers absent from baseline top-9 due to year-agnostic dense embeddings
 - [x] Hybrid retrieval: BM25 + dense + RRF fixes Q5 (answer similarity 0.647 → 0.939, answer relevance 0.6 → 1.0)

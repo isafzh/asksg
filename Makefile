@@ -16,7 +16,7 @@ help:
 	@echo ""
 	@echo "  Application:"
 	@echo "    make app        Launch Streamlit app"
-	@echo "    make eval       Run RAGAS evaluation"
+	@echo "    make eval       Run RAG evaluation (hit rate, MRR, evidence recall, answer metrics)"
 	@echo ""
 	@echo "  Maintenance:"
 	@echo "    make clean      Delete generated indexes (forces full rebuild)"
