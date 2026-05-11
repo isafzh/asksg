@@ -263,7 +263,7 @@ RAG quality is measured on a hand-curated test set of 30 Q&A pairs drawn from th
 | MAS | 3 | Q9, Q10, Q24 | Macro forecasts and monetary policy framework; tests numeric projection retrieval and policy-mechanism explanation |
 | SRS | 3 | Q11, Q12, Q13 | Smaller but distinct retirement/tax-relief source |
 | SSB | 3 | Q14, Q15, Q16 | Smaller but distinct investment product source |
-| Cross-domain | 6 | Q25–Q30 | Questions spanning two policy domains; Q25–Q27 and Q29 require cross-domain evidence, while Q28/Q30 test domain-overlap cases answerable from one expected document |
+| Cross-domain | 6 | Q25–Q30 | Cross-domain topics spanning two policy areas; four require evidence from two domains, while two are domain-overlap questions answerable from one expected document |
 | **Total** | **30** | | |
 
 Cross-domain pairs:
@@ -297,6 +297,8 @@ Questions are additionally tagged:
 | `difficulty` | `standard` · `temporal` · `multi_chunk` · `cross_domain` |
 | `answer_type` | `numeric` · `policy_fact` · `eligibility` · `comparison` |
 | `retrieval_mode` | `unstructured` (all 30 current questions) · `structured` (reserved for future HDB resale data queries) |
+
+`domain` describes the policy area(s) a question belongs to. `difficulty` describes the retrieval challenge. A question can be cross-domain in topic but not `cross_domain` in difficulty if the required evidence is contained in one expected document.
 
 > **Note:** The results below were produced on the original corpus (13 documents) with 10 questions. The corpus has since been expanded to 25 documents across 6 sources, the test set expanded to 30 questions, ground truths for Q5 and Q7 have been corrected, and MAS Oct 2024 has been trimmed. A re-run of evaluation on the refreshed corpus and index is in progress.
 
