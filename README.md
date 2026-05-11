@@ -267,12 +267,16 @@ RAG quality is measured on a hand-curated test set of 30 Q&A pairs drawn from th
 | **Total** | **30** | | |
 
 Cross-source pairs:
+
+Q25–Q27, Q29 require evidence from two source buckets:
 - **Q25** `srs+cpf` — comparing SRS contributions vs CPF RA top-ups for tax relief
 - **Q26** `ssb+srs` — using SRS funds to invest in SSBs, and how returns are taxed
 - **Q27** `budget+mas` — MAS's April 2025 GDP projection vs Budget 2026's reported actual 5% outcome
-- **Q28** `hdb+budget` — housing options and grants for singles buying near parents
 - **Q29** `cpf+budget` — CPF and Budget measures for lower-income retirement adequacy
-- **Q30** `cpf+hdb` — CPF OA usage when buying an HDB flat, plus CPF refund obligation when the flat is sold
+
+Q28, Q30 are domain-overlap questions answerable from one expected document:
+- **Q28** `hdb+budget` — housing options and grants for singles buying near parents (evidence: HDB eligibility doc)
+- **Q30** `cpf+hdb` — CPF OA usage when buying an HDB flat, plus refund obligation when sold (evidence: CPF housing usage doc)
 
 ### Test question schema
 
