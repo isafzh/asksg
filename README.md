@@ -263,7 +263,7 @@ RAG quality is measured on a hand-curated test set of 30 Q&A pairs drawn from th
 | MAS | 3 | Q9, Q10, Q24 | Macro forecasts and monetary policy framework; tests numeric projection retrieval and policy-mechanism explanation |
 | SRS | 3 | Q11, Q12, Q13 | Smaller but distinct retirement/tax-relief source |
 | SSB | 3 | Q14, Q15, Q16 | Smaller but distinct investment product source |
-| Cross-domain | 6 | Q25–Q30 | Hardest set; tests synthesis across related policy domains; showcases hybrid retrieval strength |
+| Cross-domain | 6 | Q25–Q30 | Questions spanning two policy domains; Q25–Q27 and Q29 require cross-domain evidence, while Q28/Q30 test domain-overlap cases answerable from one expected document |
 | **Total** | **30** | | |
 
 Cross-domain pairs:
@@ -294,7 +294,7 @@ Questions are additionally tagged:
 
 | Field | Values |
 |---|---|
-| `difficulty` | `standard` · `temporal` · `multi_chunk` · `cross_source` |
+| `difficulty` | `standard` · `temporal` · `multi_chunk` · `cross_domain` |
 | `answer_type` | `numeric` · `policy_fact` · `eligibility` · `comparison` |
 | `retrieval_mode` | `unstructured` (all 30 current questions) · `structured` (reserved for future HDB resale data queries) |
 
@@ -346,7 +346,7 @@ The k-curve experiment revealed a temporal disambiguation failure on Q5 (CDC Vou
 
 **Trade-off:** Q7 (HDB PR eligibility) LLM faithfulness dropped from 1.0 to 0.6 — the hybrid candidate pool introduced a noisier chunk mix for that question. A more targeted fix (metadata filter by source when the query explicitly names a document category) would avoid this regression.
 
-*30 hand-curated Q&A pairs across all 6 sources — Budget, CPF, HDB, MAS, SRS, SSB — including 6 cross-source questions.*
+*30 hand-curated Q&A pairs across all 6 sources — Budget, CPF, HDB, MAS, SRS, SSB — including 6 cross-domain questions.*
 
 To run:
 ```bash
@@ -364,7 +364,7 @@ make reranker   # hybrid + cross-encoder → eval/results/hybrid_rerank_k9.json
 - [x] Embedding and ChromaDB indexing (all-MiniLM-L6-v2)
 - [x] RAG pipeline (retrieval + Groq LLM)
 - [x] Streamlit chat interface
-- [x] Evaluation framework: two-tier (local NLI + LLM-as-judge), 20 Groq calls/run vs 1,300+ for Ragas
+- [x] Evaluation framework: two-tier (local NLI + LLM-as-judge), 60 Groq calls/run vs 1,300+ for Ragas
 - [x] Top-K curve (k=5/7/9/11): faithfulness peaks at k=9, similarity/recall peak at k=11; k=9 chosen as optimal
 - [x] Temporal disambiguation diagnosed: Q5 CDC Vouchers absent from baseline top-9 due to year-agnostic dense embeddings
 - [x] Hybrid retrieval: BM25 + dense + RRF fixes Q5 (answer similarity 0.647 → 0.939, answer relevance 0.6 → 1.0)
