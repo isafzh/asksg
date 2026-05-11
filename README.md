@@ -255,7 +255,7 @@ RAG quality is measured on a hand-curated test set of 30 Q&A pairs drawn from th
 
 ### Test set composition
 
-| Source | How many | Which questions | Rationale |
+| Domain | How many | Which questions | Rationale |
 |---|---|---|---|
 | CPF | 6 | Q1, Q2, Q3, Q19, Q20, Q21 | Most rule-heavy domain; tests contribution, housing, retirement, and LIFE rules |
 | Budget | 5 | Q4, Q5, Q6, Q22, Q23 | Temporal disambiguation and year-specific policy announcements |
@@ -263,10 +263,10 @@ RAG quality is measured on a hand-curated test set of 30 Q&A pairs drawn from th
 | MAS | 3 | Q9, Q10, Q24 | Macro forecasts and monetary policy framework; tests numeric projection retrieval and policy-mechanism explanation |
 | SRS | 3 | Q11, Q12, Q13 | Smaller but distinct retirement/tax-relief source |
 | SSB | 3 | Q14, Q15, Q16 | Smaller but distinct investment product source |
-| Cross-source | 6 | Q25–Q30 | Hardest set; tests synthesis across related policy domains; showcases hybrid retrieval strength |
+| Cross-domain | 6 | Q25–Q30 | Hardest set; tests synthesis across related policy domains; showcases hybrid retrieval strength |
 | **Total** | **30** | | |
 
-Cross-source pairs:
+Cross-domain pairs:
 
 Q25–Q27, Q29 require evidence from two source buckets:
 - **Q25** `srs+cpf` — comparing SRS contributions vs CPF RA top-ups for tax relief
