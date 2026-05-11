@@ -288,7 +288,7 @@ Each question carries structured metadata supporting three levels of retrieval e
 | L2 — Evidence | Do the retrieved chunks contain the key facts verbatim? | `must_contain[]` |
 | L3 — Chunk | Was the exact chunk retrieved? | deferred — `expected_chunks` added after chunking strategy is locked |
 
-`must_contain` strings are grepped from the actual `.txt` corpus files so they match the exact character sequences the chunker indexes (e.g., tables may store `37` not `37%`; MAS range notation uses an en-dash `–` not a hyphen).
+`must_contain` strings are grepped from the actual `.txt` corpus files so they match the exact character sequences the chunker indexes (e.g., tables may store `37` not `37%`; strings are stored as ASCII so range notation uses a hyphen `-` not an en-dash).
 
 Questions are additionally tagged:
 
@@ -298,7 +298,7 @@ Questions are additionally tagged:
 | `answer_type` | `numeric` · `policy_fact` · `eligibility` · `comparison` |
 | `retrieval_mode` | `unstructured` (all 30 current questions) · `structured` (reserved for future HDB resale data queries) |
 
-`domain` describes the policy area(s) a question belongs to. `difficulty` describes the retrieval challenge. A question can be cross-domain in topic but not `cross_domain` in difficulty if the required evidence is contained in one expected document.
+`domain` describes the policy area(s) a question touches. `difficulty` describes what makes retrieval hard. Therefore, a question can be cross-domain by topic but not have `difficulty: cross_domain` if the required evidence is contained in one expected document.
 
 > **Note:** The results below were produced on the original corpus (13 documents) with 10 questions. The corpus has since been expanded to 25 documents across 6 sources, the test set expanded to 30 questions, ground truths for Q5 and Q7 have been corrected, and MAS Oct 2024 has been trimmed. A re-run of evaluation on the refreshed corpus and index is in progress.
 
