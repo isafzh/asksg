@@ -59,7 +59,7 @@ def main() -> None:
 
     # Header
     col_w = 28
-    metric_w = 16
+    metric_w = 20
     header = f"{'Experiment':<{col_w}}" + "".join(f"{m:>{metric_w}}" for m in metrics)
     print(header)
     print("-" * len(header))

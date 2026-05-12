@@ -58,7 +58,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from groq import Groq
-from src.retrieval.loader import load as load_retriever
+from src.retrieval.loader import load as load_retriever, EMBED_MODEL
 from src.retrieval.dense import retrieve_dense
 from src.retrieval.hybrid import retrieve_hybrid
 from src.retrieval.reranker import rerank
