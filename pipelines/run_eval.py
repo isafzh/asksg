@@ -1,12 +1,13 @@
 """
-Pipeline: run RAGAS evaluation and save results to eval/results/.
+Pipeline: run RAG evaluation and save results to eval/results/.
 
 Usage:
-    python pipelines/run_eval.py                       # uses hybrid_rerank mode
+    python pipelines/run_eval.py                        # hybrid_rerank, k=9 (default)
     python pipelines/run_eval.py --mode baseline
     python pipelines/run_eval.py --mode hybrid
     python pipelines/run_eval.py --mode hybrid_rerank
-    python pipelines/run_eval.py --k 7
+    python pipelines/run_eval.py --top-k 7
+    python pipelines/run_eval.py --judge-sample 0       # skip LLM judge
 """
 
 from __future__ import annotations
