@@ -37,7 +37,8 @@ def run(k: int = 9) -> None:
     print(f"=== Baseline experiment (dense-only, k={k}) ===\n")
 
     retriever = load()
-    questions = json.loads(TEST_SET.read_text(encoding="utf-8"))
+    data = json.loads(TEST_SET.read_text(encoding="utf-8"))
+    questions = data["questions"]
 
     results = []
     for i, item in enumerate(questions, 1):
@@ -64,7 +65,7 @@ def run(k: int = 9) -> None:
     out = RESULTS_DIR / f"baseline_k{k}.json"
     out.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"\nSaved {len(results)} results -> {out.relative_to(ROOT)}")
-    print("Run RAGAS scoring: python pipelines/run_eval.py --results", out)
+    print("Run eval: python pipelines/run_eval.py --mode baseline")
 
 
 def main() -> None:

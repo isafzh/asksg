@@ -1,12 +1,12 @@
 """
-Compare RAGAS evaluation results across pipeline variants.
+Compare RAG evaluation results across pipeline variants.
 
 Reads all scored JSON files from eval/results/ and prints a comparison table.
-Each file must have a top-level "scores" key with RAGAS metric values.
+Each file must have a top-level "scores" key produced by pipelines/run_eval.py.
 
 Usage:
     python experiments/compare_results.py
-    python experiments/compare_results.py --metric faithfulness context_recall
+    python experiments/compare_results.py --metric hit_rate_at_k mrr_at_k evidence_recall
 """
 
 from __future__ import annotations
@@ -21,13 +21,13 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 RESULTS_DIR = ROOT / "eval" / "results"
-DEFAULT_METRICS = ["faithfulness", "context_recall", "answer_relevancy"]
+DEFAULT_METRICS = ["hit_rate_at_k", "mrr_at_k", "evidence_recall", "answer_similarity", "faithfulness_nli"]
 
 
 def load_results(path: Path) -> dict | None:
     data = json.loads(path.read_text(encoding="utf-8"))
     if isinstance(data, list):
-        # Raw answers without RAGAS scores — skip
+        # Raw answers without scores key — skip
         return None
     return data
 
@@ -53,7 +53,7 @@ def main() -> None:
 
     if not rows:
         print("No scored result files found (files with a 'scores' key).")
-        print("Run RAGAS scoring via: python pipelines/run_eval.py")
+        print("Run eval via: python pipelines/run_eval.py")
         return
 
     # Header

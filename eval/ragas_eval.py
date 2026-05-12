@@ -86,7 +86,7 @@ def _normalize(s: str) -> str:
     """
     s = s.lower()
     s = s.replace("\u2013", "-").replace("\u2014", " - ")   # en/em-dash
-    s = s.replace("\u2018", "\u2019").replace("\u2019", "\u2019")     # curly apostrophes
+    s = s.replace("\u2018", "'").replace("\u2019", "'")     # curly apostrophes
     s = re.sub(r"\s+", " ", s).strip()
     return s
 
