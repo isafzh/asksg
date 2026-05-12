@@ -193,7 +193,7 @@ asksg/
 │   ├── ingest_documents.py              # Fetch + extract all policy documents
 │   ├── ingest_hdb_data.py               # Fetch HDB resale CSV + clean to parquet
 │   ├── build_indexes.py                 # Chunk documents + build vector and keyword indexes
-│   ├── run_eval.py                      # Run RAGAS evaluation
+│   ├── run_eval.py                      # Run RAG evaluation (hit rate, MRR, evidence recall, answer metrics)
 │   └── extract_local_pdf.py             # Fallback: extract text from a manually downloaded PDF
 │
 ├── experiments/                         # Ablation study runs — one file per pipeline variant
