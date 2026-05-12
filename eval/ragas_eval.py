@@ -25,12 +25,13 @@ This is a cost-aware RAG evaluation suite inspired by the RAG triad (retrieval q
 groundedness, answer relevance). Full run: 30 generation + 10 LLM judge = 40 API calls.
 
 Usage:
-    python pipelines/run_eval.py                        # hybrid_rerank, k=9 (recommended)
+    python pipelines/run_eval.py                        # hybrid_rerank, k=9 (default)
     python pipelines/run_eval.py --mode baseline        # dense-only
     python pipelines/run_eval.py --mode hybrid          # BM25 + dense + RRF, no reranker
     python pipelines/run_eval.py --judge-sample 0       # skip LLM judge entirely
     python pipelines/run_eval.py --judge-sample 5       # judge only 5 questions
-    python pipelines/run_eval.py --top-k 9 --mode hybrid_rerank
+    python pipelines/run_eval.py --retrieval-only       # 0 Groq calls; retrieval metrics only
+    python pipelines/run_eval.py --top-k 7 --mode hybrid_rerank --judge-sample 10
 
 Results saved to eval/results/<mode>_k<top_k>.json.
 """
@@ -238,7 +239,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="AskSG cost-aware RAG evaluation")
     parser.add_argument(
         "--top-k", type=int, default=9,
-        help="Chunks passed to LLM (default 9, optimal from k-curve eval)",
+        help="Chunks passed to LLM (default 9)",
     )
     parser.add_argument(
         "--mode", choices=["baseline", "hybrid", "hybrid_rerank"], default="hybrid_rerank",
@@ -407,8 +408,18 @@ def main() -> None:
             "judge_reasoning":       judge_result["judge_reasoning"],
         })
 
-        # Incremental save after every question - protects against mid-run quota failures
-        partial_file.write_text(json.dumps(rows, indent=2), encoding="utf-8")
+        # Incremental save - protects against mid-run quota failures
+        partial_output = {
+            "status":         "partial",
+            "schema_version": "2.0",
+            "top_k":          top_k,
+            "mode":           mode,
+            "retrieval_only": retrieval_only,
+            "n_completed":    i,
+            "n_total":        total,
+            "per_question":   rows,
+        }
+        partial_file.write_text(json.dumps(partial_output, indent=2), encoding="utf-8")
 
     print()
 
@@ -428,24 +439,26 @@ def main() -> None:
         "answer_relevance_llm": _mean("answer_relevance_llm"),
     }
 
+    def _fmt(v) -> str:
+        return f"{v:.4f}" if v is not None else "n/a"
+
     print("=" * 60)
     print(f"Evaluation Results  [mode={mode}]  [top-k={top_k}]")
     print("=" * 60)
     print("  --- Retrieval (0 extra API calls) ---")
-    print(f"  Hit Rate@{top_k}:           {scores['hit_rate_at_k']:.4f}")
-    print(f"  MRR@{top_k}:                {scores['mrr_at_k']:.4f}")
-    print(f"  Evidence Recall:         {scores['evidence_recall']:.4f}")
-    print(f"  Context Relevance:       {scores['context_relevance']:.4f}")
-    print("  --- Answer (0 extra API calls) ---")
-    print(f"  Answer Fact Recall:      {scores['answer_fact_recall']:.4f}")
-    print(f"  Answer Similarity:       {scores['answer_similarity']:.4f}")
-    print(f"  Faithfulness (NLI):      {scores['faithfulness_nli']:.4f}")
-    if judge_sample > 0:
-        print(f"  --- LLM judge (sample n={judge_calls}) ---")
-        f_llm  = scores["faithfulness_llm"]
-        ar_llm = scores["answer_relevance_llm"]
-        print(f"  Faithfulness (LLM):      {f_llm:.4f}" if f_llm is not None else "  Faithfulness (LLM):      n/a")
-        print(f"  Answer Relevance (LLM):  {ar_llm:.4f}" if ar_llm is not None else "  Answer Relevance (LLM):  n/a")
+    print(f"  Hit Rate@{top_k}:           {_fmt(scores['hit_rate_at_k'])}")
+    print(f"  MRR@{top_k}:                {_fmt(scores['mrr_at_k'])}")
+    print(f"  Evidence Recall:         {_fmt(scores['evidence_recall'])}")
+    print(f"  Context Relevance:       {_fmt(scores['context_relevance'])}")
+    if not retrieval_only:
+        print("  --- Answer (0 extra API calls) ---")
+        print(f"  Answer Fact Recall:      {_fmt(scores['answer_fact_recall'])}")
+        print(f"  Answer Similarity:       {_fmt(scores['answer_similarity'])}")
+        print(f"  Faithfulness (NLI):      {_fmt(scores['faithfulness_nli'])}")
+        if judge_sample > 0:
+            print(f"  --- LLM judge (sample n={judge_calls}) ---")
+            print(f"  Faithfulness (LLM):      {_fmt(scores['faithfulness_llm'])}")
+            print(f"  Answer Relevance (LLM):  {_fmt(scores['answer_relevance_llm'])}")
     print("=" * 60)
 
     output = {
