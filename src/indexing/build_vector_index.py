@@ -12,6 +12,7 @@ a full rebuild.
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -23,7 +24,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 CHUNKS_FILE = ROOT / "data" / "processed" / "chunks.jsonl"
-CHROMA_DIR = ROOT / "data" / "indexes" / "chroma"
+CHROMA_DIR = Path(os.getenv("ASKSG_CHROMA_DIR", ROOT / "data" / "indexes" / "chroma"))
 COLLECTION_NAME = "asksg"
 EMBED_MODEL = "all-MiniLM-L6-v2"
 BATCH_SIZE = 64
@@ -79,7 +80,7 @@ def build(force: bool = False) -> None:
         print(f"  {min(start + BATCH_SIZE, len(chunks)):,} / {len(chunks):,}", end="\r")
 
     print()
-    print(f"Done. {collection.count():,} chunks stored in {CHROMA_DIR.relative_to(ROOT)}")
+    print(f"Done. {collection.count():,} chunks stored in {CHROMA_DIR}")
 
     print("\nSanity check — querying: 'CPF housing grant eligibility'")
     test_emb = model.encode(["CPF housing grant eligibility"]).tolist()

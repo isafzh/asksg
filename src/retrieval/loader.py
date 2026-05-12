@@ -7,6 +7,7 @@ by positional index.
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 from typing import NamedTuple
@@ -21,7 +22,7 @@ if str(ROOT) not in sys.path:
 
 from src.indexing.build_keyword_index import build as build_bm25, load_chunks
 
-CHROMA_DIR = ROOT / "data" / "indexes" / "chroma"
+CHROMA_DIR = Path(os.getenv("ASKSG_CHROMA_DIR", ROOT / "data" / "indexes" / "chroma"))
 COLLECTION_NAME = "asksg"
 EMBED_MODEL = "all-MiniLM-L6-v2"
 RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
