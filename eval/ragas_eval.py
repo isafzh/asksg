@@ -30,7 +30,7 @@ Usage:
     python pipelines/run_eval.py --mode hybrid          # BM25 + dense + RRF, no reranker
     python pipelines/run_eval.py --judge-sample 0       # skip LLM judge entirely
     python pipelines/run_eval.py --judge-sample 5       # judge only 5 questions
-    python pipelines/run_eval.py --retrieval-only       # 0 Groq calls; retrieval metrics only
+    python pipelines/run_eval.py --retrieval-only       # no Groq calls; local models still load
     python pipelines/run_eval.py --top-k 7 --mode hybrid_rerank --judge-sample 10
 
 Results saved to eval/results/<mode>_k<top_k>.json.
@@ -255,7 +255,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--retrieval-only", action="store_true",
-        help="Skip generation and answer metrics; compute only hit_rate, MRR, evidence_recall, context_relevance. Zero Groq API calls.",
+        help="Skip generation and answer metrics; compute only retrieval metrics. No Groq API calls (local models still required).",
     )
     args = parser.parse_args()
     top_k          = args.top_k
@@ -292,7 +292,7 @@ def main() -> None:
 
     judge_calls = min(judge_sample, len(questions))
     if retrieval_only:
-        print(f"Running retrieval-only eval  [mode={mode}]  [top-k={top_k}]  (0 Groq calls)\n")
+        print(f"Running retrieval-only eval  [mode={mode}]  [top-k={top_k}]  (no Groq calls; local models required)\n")
     else:
         gen_calls = len(questions)
         print(
@@ -462,11 +462,12 @@ def main() -> None:
     print("=" * 60)
 
     output = {
-        "schema_version": "2.0",
-        "top_k":          top_k,
-        "mode":           mode,
-        "judge_sample":   judge_calls,
-        "n_questions":    len(questions),
+        "schema_version":  "2.0",
+        "top_k":           top_k,
+        "mode":            mode,
+        "retrieval_only":  retrieval_only,
+        "judge_sample":    judge_calls,
+        "n_questions":     len(questions),
         "scores":         scores,
         "per_question":   rows,
         "models": {
