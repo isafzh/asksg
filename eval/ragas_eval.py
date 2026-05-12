@@ -58,7 +58,11 @@ load_dotenv()
 
 from groq import Groq
 from src.retrieval.loader import load as load_retriever
-from src.generation.answer import answer, GROQ_MODEL
+from src.retrieval.dense import retrieve_dense
+from src.retrieval.hybrid import retrieve_hybrid
+from src.retrieval.reranker import rerank
+from src.generation.answer import GROQ_MODEL, FETCH
+from src.generation.prompts import SYSTEM_PROMPT, build_context
 from sentence_transformers import SentenceTransformer, CrossEncoder
 
 TEST_SET_FILE = Path(__file__).parent / "test_set.json"
@@ -248,13 +252,23 @@ def main() -> None:
         "--judge-sample", type=int, default=10,
         help="Number of questions to run through LLM judge (default 10, set 0 to skip)",
     )
+    parser.add_argument(
+        "--retrieval-only", action="store_true",
+        help="Skip generation and answer metrics; compute only hit_rate, MRR, evidence_recall, context_relevance. Zero Groq API calls.",
+    )
     args = parser.parse_args()
-    top_k        = args.top_k
-    mode         = args.mode
-    judge_sample = args.judge_sample
+    top_k          = args.top_k
+    mode           = args.mode
+    judge_sample   = args.judge_sample
+    retrieval_only = args.retrieval_only
+
+    if retrieval_only:
+        judge_sample = 0
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    results_file = RESULTS_DIR / f"{mode}_k{top_k}.json"
+    suffix       = "_retrieval_only" if retrieval_only else ""
+    results_file = RESULTS_DIR / f"{mode}_k{top_k}{suffix}.json"
+    partial_file = results_file.with_suffix(".partial.json")
 
     print("Loading test set...")
     data      = json.loads(TEST_SET_FILE.read_text(encoding="utf-8"))
@@ -265,20 +279,27 @@ def main() -> None:
     retriever = load_retriever()
     print(f"  {retriever.collection.count():,} chunks in index\n")
 
-    print(f"Loading NLI model ({NLI_MODEL})...")
-    nli = CrossEncoder(NLI_MODEL)
+    if not retrieval_only:
+        print(f"Loading NLI model ({NLI_MODEL})...")
+        nli = CrossEncoder(NLI_MODEL)
+    else:
+        nli = None
+
     print(f"Loading embedding model ({EMBED_MODEL})...")
     embedder = SentenceTransformer(EMBED_MODEL)
     print()
 
-    gen_calls   = len(questions)
     judge_calls = min(judge_sample, len(questions))
-    print(
-        f"Running evaluation  [mode={mode}]  [top-k={top_k}]  "
-        f"[judge-sample={judge_calls}]\n"
-        f"  API calls: {gen_calls} generation + {judge_calls} LLM judge = "
-        f"{gen_calls + judge_calls} total\n"
-    )
+    if retrieval_only:
+        print(f"Running retrieval-only eval  [mode={mode}]  [top-k={top_k}]  (0 Groq calls)\n")
+    else:
+        gen_calls = len(questions)
+        print(
+            f"Running evaluation  [mode={mode}]  [top-k={top_k}]  "
+            f"[judge-sample={judge_calls}]\n"
+            f"  API calls: {gen_calls} generation + {judge_calls} LLM judge = "
+            f"{gen_calls + judge_calls} total\n"
+        )
 
     rows = []
     total = len(questions)
@@ -290,12 +311,17 @@ def main() -> None:
 
         print(f"  [{i:02d}/{total}] {q[:72]}...")
 
-        # Generation - 1 Groq call
-        result   = answer(q, retriever.model, retriever.collection,
-                          retriever.bm25, retriever.chunks, retriever.reranker,
-                          k=top_k, mode=mode)
-        ans      = result["answer"]
-        chunks   = result["sources"]
+        # Retrieval (always runs)
+        if mode == "baseline":
+            chunks = retrieve_dense(q, retriever.model, retriever.collection, k=top_k)
+        elif mode == "hybrid":
+            chunks = retrieve_hybrid(q, retriever.model, retriever.collection,
+                                     retriever.bm25, retriever.chunks, k=top_k, fetch=FETCH)
+        else:  # hybrid_rerank
+            chunks = retrieve_hybrid(q, retriever.model, retriever.collection,
+                                     retriever.bm25, retriever.chunks, k=FETCH, fetch=FETCH)
+            chunks = rerank(q, chunks, retriever.reranker, top_n=top_k)
+
         contexts = [c["text"] for c in chunks]
 
         # Retrieval metrics - 0 API calls
@@ -304,32 +330,52 @@ def main() -> None:
         evid_r = evidence_recall(must_contain, contexts)
         ctx_r  = context_relevance(q, contexts, embedder)
 
-        # Answer metrics - 0 API calls
-        fact_r = answer_fact_recall(must_contain, ans)
-        sim    = answer_similarity(ans, gt, embedder)
-        f_nli  = faithfulness_nli(ans, contexts, nli)
-
         print(
             f"    Retrieval: hit={hit:.1f}  mrr={mrr:.3f}  "
             f"evidence_recall={evid_r:.3f}  ctx_relevance={ctx_r:.3f}"
         )
-        print(
-            f"    Answer:    fact_recall={fact_r:.3f}  "
-            f"similarity={sim:.3f}  faithfulness(NLI)={f_nli:.3f}"
-        )
 
-        # LLM judge - 1 Groq call (sampled questions only)
+        ans    = None
+        fact_r = None
+        sim    = None
+        f_nli  = None
         judge_result: dict = {"faithfulness_llm": None, "answer_relevance_llm": None, "judge_reasoning": ""}
-        if i <= judge_sample:
-            try:
-                judge_result = llm_judge(q, ans, contexts)
-                print(
-                    f"    Judge:     faithfulness={judge_result['faithfulness_llm']}  "
-                    f"answer_relevance={judge_result['answer_relevance_llm']}"
-                )
-            except Exception as e:
-                print(f"    Judge:     skipped: {e}")
-                judge_result["judge_reasoning"] = str(e)
+
+        if not retrieval_only:
+            # Generation - 1 Groq call, uses already-retrieved chunks
+            client = Groq(api_key=os.environ["GROQ_API_KEY"])
+            response = client.chat.completions.create(
+                model=GROQ_MODEL,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": f"Context:\n{build_context(chunks)}\n\nQuestion: {q}"},
+                ],
+                temperature=0.1,
+                max_tokens=1024,
+            )
+            ans = response.choices[0].message.content
+
+            # Answer metrics - 0 API calls
+            fact_r = answer_fact_recall(must_contain, ans)
+            sim    = answer_similarity(ans, gt, embedder)
+            f_nli  = faithfulness_nli(ans, contexts, nli)
+
+            print(
+                f"    Answer:    fact_recall={fact_r:.3f}  "
+                f"similarity={sim:.3f}  faithfulness(NLI)={f_nli:.3f}"
+            )
+
+            # LLM judge - 1 Groq call (sampled questions only)
+            if i <= judge_sample:
+                try:
+                    judge_result = llm_judge(q, ans, contexts)
+                    print(
+                        f"    Judge:     faithfulness={judge_result['faithfulness_llm']}  "
+                        f"answer_relevance={judge_result['answer_relevance_llm']}"
+                    )
+                except Exception as e:
+                    print(f"    Judge:     skipped: {e}")
+                    judge_result["judge_reasoning"] = str(e)
 
         rows.append({
             # question metadata
@@ -360,6 +406,9 @@ def main() -> None:
             "answer_relevance_llm":  judge_result["answer_relevance_llm"],
             "judge_reasoning":       judge_result["judge_reasoning"],
         })
+
+        # Incremental save after every question - protects against mid-run quota failures
+        partial_file.write_text(json.dumps(rows, indent=2), encoding="utf-8")
 
     print()
 
@@ -414,6 +463,8 @@ def main() -> None:
         },
     }
     results_file.write_text(json.dumps(output, indent=2), encoding="utf-8")
+    if partial_file.exists():
+        partial_file.unlink()
     print(f"\nResults saved -> {results_file.relative_to(ROOT)}")
 
 

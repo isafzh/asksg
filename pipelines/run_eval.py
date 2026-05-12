@@ -8,6 +8,7 @@ Usage:
     python pipelines/run_eval.py --mode hybrid_rerank
     python pipelines/run_eval.py --top-k 7
     python pipelines/run_eval.py --judge-sample 0       # skip LLM judge
+    python pipelines/run_eval.py --retrieval-only       # 0 Groq calls; hit rate/MRR/evidence recall only
 """
 
 from __future__ import annotations
