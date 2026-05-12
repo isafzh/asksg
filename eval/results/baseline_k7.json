@@ -1,0 +1,1212 @@
+{
+  "schema_version": "2.0",
+  "top_k": 7,
+  "mode": "baseline",
+  "judge_sample": 0,
+  "n_questions": 30,
+  "scores": {
+    "hit_rate_at_k": 0.9,
+    "mrr_at_k": 0.702,
+    "evidence_recall": 0.6111,
+    "context_relevance": 0.6527,
+    "answer_fact_recall": 0.4222,
+    "answer_similarity": 0.8284,
+    "faithfulness_nli": 0.4403,
+    "faithfulness_llm": null,
+    "answer_relevance_llm": null
+  },
+  "per_question": [
+    {
+      "id": "cpf_contribution_rate_001",
+      "domain": "cpf",
+      "category": "cpf_contributions",
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_contribution_rates"
+        }
+      ],
+      "must_contain": [
+        "55 and below",
+        "37"
+      ],
+      "retrieved_documents": [
+        "cpf_budget_highlights_2023",
+        "cpf_contribution_rates",
+        "budget_2025_speech",
+        "budget_2023_speech",
+        "cpf_salary_ceiling_budget2023",
+        "budget_2024_speech",
+        "cpf_retirement_sums"
+      ],
+      "question": "What is the total CPF contribution rate for employees aged 55 and below from 1 January 2026?",
+      "generated_answer": "The total CPF contribution rate for employees aged 55 and below from 1 January 2026 is 37%. This is broken down into 17% contributed by the employer and 20% contributed by the employee.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.5,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.7244,
+      "answer_fact_recall": 1.0,
+      "answer_similarity": 0.9436,
+      "faithfulness_nli": 0.4976,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cpf_salary_ceiling_001",
+      "domain": "cpf",
+      "category": "cpf_contributions",
+      "difficulty": "temporal",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_salary_ceiling_budget2023"
+        }
+      ],
+      "must_contain": [
+        "$6,300",
+        "$6,800",
+        "$7,400",
+        "$8,000"
+      ],
+      "retrieved_documents": [
+        "cpf_budget_highlights_2023",
+        "cpf_budget_highlights_2023",
+        "cpf_salary_ceiling_budget2023",
+        "budget_2023_speech",
+        "cpf_salary_ceiling_budget2023",
+        "cpf_budget_highlights_2023",
+        "budget_2023_speech"
+      ],
+      "question": "What were the four steps in raising the CPF monthly salary ceiling from 2023 to 2026?",
+      "generated_answer": "The four steps in raising the CPF monthly salary ceiling from 2023 to 2026 are:\n\n1. On September 1, 2023, the monthly salary ceiling will increase to $6,300.\n2. On January 1, 2024, it will rise further to $6,800.\n3. On January 1, 2025, the ceiling will hit $7,400.\n4. On January 1, 2026, it will reach $8,000.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.3333,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6825,
+      "answer_fact_recall": 1.0,
+      "answer_similarity": 0.94,
+      "faithfulness_nli": 0.2953,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cpf_property_refund_001",
+      "domain": "cpf",
+      "category": "cpf_housing",
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_housing_usage"
+        }
+      ],
+      "must_contain": [
+        "refund the amount that you have used plus the interest accrued"
+      ],
+      "retrieved_documents": [
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_retirement_at55",
+        "cpf_housing_usage",
+        "cpf_retirement_at55",
+        "cpf_housing_usage"
+      ],
+      "question": "What happens to CPF savings used for a property when the property is sold?",
+      "generated_answer": "When a property is sold, the amount of CPF savings used for the property, plus the interest accrued on this amount, must be refunded to the CPF account. This is to restore the individual's retirement savings. Additionally, if the property was pledged to make up the retirement sum, the pledged amount must also be refunded.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5856,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.8003,
+      "faithfulness_nli": 0.3677,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "budget_hdb_resale_grant_001",
+      "domain": "budget",
+      "category": "budget_housing",
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "budget",
+          "document": "budget_2023_speech"
+        }
+      ],
+      "must_contain": [
+        "$190,000"
+      ],
+      "retrieved_documents": [
+        "hdb_eligibility_singles",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles",
+        "budget_2023_speech"
+      ],
+      "question": "What is the maximum total grant eligible families can receive when buying an HDB resale flat, as announced in Budget 2023?",
+      "generated_answer": "According to the context provided, the maximum total grant eligible families can receive when buying a resale flat is up to $190,000. This includes the Enhanced CPF Housing Grant and the Proximity Housing Grant.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.1429,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6555,
+      "answer_fact_recall": 1.0,
+      "answer_similarity": 0.757,
+      "faithfulness_nli": 0.4993,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "budget_cdc_vouchers_2025_001",
+      "domain": "budget",
+      "category": "budget_social_support",
+      "difficulty": "temporal",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "budget",
+          "document": "budget_2025_speech"
+        }
+      ],
+      "must_contain": [
+        "$800 in CDC Vouchers",
+        "The first $500 will be disbursed in May"
+      ],
+      "retrieved_documents": [
+        "budget_2025_speech",
+        "budget_2023_speech",
+        "budget_2023_speech",
+        "mas_macro_review_apr2025",
+        "budget_2025_speech",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024"
+      ],
+      "question": "What CDC Voucher amount was announced in Budget 2025 and when will they be disbursed?",
+      "generated_answer": "According to the context, in Budget 2025, every Singaporean household will receive $800 in CDC Vouchers. The disbursement will be as follows: \n- The first $500 will be disbursed in May of the current year.\n- The remaining $300 will be disbursed in January of the next year.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.5,
+      "context_relevance": 0.5693,
+      "answer_fact_recall": 1.0,
+      "answer_similarity": 0.9524,
+      "faithfulness_nli": 0.6557,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "budget_cpf_min_payout_001",
+      "domain": "budget",
+      "category": "budget_retirement",
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "budget",
+          "document": "budget_2023_speech"
+        }
+      ],
+      "must_contain": [
+        "Retirement Sum Scheme to $350"
+      ],
+      "retrieved_documents": [
+        "cpf_budget_highlights_2023",
+        "cpf_salary_ceiling_budget2023",
+        "budget_2023_speech",
+        "cpf_budget_highlights_2023",
+        "cpf_budget_highlights_2023",
+        "cpf_budget_highlights_2023",
+        "cpf_budget_highlights_2023"
+      ],
+      "question": "What change did Budget 2023 make to the minimum CPF monthly payout for non-CPF LIFE members?",
+      "generated_answer": "The minimum CPF monthly payout for non-CPF LIFE members (those on the Retirement Sum Scheme) was increased from $250 to $350 per month, effective June 2023. This change will result in higher monthly payouts for seniors who are currently receiving less than $350 a month, and payouts will continue until their CPF savings are depleted.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.3333,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.675,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.9557,
+      "faithfulness_nli": 0.9971,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "hdb_spr_eligibility_001",
+      "domain": "hdb",
+      "category": "hdb_eligibility",
+      "difficulty": "standard",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "hdb",
+          "document": "hdb_eligibility_couples_families"
+        }
+      ],
+      "must_contain": [
+        "SPR status for at least 3 years"
+      ],
+      "retrieved_documents": [
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles"
+      ],
+      "question": "Can a Singapore Permanent Resident buy an HDB resale flat?",
+      "generated_answer": "According to the context, a Singapore Permanent Resident (SPR) can be included in an application to buy an HDB flat, but the context does not explicitly state that an SPR can buy an HDB resale flat on their own. \n\nHowever, it is mentioned that \"For SPR households (i.e., an SPR household with no SC applicant): All applicants and core occupiers\" must meet certain conditions, implying that SPRs can buy flats under certain conditions, but the details of these conditions are not fully provided in the given context.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.6842,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.8611,
+      "faithfulness_nli": 0.0045,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "hdb_cpf_oa_usage_001",
+      "domain": "hdb",
+      "category": "cpf_housing",
+      "difficulty": "multi_chunk",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_housing_usage"
+        }
+      ],
+      "must_contain": [
+        "downpayment and housing loan",
+        "stamp and legal fees",
+        "Home Protection Scheme premiums"
+      ],
+      "retrieved_documents": [
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_retirement_at55",
+        "cpf_retirement_at55"
+      ],
+      "question": "What can CPF Ordinary Account savings be used for when buying a home?",
+      "generated_answer": "CPF Ordinary Account (OA) savings can be used for housing payments, such as buying a property under the CPF Housing Scheme, making a full or partial housing loan payment, and repaying overdue housing instalments. It is recommended to use a mix of cash and OA savings for housing payments to keep some money in the OA to earn attractive interest rates and act as a safety net.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.6458,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.7885,
+      "faithfulness_nli": 0.9862,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "mas_inflation_2025_001",
+      "domain": "mas",
+      "category": "mas_economic_outlook",
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "mas",
+          "document": "mas_macro_review_apr2025"
+        }
+      ],
+      "must_contain": [
+        "0.5-1.5%"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024"
+      ],
+      "question": "What is MAS's inflation projection for 2025?",
+      "generated_answer": "According to the context, MAS's inflation projection for 2025 is as follows:\n\n- MAS Core Inflation is expected to average around the mid-point of the forecast range of 1.5\u20132.5% in 2025.\n- Both MAS Core and CPI-All Items inflation are now projected to average 0.5\u20131.5% in 2025. \n\nNote that there are two different projections provided in the context, and it is not clear which one is the most up-to-date or accurate.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.1667,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.672,
+      "answer_fact_recall": 1.0,
+      "answer_similarity": 0.8552,
+      "faithfulness_nli": 0.6634,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "mas_gdp_forecast_2025_001",
+      "domain": "mas",
+      "category": "mas_economic_outlook",
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "mas",
+          "document": "mas_macro_review_apr2025"
+        }
+      ],
+      "must_contain": [
+        "0.0-2.0%"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024"
+      ],
+      "question": "What is Singapore's GDP growth forecast for 2025 according to MAS?",
+      "generated_answer": "According to the context, Singapore's GDP growth forecast for 2025 is expected to be \"broadly similar\" to 2024, which is around the upper end of the 2-3% forecast range.",
+      "hit_rate_at_k": 0.0,
+      "mrr_at_k": 0.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.7421,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.7938,
+      "faithfulness_nli": 0.9946,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "srs_contribution_limit_001",
+      "domain": "srs",
+      "category": "srs_contributions",
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "srs",
+          "document": "iras_srs_overview"
+        }
+      ],
+      "must_contain": [
+        "$15,300",
+        "$35,700"
+      ],
+      "retrieved_documents": [
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "budget_2026_speech"
+      ],
+      "question": "What is the maximum annual SRS contribution for Singapore Citizens and Permanent Residents versus foreigners?",
+      "generated_answer": "For Singapore Citizens and Permanent Residents, the maximum annual SRS contribution is $15,300. For foreigners, the maximum annual SRS contribution is $35,700.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.7171,
+      "answer_fact_recall": 1.0,
+      "answer_similarity": 0.9841,
+      "faithfulness_nli": 0.4731,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "srs_withdrawal_tax_001",
+      "domain": "srs",
+      "category": "srs_withdrawals",
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "srs",
+          "document": "iras_srs_overview"
+        }
+      ],
+      "must_contain": [
+        "only 50% of the withdrawals from SRS are taxable"
+      ],
+      "retrieved_documents": [
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview"
+      ],
+      "question": "How are SRS withdrawals taxed at the statutory retirement age?",
+      "generated_answer": "According to the context, only 50% of the withdrawals from SRS are taxable at retirement.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5751,
+      "answer_fact_recall": 1.0,
+      "answer_similarity": 0.9385,
+      "faithfulness_nli": 0.9826,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "srs_contribution_cessation_001",
+      "domain": "srs",
+      "category": "srs_contributions",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "srs",
+          "document": "iras_srs_overview"
+        }
+      ],
+      "must_contain": [
+        "contributions cannot be made if you start withdrawing",
+        "statutory retirement age that was prevailing when you made your first SRS contribution"
+      ],
+      "retrieved_documents": [
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview"
+      ],
+      "question": "Under what circumstances can a person no longer make contributions to their SRS account?",
+      "generated_answer": "A person can no longer make contributions to their SRS account under the following circumstances: \n\n1. If they start withdrawing from their SRS account at or after the statutory retirement age that was prevailing when they made their first SRS contribution.\n2. If they start withdrawing from their SRS account on medical grounds.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5551,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.8729,
+      "faithfulness_nli": 0.4961,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "ssb_interest_structure_001",
+      "domain": "ssb",
+      "category": "ssb_mechanics",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "ssb",
+          "document": "mas_ssb_overview"
+        }
+      ],
+      "must_contain": [
+        "average annual compounded return",
+        "linked to the yield of an SGS of a corresponding tenor"
+      ],
+      "retrieved_documents": [
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_macro_review_oct2024",
+        "mas_ssb_overview"
+      ],
+      "question": "How are Singapore Savings Bond interest rates determined, and what is the step-up feature?",
+      "generated_answer": "According to the context, Singapore Savings Bond interest rates are determined such that the average annual compounded return over an investor's investment period is linked to the yield of a corresponding Singapore Government Securities (SGS) bond yield. \n\nThe step-up feature of the SSB reflects the objective of facilitating long-term savings and investment, where the return increases the longer the bond is held. However, there may be exceptions to this, such as when the shape of the SGS yield curve does not allow interest rates to step up, in which case an adjustment may be made to prevent interest payments from stepping down in any year within the life of the bond.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6047,
+      "answer_fact_recall": 0.5,
+      "answer_similarity": 0.8439,
+      "faithfulness_nli": 0.668,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "ssb_purchase_channels_001",
+      "domain": "ssb",
+      "category": "ssb_mechanics",
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "ssb",
+          "document": "mas_ssb_overview"
+        }
+      ],
+      "must_contain": [
+        "S$500",
+        "DBS/POSB, OCBC and UOB ATMs or internet banking"
+      ],
+      "retrieved_documents": [
+        "mas_ssb_overview",
+        "cpf_investment_scheme_options",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "budget_2023_speech",
+        "budget_2024_speech"
+      ],
+      "question": "What is the minimum investment amount for Singapore Savings Bonds, and through which channels can they be purchased?",
+      "generated_answer": "The provided context does not specify the minimum investment amount for Singapore Savings Bonds. However, it does mention that you can \"Start Small\", implying a relatively low or flexible minimum investment amount, but the exact amount is not provided.\n\nAs for the channels through which Singapore Savings Bonds can be purchased, according to the context, they can be bought through:\n\n- DBS/POSB, OCBC, and UOB ATMs\n- Internet banking of DBS/POSB, OCBC, and UOB\n- OCBC's mobile application\n- SRS Operator's internet banking portal (for SRS investors)",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.5,
+      "context_relevance": 0.5915,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.8528,
+      "faithfulness_nli": 0.3448,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "ssb_early_redemption_001",
+      "domain": "ssb",
+      "category": "ssb_mechanics",
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "ssb",
+          "document": "mas_ssb_overview"
+        }
+      ],
+      "must_contain": [
+        "no penalty for exiting your investment early",
+        "2nd business day of the following month"
+      ],
+      "retrieved_documents": [
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview"
+      ],
+      "question": "Can Singapore Savings Bond investors exit their investment early, and how quickly are redemption proceeds paid?",
+      "generated_answer": "Yes, Singapore Savings Bond investors can exit their investment early without penalty. The redemption period opens on the 1st business day of each month and closes on the 4th last business day of the month. Investors will receive their redemption proceeds, along with any accrued interest, by the 2nd business day of the following month.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5529,
+      "answer_fact_recall": 0.5,
+      "answer_similarity": 0.5315,
+      "faithfulness_nli": 0.6564,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "hdb_singles_eligibility_001",
+      "domain": "hdb",
+      "category": "hdb_eligibility",
+      "difficulty": "multi_chunk",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "hdb",
+          "document": "hdb_eligibility_singles"
+        }
+      ],
+      "must_contain": [
+        "At least 35 years old (unmarried or divorced)",
+        "At least 21 years old (widowed or an orphan"
+      ],
+      "retrieved_documents": [
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families"
+      ],
+      "question": "What are the eligibility conditions for a single Singapore Citizen to buy an HDB flat on their own?",
+      "generated_answer": "To buy an HDB flat on their own, a single Singapore Citizen must: \n1. Be at least 35 years old (if unmarried or divorced) or at least 21 years old (if widowed or an orphan, with at least one deceased parent being a Singapore Citizen or Permanent Resident).\n2. Have a total household income not exceeding the monthly household income ceiling (though the specific ceiling is not provided in the context for singles).\n3. Apply for an HDB Flat Eligibility (HFE) letter via the HDB Flat Portal.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.5,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6987,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.7634,
+      "faithfulness_nli": 0.341,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "hdb_singles_grants_001",
+      "domain": "hdb",
+      "category": "hdb_eligibility",
+      "difficulty": "standard",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "hdb",
+          "document": "hdb_eligibility_singles"
+        }
+      ],
+      "must_contain": [
+        "CPF Housing Grant (Singles)",
+        "Enhanced CPF Housing Grant (Singles)",
+        "Proximity Housing Grant (Singles)"
+      ],
+      "retrieved_documents": [
+        "hdb_eligibility_singles",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_singles"
+      ],
+      "question": "What CPF housing grants can single Singapore Citizens apply for when buying a resale HDB flat?",
+      "generated_answer": "According to the context, single Singapore Citizens can apply for the following CPF housing grants when buying a resale HDB flat:\n\n1. CPF Housing Grant (Singles)\n2. Enhanced CPF Housing Grant (Singles)\n3. Proximity Housing Grant (Singles)\n4. Top-up Grant (at a later stage if eligible)",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.7499,
+      "answer_fact_recall": 1.0,
+      "answer_similarity": 0.945,
+      "faithfulness_nli": 0.1795,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cpf_interest_rates_001",
+      "domain": "cpf",
+      "category": "cpf_savings",
+      "difficulty": "multi_chunk",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_interest_rates"
+        }
+      ],
+      "must_contain": [
+        "2.5%",
+        "4%",
+        "1% per annum on the first $60,000"
+      ],
+      "retrieved_documents": [
+        "cpf_interest_rates",
+        "cpf_interest_rates",
+        "cpf_interest_rates",
+        "budget_2026_speech",
+        "budget_2023_speech",
+        "cpf_salary_ceiling_budget2023",
+        "cpf_budget_highlights_2023"
+      ],
+      "question": "What are the CPF interest rates for the Ordinary Account and the Special, MediSave, and Retirement Accounts, and is any extra interest paid?",
+      "generated_answer": "The CPF interest rates are as follows: \n- Ordinary Account: 2.5%\n- Special, MediSave, and Retirement Account: 4%\n\nExtra interest is paid on the first $60,000 of combined CPF balances. The extra interest rates are:\n- 1% per annum for those below 55 years old\n- 2% per annum on the first $30,000 and 1% per annum on the next $30,000 for those 55 years old and above\n\nThe extra interest is capped at $20,000 for the Ordinary Account, and it goes into the Special Account or Retirement Account to enhance retirement savings.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6537,
+      "answer_fact_recall": 0.6667,
+      "answer_similarity": 0.8424,
+      "faithfulness_nli": 0.7823,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cpf_life_plans_001",
+      "domain": "cpf",
+      "category": "cpf_retirement",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_life"
+        }
+      ],
+      "must_contain": [
+        "Escalating",
+        "grow by 2% a year for life",
+        "Monthly payouts start low and fall when your CPF balances fall below $60,000"
+      ],
+      "retrieved_documents": [
+        "cpf_life",
+        "cpf_life",
+        "cpf_retirement_at65",
+        "cpf_retirement_at65",
+        "cpf_life",
+        "budget_2026_speech",
+        "cpf_life"
+      ],
+      "question": "What are the three CPF LIFE plans and how do they differ?",
+      "generated_answer": "The context does not contain enough information to answer the question about the specific details of the three CPF LIFE plans and how they differ. While it mentions that there are three plans to choose from based on your desired retirement lifestyle, it does not provide details on what these plans are or their differences.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.3333,
+      "context_relevance": 0.5977,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.5912,
+      "faithfulness_nli": 0.0006,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cpf_frs_amounts_001",
+      "domain": "cpf",
+      "category": "cpf_retirement",
+      "difficulty": "temporal",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_retirement_sums"
+        }
+      ],
+      "must_contain": [
+        "$213,000",
+        "$220,400",
+        "$228,200"
+      ],
+      "retrieved_documents": [
+        "cpf_retirement_sums",
+        "cpf_retirement_sums",
+        "cpf_retirement_sums",
+        "cpf_budget_highlights_2023",
+        "budget_2023_speech",
+        "cpf_retirement_sums",
+        "cpf_retirement_withdrawals"
+      ],
+      "question": "What are the CPF Full Retirement Sum amounts for members turning 55 in 2025, 2026, and 2027?",
+      "generated_answer": "The CPF Full Retirement Sum amounts for members turning 55 in 2025, 2026, and 2027 are:\n\n- 2025: $213,000\n- 2026: $220,400\n- 2027: $228,200",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.7124,
+      "answer_fact_recall": 1.0,
+      "answer_similarity": 0.886,
+      "faithfulness_nli": 0.0299,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "budget_gdp_2025_actual_001",
+      "domain": "budget",
+      "category": "budget_fiscal_policy",
+      "difficulty": "temporal",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "budget",
+          "document": "budget_2026_speech"
+        }
+      ],
+      "must_contain": [
+        "better-than-expected growth of 5%",
+        "projected at 2% to"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_apr2025"
+      ],
+      "question": "What was Singapore's GDP growth in 2025 and what is the official growth projection for 2026 as stated in Budget 2026?",
+      "generated_answer": "The context does not contain enough information to answer the question about Singapore's GDP growth in 2025 and the official growth projection for 2026 as stated in Budget 2026. \n\nWhile the context provides information about GDP growth forecasts for 2024 and 2025, it does not provide the actual GDP growth for 2025 or any information about the official growth projection for 2026 as stated in Budget 2026. The latest document mentioned is from April 2025, and there is no mention of Budget 2026.",
+      "hit_rate_at_k": 0.0,
+      "mrr_at_k": 0.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.7203,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.8584,
+      "faithfulness_nli": 0.0011,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "budget_cit_rebate_2026_001",
+      "domain": "budget",
+      "category": "budget_fiscal_policy",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "budget",
+          "document": "budget_2026_speech"
+        }
+      ],
+      "must_contain": [
+        "40% Corporate Income Tax rebate",
+        "minimum benefit of $1,500"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_apr2025",
+        "budget_2024_speech",
+        "budget_2026_speech",
+        "budget_2026_speech",
+        "budget_2025_speech",
+        "budget_2024_speech",
+        "budget_2026_speech"
+      ],
+      "question": "What Corporate Income Tax rebate was announced in Budget 2026, and who benefits?",
+      "generated_answer": "In Budget 2026, a 40% Corporate Income Tax rebate was announced for the Year of Assessment 2026. Every active company that employed at least one local employee last year will receive a minimum benefit of $1,500, with the total benefit capped at $30,000 for each company.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.3333,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.651,
+      "answer_fact_recall": 1.0,
+      "answer_similarity": 0.9758,
+      "faithfulness_nli": 0.4803,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "mas_monetary_policy_tool_001",
+      "domain": "mas",
+      "category": "mas_monetary_policy",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "mas",
+          "document": "mas_macro_review_oct2024"
+        }
+      ],
+      "must_contain": [
+        "undisclosed basket of currencies",
+        "rate of appreciation of the S$NEER"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025"
+      ],
+      "question": "What monetary policy tool does MAS use, and how is the policy stance adjusted?",
+      "generated_answer": "The monetary policy tool used by MAS is the Singapore dollar nominal effective exchange rate (S$NEER) policy band. The policy stance is adjusted by changing the rate of appreciation of the S$NEER policy band, as well as its width and the level at which it is centred. Specifically, MAS can:\n\n* Reduce the rate of appreciation of the S$NEER policy band to ease monetary policy (as done in April 2025)\n* Maintain the prevailing rate of appreciation of the S$NEER policy band to keep the policy stance unchanged (as done in October 2024)\n* Re-centre the policy band or change its width to adjust the policy stance.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.5,
+      "evidence_recall": 0.5,
+      "context_relevance": 0.6137,
+      "answer_fact_recall": 0.5,
+      "answer_similarity": 0.8807,
+      "faithfulness_nli": 0.3334,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_srs_cpf_tax_relief_001",
+      "domain": "srs,cpf",
+      "category": "cross_tax_relief",
+      "difficulty": "cross_domain",
+      "answer_type": "comparison",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "srs",
+          "document": "iras_srs_overview"
+        },
+        {
+          "source": "cpf",
+          "document": "cpf_topup_tax_relief"
+        }
+      ],
+      "must_contain": [
+        "up to $16,000",
+        "$15,300"
+      ],
+      "retrieved_documents": [
+        "cpf_retirement_sums",
+        "budget_2026_speech",
+        "budget_2026_speech",
+        "iras_srs_overview",
+        "budget_2026_speech",
+        "budget_2023_speech",
+        "iras_srs_overview"
+      ],
+      "question": "How do SRS contributions and CPF Retirement Account top-ups compare as tax-relief strategies for Singaporeans saving for retirement?",
+      "generated_answer": "Based on the provided context, SRS contributions and CPF Retirement Account top-ups are two different approaches to saving for retirement in Singapore. \n\nSRS contributions are eligible for tax relief, and investment returns are tax-free before withdrawal. Only 50% of the withdrawals from SRS are taxable at retirement. \n\nOn the other hand, the context does not explicitly mention tax relief for CPF Retirement Account top-ups. However, it does mention that the Government will provide a CPF top-up of up to $1,500 for Singaporeans aged 50 and above, with lower balances receiving larger top-ups.\n\nIt can be inferred that SRS contributions may offer tax relief benefits, whereas CPF top-ups seem to be more of a government-supported savings boost, particularly for those with lower retirement savings. However, the context does not contain enough information to make a direct comparison of the two as tax-relief strategies.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.25,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.6773,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.827,
+      "faithfulness_nli": 0.492,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_ssb_srs_investment_001",
+      "domain": "ssb,srs",
+      "category": "cross_investment",
+      "difficulty": "cross_domain",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "ssb",
+          "document": "mas_ssb_overview"
+        },
+        {
+          "source": "srs",
+          "document": "iras_srs_overview"
+        }
+      ],
+      "must_contain": [
+        "SRS Operator's internet banking portal",
+        "tax-free before withdrawal"
+      ],
+      "retrieved_documents": [
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "mas_ssb_overview",
+        "iras_srs_overview",
+        "iras_srs_overview"
+      ],
+      "question": "Can SRS funds be used to invest in Singapore Savings Bonds, and how are the returns treated for tax?",
+      "generated_answer": "The context does not contain enough information to answer whether SRS funds can be used to invest in Singapore Savings Bonds. However, it is mentioned in [5] that the principal and last interest payment of SSBs will be automatically credited to a DCS bank account or SRS account upon maturity, suggesting a possible link between SRS and SSBs, but this is not explicitly stated.\n\nRegarding tax treatment, [7] states that investment returns from SRS are tax-free before withdrawal, and only 50% of the withdrawals from SRS are taxable at retirement. However, it does not specifically mention the tax treatment of returns from SSBs invested through SRS.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.5,
+      "context_relevance": 0.6176,
+      "answer_fact_recall": 0.5,
+      "answer_similarity": 0.8827,
+      "faithfulness_nli": 0.2476,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_budget_mas_gdp_001",
+      "domain": "budget,mas",
+      "category": "cross_economic_data",
+      "difficulty": "cross_domain",
+      "answer_type": "comparison",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "mas",
+          "document": "mas_macro_review_apr2025"
+        },
+        {
+          "source": "budget",
+          "document": "budget_2026_speech"
+        }
+      ],
+      "must_contain": [
+        "0.0-2.0%",
+        "better-than-expected growth of 5%"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_apr2025",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024"
+      ],
+      "question": "How did MAS's April 2025 GDP projection compare to the actual outcome reported in Budget 2026?",
+      "generated_answer": "The context does not contain enough information to answer the question. The provided documents only discuss the estimated impact of Budget 2025 on GDP and other economic indicators, but do not mention the actual outcome reported in Budget 2026.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.6039,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.5958,
+      "faithfulness_nli": 0.2303,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_hdb_singles_proximity_001",
+      "domain": "hdb,budget",
+      "category": "cross_housing",
+      "difficulty": "standard",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "hdb",
+          "document": "hdb_eligibility_singles"
+        }
+      ],
+      "must_contain": [
+        "Proximity Housing Grant (Singles)",
+        "CPF Housing Grant (Singles)"
+      ],
+      "retrieved_documents": [
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families"
+      ],
+      "question": "What housing options and grants are specifically available for single Singapore Citizens who want to buy an HDB flat close to their parents?",
+      "generated_answer": "The provided context does not specifically mention housing options and grants available for single Singapore Citizens who want to buy an HDB flat close to their parents. However, it does mention the Proximity Housing Grant, but the details are not provided in the context related to singles. The Proximity Housing Grant is mentioned in the context related to families, but it does not specify if singles are eligible. More information would be needed to answer this question accurately.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.7052,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.7776,
+      "faithfulness_nli": 0.253,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_cpf_budget_lower_income_001",
+      "domain": "cpf,budget",
+      "category": "cross_retirement",
+      "difficulty": "cross_domain",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_retirement_sums"
+        },
+        {
+          "source": "budget",
+          "document": "budget_2023_speech"
+        }
+      ],
+      "must_contain": [
+        "dollar-for-dollar grant",
+        "$2,000",
+        "Retirement Sum Scheme to $350"
+      ],
+      "retrieved_documents": [
+        "cpf_retirement_sums",
+        "budget_2023_speech",
+        "mas_macro_review_oct2024",
+        "budget_2023_speech",
+        "budget_2026_speech",
+        "budget_2026_speech",
+        "budget_2026_speech"
+      ],
+      "question": "How has the government used both CPF policy changes and Budget measures to improve retirement adequacy for lower-income Singaporeans?",
+      "generated_answer": "Based on the provided context, the government has used both CPF policy changes and Budget measures to improve retirement adequacy for lower-income Singaporeans in the following ways:\n\n1. **Enhanced CPF system**: The government has enhanced the CPF system over the years, such as through Workfare and extra interest on lower CPF balances, to help Singaporeans build up their retirement savings.\n2. **Silver Support**: The government has introduced Silver Support to supplement the retirement income of seniors who had low incomes in their working years.\n3. **CPF top-up**: In Budget 2026, the government will provide a CPF top-up of up to $1,500 for Singaporeans aged 50 and above, and with CPF retirement savings below the Basic Retirement Sum, with larger top-ups for those with lower balances.\n4. **CPF contribution rate increases**: The government will proceed with planned CPF contribution rate increases for senior workers in 2027 to help older workers build up their retirement savings.\n5. **CPF Transition Offset**: The government will continue to provide the CPF Transition Offset to employers, covering half of the increase in employer contributions for 2027.\n6. **Tax reliefs and matching grants**: The government encourages family members with more means to top up their loved ones' CPF through tax reliefs and matching grants.\n7. **Majulah Package**: The government has introduced the Majulah Package to give additional assurance to \"Young Seniors\" as they approach retirement.\n\nThese measures aim to help lower-income Singaporeans meet their basic retirement needs with confidence and strengthen retirement support.",
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.704,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.5784,
+      "faithfulness_nli": 0.2521,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_cpf_hdb_oa_refund_001",
+      "domain": "cpf,hdb",
+      "category": "cross_cpf_housing",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_housing_usage"
+        }
+      ],
+      "must_contain": [
+        "Home Protection Scheme premiums",
+        "refund the amount that you have used plus the interest accrued"
+      ],
+      "retrieved_documents": [
+        "hdb_eligibility_singles",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families"
+      ],
+      "question": "How can CPF Ordinary Account savings be used when buying an HDB flat, and what refund obligation arises when the flat is sold?",
+      "generated_answer": "The context provided does not contain information on how CPF Ordinary Account savings can be used when buying an HDB flat, or what refund obligation arises when the flat is sold. The context only mentions CPF housing grants, but does not provide details on the usage of CPF Ordinary Account savings or refund obligations.",
+      "hit_rate_at_k": 0.0,
+      "mrr_at_k": 0.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.6427,
+      "answer_fact_recall": 0.0,
+      "answer_similarity": 0.7767,
+      "faithfulness_nli": 0.0025,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    }
+  ],
+  "models": {
+    "embed": "all-MiniLM-L6-v2",
+    "nli": "cross-encoder/nli-deberta-v3-base",
+    "judge": "llama-3.3-70b-versatile"
+  }
+}
