@@ -22,31 +22,31 @@ help:
 	@echo "    make clean      Delete generated indexes (forces full rebuild)"
 
 fetch:          # → data/interim/extracted_text/<source>/<name>.txt
-	python pipelines/ingest_documents.py
+	py pipelines/ingest_documents.py
 
 fetch-hdb:      # → data/interim/cleaned_tables/hdb_resale.csv  +  data/processed/hdb_resale.parquet
-	python pipelines/ingest_hdb_data.py
+	py pipelines/ingest_hdb_data.py
 
 index:          # reads extracted_text/ → data/processed/chunks.jsonl  +  data/indexes/chroma/
-	python pipelines/build_indexes.py
+	py pipelines/build_indexes.py
 
 app:            # opens http://localhost:8501
 	streamlit run app/main.py
 
 eval:           # → eval/results/<mode>_k<k>.json
-	python pipelines/run_eval.py
+	py pipelines/run_eval.py
 
 baseline:       # dense-only run  → eval/results/baseline_k9.json
-	python experiments/baseline.py
+	py experiments/baseline.py
 
 hybrid:         # BM25 + dense + RRF  → eval/results/hybrid_k9.json
-	python experiments/hybrid_retrieval.py
+	py experiments/hybrid_retrieval.py
 
 reranker:       # hybrid + cross-encoder  → eval/results/hybrid_rerank_k9.json
-	python experiments/with_reranker.py
+	py experiments/with_reranker.py
 
 compare:        # reads eval/results/*.json  → prints table to stdout
-	python experiments/compare_results.py
+	py experiments/compare_results.py
 
 clean:          # deletes data/indexes/chroma/  (run 'make index' to rebuild)
 	rm -rf data/indexes/chroma

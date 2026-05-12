@@ -1,0 +1,64 @@
+{
+  "top_k": 5,
+  "scores": {
+    "faithfulness": 0.4449,
+    "answer_similarity": 0.8413,
+    "keyword_recall": 0.7405
+  },
+  "per_question": [
+    {
+      "faithfulness": 0.4969,
+      "answer_similarity": 0.9744,
+      "keyword_recall": 0.9167
+    },
+    {
+      "faithfulness": 0.4895,
+      "answer_similarity": 0.9486,
+      "keyword_recall": 1.0
+    },
+    {
+      "faithfulness": 0.1061,
+      "answer_similarity": 0.8783,
+      "keyword_recall": 0.9375
+    },
+    {
+      "faithfulness": 0.4985,
+      "answer_similarity": 0.9361,
+      "keyword_recall": 0.8125
+    },
+    {
+      "faithfulness": 0.0004,
+      "answer_similarity": 0.6358,
+      "keyword_recall": 0.4706
+    },
+    {
+      "faithfulness": 0.997,
+      "answer_similarity": 0.9837,
+      "keyword_recall": 1.0
+    },
+    {
+      "faithfulness": 0.5569,
+      "answer_similarity": 0.8837,
+      "keyword_recall": 0.8182
+    },
+    {
+      "faithfulness": 0.9696,
+      "answer_similarity": 0.786,
+      "keyword_recall": 0.3793
+    },
+    {
+      "faithfulness": 0.3329,
+      "answer_similarity": 0.661,
+      "keyword_recall": 0.6
+    },
+    {
+      "faithfulness": 0.001,
+      "answer_similarity": 0.7255,
+      "keyword_recall": 0.4706
+    }
+  ],
+  "n_questions": 10,
+  "nli_model": "cross-encoder/nli-deberta-v3-base",
+  "embed_model": "all-MiniLM-L6-v2",
+  "note": "All metrics computed locally. Only the RAG generator uses Groq (1 call/question)."
+}
