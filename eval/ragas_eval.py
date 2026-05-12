@@ -64,13 +64,12 @@ from src.retrieval.hybrid import retrieve_hybrid
 from src.retrieval.reranker import rerank
 from src.generation.answer import GROQ_MODEL, FETCH
 from src.generation.prompts import SYSTEM_PROMPT, build_context
-from sentence_transformers import SentenceTransformer, CrossEncoder
+from sentence_transformers import CrossEncoder
 
 TEST_SET_FILE = Path(__file__).parent / "test_set.json"
 RESULTS_DIR   = Path(__file__).parent / "results"
 
-EMBED_MODEL = "all-MiniLM-L6-v2"
-NLI_MODEL   = "cross-encoder/nli-deberta-v3-base"
+NLI_MODEL = "cross-encoder/nli-deberta-v3-base"
 
 
 # ---------------------------------------------------------------------------
@@ -286,8 +285,7 @@ def main() -> None:
     else:
         nli = None
 
-    print(f"Loading embedding model ({EMBED_MODEL})...")
-    embedder = SentenceTransformer(EMBED_MODEL)
+    embedder = retriever.model  # reuse model already loaded by loader
     print()
 
     judge_calls = min(judge_sample, len(questions))

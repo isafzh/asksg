@@ -27,7 +27,8 @@ DEFAULT_METRICS = ["hit_rate_at_k", "mrr_at_k", "evidence_recall", "answer_simil
 def load_results(path: Path) -> dict | None:
     data = json.loads(path.read_text(encoding="utf-8"))
     if isinstance(data, list):
-        # Raw answers without scores key — skip
+        return None
+    if data.get("status") == "partial":
         return None
     return data
 

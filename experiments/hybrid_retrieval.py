@@ -34,7 +34,8 @@ def run(k: int = 9) -> None:
     print(f"=== Hybrid retrieval experiment (BM25 + dense + RRF, k={k}) ===\n")
 
     retriever = load()
-    questions = json.loads(TEST_SET.read_text(encoding="utf-8"))
+    data = json.loads(TEST_SET.read_text(encoding="utf-8"))
+    questions = data["questions"]
 
     results = []
     for i, item in enumerate(questions, 1):
