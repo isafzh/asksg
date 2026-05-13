@@ -71,6 +71,21 @@ RESULTS_DIR   = Path(__file__).parent / "results"
 
 NLI_MODEL = "cross-encoder/nli-deberta-v3-base"
 
+# Fixed balanced judge sample: covers all 6 source domains, all 4 difficulty
+# levels, and all 4 answer types so the sampled score is representative.
+JUDGE_IDS = [
+    "cpf_salary_ceiling_001",        # cpf      | temporal     | policy_fact
+    "budget_cdc_vouchers_2025_001",  # budget   | temporal     | numeric
+    "hdb_spr_eligibility_001",       # hdb      | standard     | eligibility
+    "mas_gdp_forecast_2025_001",     # mas      | standard     | numeric
+    "srs_contribution_cessation_001",# srs      | multi_chunk  | policy_fact
+    "ssb_interest_structure_001",    # ssb      | multi_chunk  | policy_fact
+    "cpf_life_plans_001",            # cpf      | multi_chunk  | policy_fact
+    "cross_srs_cpf_tax_relief_001",  # srs+cpf  | cross_domain | comparison
+    "cross_budget_mas_gdp_001",      # budget+mas| cross_domain | comparison
+    "cross_cpf_hdb_oa_refund_001",   # cpf+hdb  | multi_chunk  | policy_fact
+]
+
 
 # ---------------------------------------------------------------------------
 # Text helpers
@@ -288,14 +303,15 @@ def main() -> None:
     embedder = retriever.model  # reuse model already loaded by loader
     print()
 
-    judge_calls = min(judge_sample, len(questions))
+    judge_ids_set = set(JUDGE_IDS[:judge_sample]) if judge_sample > 0 else set()
+    judge_calls   = len(judge_ids_set)
     if retrieval_only:
         print(f"Running retrieval-only eval  [mode={mode}]  [top-k={top_k}]  (no Groq calls; local models required)\n")
     else:
         gen_calls = len(questions)
         print(
             f"Running evaluation  [mode={mode}]  [top-k={top_k}]  "
-            f"[judge-sample={judge_calls}]\n"
+            f"[judge-sample={judge_calls} balanced]\n"
             f"  API calls: {gen_calls} generation + {judge_calls} LLM judge = "
             f"{gen_calls + judge_calls} total\n"
         )
@@ -364,8 +380,8 @@ def main() -> None:
                 f"similarity={sim:.3f}  faithfulness(NLI)={f_nli:.3f}"
             )
 
-            # LLM judge - 1 Groq call (sampled questions only)
-            if i <= judge_sample:
+            # LLM judge - 1 Groq call (balanced fixed sample only)
+            if item.get("id") in judge_ids_set:
                 try:
                     judge_result = llm_judge(q, ans, contexts)
                     print(
@@ -454,7 +470,7 @@ def main() -> None:
         print(f"  Answer Similarity:       {_fmt(scores['answer_similarity'])}")
         print(f"  Faithfulness (NLI):      {_fmt(scores['faithfulness_nli'])}")
         if judge_sample > 0:
-            print(f"  --- LLM judge (sample n={judge_calls}) ---")
+            print(f"  --- LLM judge (balanced sample n={judge_calls}) ---")
             print(f"  Faithfulness (LLM):      {_fmt(scores['faithfulness_llm'])}")
             print(f"  Answer Relevance (LLM):  {_fmt(scores['answer_relevance_llm'])}")
     print("=" * 60)

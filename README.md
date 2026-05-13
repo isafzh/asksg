@@ -317,7 +317,7 @@ I initially evaluated the Ragas library, but it required 1,300+ LLM calls per ru
 | Answer | Faithfulness (LLM) | Is every claim grounded? (multi-chunk synthesis) | LLM-as-judge structured prompt | 1 call/question |
 | Answer | Answer Relevance (LLM) | Does the answer address the question? | LLM-as-judge structured prompt | 1 call/question |
 
-Total per full run: **40 Groq API calls** (30 generation + 10 LLM judge on the first 10 questions). The original Ragas library required 1,300+ calls per run — this implementation achieves the same conceptual coverage at 3% of the cost. Use `--judge-sample 0` to skip the LLM judge entirely for free iteration.
+Total per full run: **40 Groq API calls** (30 generation + 10 LLM judge on a fixed balanced sample covering all 6 source domains, all 4 difficulty levels, and all 4 answer types). The original Ragas library required 1,300+ calls per run — this implementation achieves the same conceptual coverage at 3% of the cost. Use `--judge-sample 0` to skip the LLM judge entirely for free iteration.
 
 ### Baseline Benchmark — Dense-only retrieval (30 questions)
 
