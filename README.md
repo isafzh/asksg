@@ -233,13 +233,10 @@ echo GROQ_API_KEY=your_key_here > .env
 # Get a free key at https://console.groq.com
 
 # 3. Build the vector index (downloads ~90MB model on first run)
+# Windows/OneDrive: set this BEFORE building — Chroma's SQLite fails under OneDrive sync
+$env:ASKSG_CHROMA_DIR = "$env:LOCALAPPDATA\AskSG\chroma"   # PowerShell (run once, or: setx ASKSG_CHROMA_DIR ...)
 make index
 # Windows without make: py pipelines\build_indexes.py
-
-# Windows: if your project is under OneDrive, Chroma's SQLite can fail with disk I/O errors.
-# Move the index to a local path outside OneDrive:
-$env:ASKSG_CHROMA_DIR = "$env:LOCALAPPDATA\AskSG\chroma"   # PowerShell
-py pipelines\build_indexes.py --force
 
 # 4. Run the app
 make app
@@ -354,7 +351,16 @@ Hit rate and evidence recall improve with k, but MRR grows only slightly — the
 
 Hit Rate and MRR are flat across all k — the reranker consistently surfaces the right document regardless of pool size. Evidence recall improves +5pp per step; context relevance falls slightly as less-semantically-tight supporting chunks are added. **k=9 chosen**: maximises evidence recall (73.9%) with an acceptable context relevance trade-off.
 
-**The reranker is treated as an optional precision layer.** It adds local compute cost and latency. Whether it meaningfully outperforms hybrid-only (BM25 + dense + RRF, no reranker) on this corpus is a pending ablation — `make hybrid` runs the hybrid-only pipeline for direct comparison.
+**Reranker ablation — hybrid-only vs hybrid+reranker at k=9 (retrieval metrics):**
+
+| Metric | Hybrid (no reranker) | Hybrid + Reranker | Δ |
+|---|---|---|---|
+| Hit Rate@9 | 0.9667 | 0.9667 | 0.0 |
+| MRR@9 | 0.8025 | 0.8033 | +0.0008 |
+| Evidence Recall | 0.7389 | 0.7389 | 0.0 |
+| Context Relevance | 0.6154 | 0.6134 | –0.002 |
+
+**The reranker adds no measurable retrieval benefit on this corpus at k=9.** Hit Rate and Evidence Recall are identical; MRR difference (0.0008) is within noise. The reranker is an optional precision layer — it is included in the final pipeline as a robustness measure but its contribution on these 30 questions is negligible. On larger or more ambiguous corpora the benefit would likely be more pronounced.
 
 **Final result — hybrid_rerank k=9, full judged eval (30 questions, 40 API calls):**
 
@@ -397,7 +403,7 @@ make reranker   # hybrid + reranker (final)   → eval/results/hybrid_rerank_k9.
 - [x] k=9 selected via retrieval-only k-sweep (0 Groq calls): `top_k` controls post-rerank context size; evidence recall maximised at k=9 (0.7389) with flat Hit Rate/MRR
 - [x] Reranker treated as optional precision layer; hybrid-only ablation (no reranker) pending via `make hybrid`
 - [x] Eval `--mode` flag: `baseline` / `hybrid` / `hybrid_rerank`; `--retrieval-only` for 0-quota k-sweeps
-- [ ] Hybrid-only ablation: compare hybrid (no reranker) vs hybrid+reranker to quantify reranker contribution
+- [x] Hybrid-only ablation: reranker adds no measurable retrieval gain on this corpus at k=9 (Hit Rate / Evidence Recall identical; MRR Δ = 0.0008)
 - [ ] Metadata filtering: constrain dense retrieval by source/year for targeted queries (would fix Q7 regression)
 - [ ] **Agentic / multi-modal retrieval**: router choosing between policy RAG and structured HDB resale data queries
 - [ ] FastAPI backend + Docker
