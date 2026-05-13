@@ -387,9 +387,9 @@ NLI faithfulness (0.41) lags the LLM judge (0.92) — the NLI cross-encoder pena
 
 To run:
 ```bash
-make baseline   # dense-only benchmark        → eval/results/baseline_k7.json
-make hybrid     # hybrid-only (no reranker)   → eval/results/hybrid_k7.json
-make reranker   # hybrid + reranker (final)   → eval/results/hybrid_rerank_k9.json
+make baseline   # dense-only benchmark              → eval/results/baseline_k7.json
+make hybrid     # reranker ablation, retrieval-only  → eval/results/hybrid_k9_retrieval_only.json
+make reranker   # hybrid + reranker, full judged     → eval/results/hybrid_rerank_k9.json
 ```
 
 ---

@@ -39,8 +39,8 @@ eval:           # → eval/results/<mode>_k<k>.json
 baseline:       # dense-only scored eval  → eval/results/baseline_k7.json
 	py pipelines/run_eval.py --mode baseline --top-k 7 --judge-sample 0
 
-hybrid:         # BM25 + dense + RRF scored eval  → eval/results/hybrid_k7.json
-	py pipelines/run_eval.py --mode hybrid --top-k 7 --judge-sample 0
+hybrid:         # BM25 + dense + RRF retrieval-only (reranker ablation)  → eval/results/hybrid_k9_retrieval_only.json
+	py pipelines/run_eval.py --mode hybrid --top-k 9 --retrieval-only
 
 reranker:       # hybrid + cross-encoder scored eval  → eval/results/hybrid_rerank_k9.json
 	py pipelines/run_eval.py --mode hybrid_rerank --top-k 9 --judge-sample 10

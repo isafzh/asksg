@@ -16,5 +16,8 @@ data/*.parquet
 # data/interim/extracted_text/ — tracked
 # data/processed/chunks.jsonl  — tracked
 
+# Partial eval results (mid-run saves, replaced on completion)
+eval/results/*.partial.json
+
 # Claude Code session memory — not part of the project
 memory/
