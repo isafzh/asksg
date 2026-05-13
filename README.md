@@ -181,7 +181,8 @@ asksg/
 │   │   ├── dense.py                     # Baseline: vector search only
 │   │   ├── bm25_retriever.py            # Keyword search via BM25Okapi
 │   │   ├── hybrid.py                    # BM25 + dense fused with Reciprocal Rank Fusion
-│   │   └── reranker.py                  # Cross-encoder reranking (ms-marco-MiniLM-L-6-v2)
+│   │   ├── reranker.py                  # Cross-encoder reranking (ms-marco-MiniLM-L-6-v2)
+│   │   └── metadata_filter.py          # Dense-side source/year filter for targeted queries
 │   ├── generation/
 │   │   ├── prompts.py                   # SYSTEM_PROMPT + context block formatter
 │   │   └── answer.py                    # answer() blocking + stream_answer() streaming
@@ -351,6 +352,8 @@ Hit rate and evidence recall improve with k, but MRR grows only slightly — the
 
 Hit Rate and MRR are flat across all k — the reranker consistently surfaces the right document regardless of pool size. Evidence recall improves +5pp per step; context relevance falls slightly as less-semantically-tight supporting chunks are added. **k=9 chosen**: maximises evidence recall (73.9%) with an acceptable context relevance trade-off.
 
+With dense-side metadata filtering subsequently added (constraining Chroma dense retrieval by source/year for targeted queries), k=9 further improves: Hit Rate 1.0000 / MRR 0.8272 / Evidence Recall 0.7722 / Context Relevance 0.6077.
+
 **Reranker ablation — hybrid-only vs hybrid+reranker at k=9 (retrieval metrics):**
 
 | Metric | Hybrid (no reranker) | Hybrid + Reranker | Δ |
@@ -362,23 +365,25 @@ Hit Rate and MRR are flat across all k — the reranker consistently surfaces th
 
 **The reranker adds no measurable retrieval benefit on this corpus at k=9.** Hit Rate and Evidence Recall are identical; MRR difference (0.0008) is within noise. The reranker is an optional precision layer — it is included in the final pipeline as a robustness measure but its contribution on these 30 questions is negligible. On larger or more ambiguous corpora the benefit would likely be more pronounced.
 
-**Final result — hybrid_rerank k=9, full judged eval (30 questions, 40 API calls):**
+**Final result — hybrid_rerank+filter k=9 (30 questions):**
 
-| Layer | Metric | Best dense baseline (k=7) | Hybrid+Rerank k=9 | Δ |
+| Layer | Metric | Best dense baseline (k=7) | Hybrid+Rerank+Filter k=9 | Δ |
 |---|---|---|---|---|
-| Retrieval | Hit Rate@K | 0.9000 | **0.9667** | +6.7pp |
-| Retrieval | MRR@K | 0.7020 | **0.8033** | +10.1pp |
-| Retrieval | Evidence Recall | 0.6111 | **0.7389** | +12.8pp |
-| Retrieval | Context Relevance | — | 0.6134 | — |
+| Retrieval | Hit Rate@K | 0.9000 | **1.0000** | +10.0pp |
+| Retrieval | MRR@K | 0.7020 | **0.8272** | +12.5pp |
+| Retrieval | Evidence Recall | 0.6111 | **0.7722** | +16.1pp |
+| Retrieval | Context Relevance | — | 0.6077 | — |
 | Answer | Answer Fact Recall | — | 0.5167 | — |
 | Answer | Answer Similarity | 0.8284 | 0.8373 | +0.9pp |
 | Answer | Faithfulness (NLI) | 0.4403 | 0.4055 | –3.5pp |
 | Judge (n=10) | Faithfulness (LLM) | — | **0.9200** | — |
 | Judge (n=10) | Answer Relevance (LLM) | — | **0.9600** | — |
 
+*Retrieval metrics from `hybrid_rerank_k9_retrieval_only.json` (current pipeline with dense-side metadata filtering). Answer and judge metrics from `hybrid_rerank_k9.json` (pre-filter judged run; answer quality is not expected to change materially with filtering).*
+
 NLI faithfulness (0.41) lags the LLM judge (0.92) — the NLI cross-encoder penalises paraphrase even when the claim is factually supported. The LLM judge is the more reliable faithfulness signal.
 
-**Known retrieval failure:** Q22 (*"What was Singapore's GDP growth in 2025?"*) scores hit=0 at all k values. The relevant Budget 2026 evidence exists in the corpus, but hybrid_rerank retrieved MAS forecast chunks instead of the Budget 2026 chunk that reports the actual outcome.
+**Q22 partial improvement:** Dense-side metadata filtering now routes this Budget 2026 query to the correct source (hit=1.0, evidence_recall=0.5, mrr=0.167). One of the two required facts is retrieved; the second Budget 2026 chunk ranks below position 9 after reranking. Not yet a full fix, but no longer a complete miss.
 
 To run:
 ```bash
@@ -401,10 +406,10 @@ make reranker   # hybrid + reranker (final)   → eval/results/hybrid_rerank_k9.
 - [x] Temporal disambiguation failure diagnosed: year-specific Budget queries retrieve wrong-year chunks
 - [x] **Retrieval upgrade** — hybrid BM25 + dense + RRF + cross-encoder reranker: Hit Rate 0.97 / MRR 0.80 / Evidence Recall 0.74 vs dense baseline
 - [x] k=9 selected via retrieval-only k-sweep (0 Groq calls): `top_k` controls post-rerank context size; evidence recall maximised at k=9 (0.7389) with flat Hit Rate/MRR
-- [x] Reranker treated as optional precision layer; hybrid-only ablation (no reranker) pending via `make hybrid`
+- [x] Reranker treated as optional precision layer (included in production pipeline as robustness measure)
 - [x] Eval `--mode` flag: `baseline` / `hybrid` / `hybrid_rerank`; `--retrieval-only` for 0-quota k-sweeps
 - [x] Hybrid-only ablation: reranker adds no measurable retrieval gain on this corpus at k=9 (Hit Rate / Evidence Recall identical; MRR Δ = 0.0008)
-- [ ] Metadata filtering: constrain dense retrieval by source/year for targeted queries (would fix Q7 regression)
+- [x] Dense-side metadata filtering: source/year filter constrains Chroma dense retrieval for targeted queries — Hit Rate 0.9667→1.0000, MRR +2.4pp, Evidence Recall +3.3pp; Q22 partial improvement (hit 0→1, evidence 0→0.5)
 - [ ] **Agentic / multi-modal retrieval**: router choosing between policy RAG and structured HDB resale data queries
 - [ ] FastAPI backend + Docker
 - [ ] AWS EC2 deployment

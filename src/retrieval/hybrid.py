@@ -29,11 +29,16 @@ def retrieve_hybrid(
     k: int,
     fetch: int,
     rrf_k: int = RRF_K,
+    where_filter: dict | None = None,
 ) -> list[dict]:
     """
     Fuse dense and BM25 results with RRF and return top-k chunks.
 
     Each retriever independently fetches `fetch` candidates.
+    where_filter constrains the ChromaDB dense retrieval only (dense-side
+    metadata filtering). BM25 still searches all chunks — it is keyword-aware
+    and ranks off-source results low in practice, but does not enforce a hard
+    boundary. For strict source filtering, pre-filter all_chunks before calling.
     """
     # --- Dense retrieval ---
     emb = model.encode([query]).tolist()
@@ -41,6 +46,7 @@ def retrieve_hybrid(
         query_embeddings=emb,
         n_results=fetch,
         include=["documents", "metadatas", "distances"],
+        **({"where": where_filter} if where_filter else {}),
     )
     dense_ranks: dict[str, int] = {}
     dense_data: dict[str, dict] = {}

@@ -11,6 +11,7 @@ def retrieve_dense(
     model: SentenceTransformer,
     collection: chromadb.Collection,
     k: int,
+    where_filter: dict | None = None,
 ) -> list[dict]:
     """Return top-k chunks by cosine similarity. Score = 1 - cosine_distance."""
     emb = model.encode([query]).tolist()
@@ -18,6 +19,7 @@ def retrieve_dense(
         query_embeddings=emb,
         n_results=k,
         include=["documents", "metadatas", "distances"],
+        **({"where": where_filter} if where_filter else {}),
     )
     return [
         {

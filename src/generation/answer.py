@@ -24,6 +24,7 @@ from src.generation.prompts import SYSTEM_PROMPT, build_context
 from src.retrieval.dense import retrieve_dense
 from src.retrieval.hybrid import retrieve_hybrid
 from src.retrieval.reranker import rerank
+from src.retrieval.metadata_filter import detect_filter
 
 GROQ_MODEL = "llama-3.3-70b-versatile"
 TOP_K = 9
@@ -47,12 +48,16 @@ def answer(
     mode="hybrid"        — BM25 + dense + RRF, no reranker
     mode="baseline"      — dense-only, no BM25, no reranker
     """
+    # baseline = pure dense, no filter (preserves benchmark integrity)
+    where_filter = detect_filter(query) if mode != "baseline" else None
     if mode == "baseline":
-        chunks = retrieve_dense(query, model, collection, k=k)
+        chunks = retrieve_dense(query, model, collection, k=k, where_filter=where_filter)
     elif mode == "hybrid":
-        chunks = retrieve_hybrid(query, model, collection, bm25, all_chunks, k=k, fetch=FETCH)
+        chunks = retrieve_hybrid(query, model, collection, bm25, all_chunks,
+                                 k=k, fetch=FETCH, where_filter=where_filter)
     else:  # hybrid_rerank (default)
-        chunks = retrieve_hybrid(query, model, collection, bm25, all_chunks, k=FETCH, fetch=FETCH)
+        chunks = retrieve_hybrid(query, model, collection, bm25, all_chunks,
+                                 k=FETCH, fetch=FETCH, where_filter=where_filter)
         chunks = rerank(query, chunks, reranker, top_n=k)
 
     context = build_context(chunks)
@@ -79,7 +84,9 @@ def stream_answer(
     k: int = TOP_K,
 ) -> tuple:
     """Streaming pipeline. Returns (groq_stream, chunks) for Streamlit write_stream."""
-    chunks = retrieve_hybrid(query, model, collection, bm25, all_chunks, k=FETCH, fetch=FETCH)
+    where_filter = detect_filter(query)
+    chunks = retrieve_hybrid(query, model, collection, bm25, all_chunks, k=FETCH, fetch=FETCH,
+                              where_filter=where_filter)
     chunks = rerank(query, chunks, reranker, top_n=k)
     context = build_context(chunks)
 
