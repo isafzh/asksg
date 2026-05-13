@@ -322,9 +322,9 @@ I initially evaluated the Ragas library, but it required 1,300+ LLM calls per ru
 
 Total per full run: **40 Groq API calls** (30 generation + 10 LLM judge on the first 10 questions). The original Ragas library required 1,300+ calls per run — this implementation achieves the same conceptual coverage at 3% of the cost. Use `--judge-sample 0` to skip the LLM judge entirely for free iteration.
 
-### Step 1 — Baseline dense-only k-sweep (30 questions)
+### Baseline Benchmark — Dense-only retrieval (30 questions)
 
-The baseline uses dense vector retrieval only (no BM25, no reranker):
+Dense-only retrieval establishes a reference point and reveals failure modes. It is not a construction stage of the final system — it exists to prove the final pipeline improves something measurable.
 
 | Metric | k=5 | k=7 |
 |---|---|---|
@@ -336,9 +336,13 @@ The baseline uses dense vector retrieval only (no BM25, no reranker):
 
 Hit rate and evidence recall improve with k, but MRR grows only slightly — the right document enters the retrieved set but is not consistently ranked first. Slow MRR growth signals a ranking weakness that expanding k alone cannot fix: dense embeddings treat year-agnostic same-topic chunks as equally relevant regardless of the queried year.
 
-### Step 2 — Hybrid + Reranker pipeline (30 questions)
+**Best completed baseline setting: k=7** — used as the comparison point for the retrieval upgrade below.
 
-**Motivation:** baseline shows weak MRR (0.70 at k=7) and temporal disambiguation failures — dense retrieval ranks Budget 2023/2024/2025 chunks as equally relevant for year-specific queries. Fix: BM25 keyword scoring pulls year-specific documents into the candidate pool; the cross-encoder reranker confirms relevance by jointly scoring each (query, chunk) pair.
+### Retrieval Upgrade — Hybrid search and reranking (30 questions)
+
+**Motivation:** baseline MRR is 0.70 at k=7, and temporal disambiguation fails — dense retrieval ranks Budget 2023/2024/2025 chunks as equally relevant for year-specific queries. Fix: BM25 keyword scoring pulls year-specific documents into the candidate pool via RRF fusion; the cross-encoder reranker optionally re-scores the fused candidates before generation.
+
+**Why k-sweep here?** In the hybrid+rerank pipeline, the initial candidate pool is fixed (top-25 from RRF fusion). `top_k` controls how many *post-rerank chunks* are passed to the LLM — a context-size decision, not a retrieval-depth decision. A retrieval-only k-sweep selects the optimal context window without burning Groq quota.
 
 **Retrieval-only k-sweep (0 Groq calls):**
 
@@ -348,7 +352,9 @@ Hit rate and evidence recall improve with k, but MRR grows only slightly — the
 | 7 | 0.9667 | 0.8033 | 0.6889 | 0.6246 |
 | 9 | 0.9667 | 0.8033 | 0.7389 | 0.6132 |
 
-Hit Rate and MRR are flat across all k — the reranker consistently surfaces the right document regardless of pool size. Evidence recall improves +5pp per step; context relevance falls slightly as less-semantically-tight supporting chunks are added. **k=9 chosen**: maximises evidence recall (73.9%) with an acceptable context relevance trade-off (–1.1pp vs k=7), benchmarked on 30 questions.
+Hit Rate and MRR are flat across all k — the reranker consistently surfaces the right document regardless of pool size. Evidence recall improves +5pp per step; context relevance falls slightly as less-semantically-tight supporting chunks are added. **k=9 chosen**: maximises evidence recall (73.9%) with an acceptable context relevance trade-off.
+
+**The reranker is treated as an optional precision layer.** It adds local compute cost and latency. Whether it meaningfully outperforms hybrid-only (BM25 + dense + RRF, no reranker) on this corpus is a pending ablation — `make hybrid` runs the hybrid-only pipeline for direct comparison.
 
 **Final result — hybrid_rerank k=9, full judged eval (30 questions, 40 API calls):**
 
@@ -370,8 +376,9 @@ NLI faithfulness (0.41) lags the LLM judge (0.92) — the NLI cross-encoder pena
 
 To run:
 ```bash
-make baseline   # dense-only            → eval/results/baseline_k<k>.json
-make reranker   # hybrid + cross-encoder → eval/results/hybrid_rerank_k9.json
+make baseline   # dense-only benchmark        → eval/results/baseline_k7.json
+make hybrid     # hybrid-only (no reranker)   → eval/results/hybrid_k7.json
+make reranker   # hybrid + reranker (final)   → eval/results/hybrid_rerank_k9.json
 ```
 
 ---
@@ -384,11 +391,14 @@ make reranker   # hybrid + cross-encoder → eval/results/hybrid_rerank_k9.json
 - [x] RAG pipeline (retrieval + Groq LLM)
 - [x] Streamlit chat interface
 - [x] Evaluation framework: retrieval (hit rate, MRR, evidence recall) + answer (fact recall, similarity, NLI) + sampled LLM judge; 40 calls/run vs 1,300+ for Ragas
-- [x] Baseline k-sweep (30 questions): hit rate plateaus at k=7 (0.90), MRR growth flat after k=5 — ranking weakness identified
-- [x] Temporal disambiguation diagnosed: year-agnostic dense embeddings rank same-topic chunks from different Budget years as equally relevant
-- [x] Hybrid + cross-encoder reranking: Hit Rate 0.90 → 0.97, MRR 0.70 → 0.80, Evidence Recall 0.61 → 0.74 vs dense-only baseline (k=7→k=9, 30 questions)
-- [x] k=9 chosen: retrieval-only k-sweep shows evidence recall maximised at k=9 (0.7389) with flat Hit Rate/MRR across k=5/7/9
+- [x] **Baseline benchmark** (30 questions, dense-only): Hit Rate 0.90 / MRR 0.70 at k=7; weak MRR reveals ranking failure — dense embeddings treat year-agnostic chunks as equally relevant
+- [x] Temporal disambiguation failure diagnosed: year-specific Budget queries retrieve wrong-year chunks
+- [x] **Retrieval upgrade** — hybrid BM25 + dense + RRF + cross-encoder reranker: Hit Rate 0.97 / MRR 0.80 / Evidence Recall 0.74 vs dense baseline
+- [x] k=9 selected via retrieval-only k-sweep (0 Groq calls): `top_k` controls post-rerank context size; evidence recall maximised at k=9 (0.7389) with flat Hit Rate/MRR
+- [x] Reranker treated as optional precision layer; hybrid-only ablation (no reranker) pending via `make hybrid`
 - [x] Eval `--mode` flag: `baseline` / `hybrid` / `hybrid_rerank`; `--retrieval-only` for 0-quota k-sweeps
+- [ ] Hybrid-only ablation: compare hybrid (no reranker) vs hybrid+reranker to quantify reranker contribution
 - [ ] Metadata filtering: constrain dense retrieval by source/year for targeted queries (would fix Q7 regression)
+- [ ] **Agentic / multi-modal retrieval**: router choosing between policy RAG and structured HDB resale data queries
 - [ ] FastAPI backend + Docker
 - [ ] AWS EC2 deployment
