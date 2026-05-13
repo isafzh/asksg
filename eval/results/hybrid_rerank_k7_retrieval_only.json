@@ -1,0 +1,1213 @@
+{
+  "schema_version": "2.0",
+  "top_k": 7,
+  "mode": "hybrid_rerank",
+  "retrieval_only": true,
+  "judge_sample": 0,
+  "n_questions": 30,
+  "scores": {
+    "hit_rate_at_k": 0.9667,
+    "mrr_at_k": 0.8033,
+    "evidence_recall": 0.6889,
+    "context_relevance": 0.6246,
+    "answer_fact_recall": null,
+    "answer_similarity": null,
+    "faithfulness_nli": null,
+    "faithfulness_llm": null,
+    "answer_relevance_llm": null
+  },
+  "per_question": [
+    {
+      "id": "cpf_contribution_rate_001",
+      "domain": "cpf",
+      "category": "cpf_contributions",
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_contribution_rates"
+        }
+      ],
+      "must_contain": [
+        "55 and below",
+        "37"
+      ],
+      "retrieved_documents": [
+        "cpf_contribution_rates",
+        "cpf_budget_highlights_2023",
+        "cpf_salary_ceiling_budget2023",
+        "cpf_salary_ceiling_budget2023",
+        "cpf_medisave_bhs",
+        "cpf_budget_highlights_2023",
+        "budget_2025_speech"
+      ],
+      "question": "What is the total CPF contribution rate for employees aged 55 and below from 1 January 2026?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6829,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cpf_salary_ceiling_001",
+      "domain": "cpf",
+      "category": "cpf_contributions",
+      "difficulty": "temporal",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_salary_ceiling_budget2023"
+        }
+      ],
+      "must_contain": [
+        "$6,300",
+        "$6,800",
+        "$7,400",
+        "$8,000"
+      ],
+      "retrieved_documents": [
+        "cpf_budget_highlights_2023",
+        "cpf_salary_ceiling_budget2023",
+        "cpf_salary_ceiling_budget2023",
+        "budget_2023_speech",
+        "cpf_budget_highlights_2023",
+        "cpf_budget_highlights_2023",
+        "cpf_salary_ceiling_budget2023"
+      ],
+      "question": "What were the four steps in raising the CPF monthly salary ceiling from 2023 to 2026?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.5,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6819,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cpf_property_refund_001",
+      "domain": "cpf",
+      "category": "cpf_housing",
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_housing_usage"
+        }
+      ],
+      "must_contain": [
+        "refund the amount that you have used plus the interest accrued"
+      ],
+      "retrieved_documents": [
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_retirement_at55",
+        "cpf_housing_usage"
+      ],
+      "question": "What happens to CPF savings used for a property when the property is sold?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5736,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "budget_hdb_resale_grant_001",
+      "domain": "budget",
+      "category": "budget_housing",
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "budget",
+          "document": "budget_2023_speech"
+        }
+      ],
+      "must_contain": [
+        "$190,000"
+      ],
+      "retrieved_documents": [
+        "budget_2023_speech",
+        "budget_2025_speech",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles",
+        "budget_2023_speech",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families"
+      ],
+      "question": "What is the maximum total grant eligible families can receive when buying an HDB resale flat, as announced in Budget 2023?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6398,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "budget_cdc_vouchers_2025_001",
+      "domain": "budget",
+      "category": "budget_social_support",
+      "difficulty": "temporal",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "budget",
+          "document": "budget_2025_speech"
+        }
+      ],
+      "must_contain": [
+        "$800 in CDC Vouchers",
+        "The first $500 will be disbursed in May"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_oct2024",
+        "budget_2025_speech",
+        "budget_2024_speech",
+        "budget_2023_speech",
+        "budget_2025_speech",
+        "budget_2026_speech",
+        "mas_macro_review_apr2025"
+      ],
+      "question": "What CDC Voucher amount was announced in Budget 2025 and when will they be disbursed?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.5,
+      "evidence_recall": 0.5,
+      "context_relevance": 0.5443,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "budget_cpf_min_payout_001",
+      "domain": "budget",
+      "category": "budget_retirement",
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "budget",
+          "document": "budget_2023_speech"
+        }
+      ],
+      "must_contain": [
+        "Retirement Sum Scheme to $350"
+      ],
+      "retrieved_documents": [
+        "cpf_budget_highlights_2023",
+        "cpf_salary_ceiling_budget2023",
+        "cpf_budget_highlights_2023",
+        "cpf_budget_highlights_2023",
+        "budget_2023_speech",
+        "cpf_budget_highlights_2023",
+        "cpf_salary_ceiling_budget2023"
+      ],
+      "question": "What change did Budget 2023 make to the minimum CPF monthly payout for non-CPF LIFE members?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.2,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6628,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "hdb_spr_eligibility_001",
+      "domain": "hdb",
+      "category": "hdb_eligibility",
+      "difficulty": "standard",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "hdb",
+          "document": "hdb_eligibility_couples_families"
+        }
+      ],
+      "must_contain": [
+        "SPR status for at least 3 years"
+      ],
+      "retrieved_documents": [
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families"
+      ],
+      "question": "Can a Singapore Permanent Resident buy an HDB resale flat?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.6661,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "hdb_cpf_oa_usage_001",
+      "domain": "hdb",
+      "category": "cpf_housing",
+      "difficulty": "multi_chunk",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_housing_usage"
+        }
+      ],
+      "must_contain": [
+        "downpayment and housing loan",
+        "stamp and legal fees",
+        "Home Protection Scheme premiums"
+      ],
+      "retrieved_documents": [
+        "cpf_housing_usage",
+        "cpf_retirement_at55",
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_housing_usage"
+      ],
+      "question": "What can CPF Ordinary Account savings be used for when buying a home?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6259,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "mas_inflation_2025_001",
+      "domain": "mas",
+      "category": "mas_economic_outlook",
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "mas",
+          "document": "mas_macro_review_apr2025"
+        }
+      ],
+      "must_contain": [
+        "0.5-1.5%"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_apr2025",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024"
+      ],
+      "question": "What is MAS's inflation projection for 2025?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6459,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "mas_gdp_forecast_2025_001",
+      "domain": "mas",
+      "category": "mas_economic_outlook",
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "mas",
+          "document": "mas_macro_review_apr2025"
+        }
+      ],
+      "must_contain": [
+        "0.0-2.0%"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025"
+      ],
+      "question": "What is Singapore's GDP growth forecast for 2025 according to MAS?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.2,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.7295,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "srs_contribution_limit_001",
+      "domain": "srs",
+      "category": "srs_contributions",
+      "difficulty": "standard",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "srs",
+          "document": "iras_srs_overview"
+        }
+      ],
+      "must_contain": [
+        "$15,300",
+        "$35,700"
+      ],
+      "retrieved_documents": [
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview"
+      ],
+      "question": "What is the maximum annual SRS contribution for Singapore Citizens and Permanent Residents versus foreigners?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.7092,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "srs_withdrawal_tax_001",
+      "domain": "srs",
+      "category": "srs_withdrawals",
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "srs",
+          "document": "iras_srs_overview"
+        }
+      ],
+      "must_contain": [
+        "only 50% of the withdrawals from SRS are taxable"
+      ],
+      "retrieved_documents": [
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview"
+      ],
+      "question": "How are SRS withdrawals taxed at the statutory retirement age?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5592,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "srs_contribution_cessation_001",
+      "domain": "srs",
+      "category": "srs_contributions",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "srs",
+          "document": "iras_srs_overview"
+        }
+      ],
+      "must_contain": [
+        "contributions cannot be made if you start withdrawing",
+        "statutory retirement age that was prevailing when you made your first SRS contribution"
+      ],
+      "retrieved_documents": [
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "iras_srs_overview"
+      ],
+      "question": "Under what circumstances can a person no longer make contributions to their SRS account?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5331,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "ssb_interest_structure_001",
+      "domain": "ssb",
+      "category": "ssb_mechanics",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "ssb",
+          "document": "mas_ssb_overview"
+        }
+      ],
+      "must_contain": [
+        "average annual compounded return",
+        "linked to the yield of an SGS of a corresponding tenor"
+      ],
+      "retrieved_documents": [
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025",
+        "mas_ssb_overview"
+      ],
+      "question": "How are Singapore Savings Bond interest rates determined, and what is the step-up feature?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5923,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "ssb_purchase_channels_001",
+      "domain": "ssb",
+      "category": "ssb_mechanics",
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "ssb",
+          "document": "mas_ssb_overview"
+        }
+      ],
+      "must_contain": [
+        "S$500",
+        "DBS/POSB, OCBC and UOB ATMs or internet banking"
+      ],
+      "retrieved_documents": [
+        "cpf_investment_scheme_options",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "budget_2023_speech",
+        "mas_macro_review_oct2024"
+      ],
+      "question": "What is the minimum investment amount for Singapore Savings Bonds, and through which channels can they be purchased?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.5,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.578,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "ssb_early_redemption_001",
+      "domain": "ssb",
+      "category": "ssb_mechanics",
+      "difficulty": "standard",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "ssb",
+          "document": "mas_ssb_overview"
+        }
+      ],
+      "must_contain": [
+        "no penalty for exiting your investment early",
+        "2nd business day of the following month"
+      ],
+      "retrieved_documents": [
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview",
+        "mas_ssb_overview"
+      ],
+      "question": "Can Singapore Savings Bond investors exit their investment early, and how quickly are redemption proceeds paid?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5447,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "hdb_singles_eligibility_001",
+      "domain": "hdb",
+      "category": "hdb_eligibility",
+      "difficulty": "multi_chunk",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "hdb",
+          "document": "hdb_eligibility_singles"
+        }
+      ],
+      "must_contain": [
+        "At least 35 years old (unmarried or divorced)",
+        "At least 21 years old (widowed or an orphan"
+      ],
+      "retrieved_documents": [
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families"
+      ],
+      "question": "What are the eligibility conditions for a single Singapore Citizen to buy an HDB flat on their own?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.6702,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "hdb_singles_grants_001",
+      "domain": "hdb",
+      "category": "hdb_eligibility",
+      "difficulty": "standard",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "hdb",
+          "document": "hdb_eligibility_singles"
+        }
+      ],
+      "must_contain": [
+        "CPF Housing Grant (Singles)",
+        "Enhanced CPF Housing Grant (Singles)",
+        "Proximity Housing Grant (Singles)"
+      ],
+      "retrieved_documents": [
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families"
+      ],
+      "question": "What CPF housing grants can single Singapore Citizens apply for when buying a resale HDB flat?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6955,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cpf_interest_rates_001",
+      "domain": "cpf",
+      "category": "cpf_savings",
+      "difficulty": "multi_chunk",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_interest_rates"
+        }
+      ],
+      "must_contain": [
+        "2.5%",
+        "4%",
+        "1% per annum on the first $60,000"
+      ],
+      "retrieved_documents": [
+        "cpf_interest_rates",
+        "cpf_interest_rates",
+        "cpf_retirement_at55",
+        "cpf_retirement_at55",
+        "budget_2026_speech",
+        "budget_2024_speech",
+        "cpf_retirement_at55"
+      ],
+      "question": "What are the CPF interest rates for the Ordinary Account and the Special, MediSave, and Retirement Accounts, and is any extra interest paid?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5866,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cpf_life_plans_001",
+      "domain": "cpf",
+      "category": "cpf_retirement",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_life"
+        }
+      ],
+      "must_contain": [
+        "Escalating",
+        "grow by 2% a year for life",
+        "Monthly payouts start low and fall when your CPF balances fall below $60,000"
+      ],
+      "retrieved_documents": [
+        "cpf_life",
+        "cpf_life",
+        "cpf_retirement_at65",
+        "cpf_life",
+        "cpf_life",
+        "cpf_life",
+        "cpf_life"
+      ],
+      "question": "What are the three CPF LIFE plans and how do they differ?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.6667,
+      "context_relevance": 0.5846,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cpf_frs_amounts_001",
+      "domain": "cpf",
+      "category": "cpf_retirement",
+      "difficulty": "temporal",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_retirement_sums"
+        }
+      ],
+      "must_contain": [
+        "$213,000",
+        "$220,400",
+        "$228,200"
+      ],
+      "retrieved_documents": [
+        "cpf_retirement_sums",
+        "cpf_retirement_sums",
+        "cpf_retirement_sums",
+        "budget_2024_speech",
+        "cpf_budget_highlights_2023",
+        "budget_2025_speech",
+        "budget_2023_speech"
+      ],
+      "question": "What are the CPF Full Retirement Sum amounts for members turning 55 in 2025, 2026, and 2027?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.6798,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "budget_gdp_2025_actual_001",
+      "domain": "budget",
+      "category": "budget_fiscal_policy",
+      "difficulty": "temporal",
+      "answer_type": "numeric",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "budget",
+          "document": "budget_2026_speech"
+        }
+      ],
+      "must_contain": [
+        "better-than-expected growth of 5%",
+        "projected at 2% to"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025"
+      ],
+      "question": "What was Singapore's GDP growth in 2025 and what is the official growth projection for 2026 as stated in Budget 2026?",
+      "generated_answer": null,
+      "hit_rate_at_k": 0.0,
+      "mrr_at_k": 0.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.7006,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "budget_cit_rebate_2026_001",
+      "domain": "budget",
+      "category": "budget_fiscal_policy",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "budget",
+          "document": "budget_2026_speech"
+        }
+      ],
+      "must_contain": [
+        "40% Corporate Income Tax rebate",
+        "minimum benefit of $1,500"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024",
+        "budget_2025_speech",
+        "budget_2024_speech",
+        "budget_2026_speech",
+        "mas_macro_review_oct2024",
+        "budget_2025_speech"
+      ],
+      "question": "What Corporate Income Tax rebate was announced in Budget 2026, and who benefits?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.2,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5864,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "mas_monetary_policy_tool_001",
+      "domain": "mas",
+      "category": "mas_monetary_policy",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "mas",
+          "document": "mas_macro_review_oct2024"
+        }
+      ],
+      "must_contain": [
+        "undisclosed basket of currencies",
+        "rate of appreciation of the S$NEER"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025"
+      ],
+      "question": "What monetary policy tool does MAS use, and how is the policy stance adjusted?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.5,
+      "evidence_recall": 0.5,
+      "context_relevance": 0.5823,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_srs_cpf_tax_relief_001",
+      "domain": "srs,cpf",
+      "category": "cross_tax_relief",
+      "difficulty": "cross_domain",
+      "answer_type": "comparison",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "srs",
+          "document": "iras_srs_overview"
+        },
+        {
+          "source": "cpf",
+          "document": "cpf_topup_tax_relief"
+        }
+      ],
+      "must_contain": [
+        "up to $16,000",
+        "$15,300"
+      ],
+      "retrieved_documents": [
+        "iras_srs_overview",
+        "budget_2026_speech",
+        "cpf_retirement_at55",
+        "cpf_topup_retirement",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "cpf_topup_retirement"
+      ],
+      "question": "How do SRS contributions and CPF Retirement Account top-ups compare as tax-relief strategies for Singaporeans saving for retirement?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.5,
+      "context_relevance": 0.6075,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_ssb_srs_investment_001",
+      "domain": "ssb,srs",
+      "category": "cross_investment",
+      "difficulty": "cross_domain",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "ssb",
+          "document": "mas_ssb_overview"
+        },
+        {
+          "source": "srs",
+          "document": "iras_srs_overview"
+        }
+      ],
+      "must_contain": [
+        "SRS Operator's internet banking portal",
+        "tax-free before withdrawal"
+      ],
+      "retrieved_documents": [
+        "iras_srs_overview",
+        "mas_ssb_overview",
+        "iras_srs_overview",
+        "iras_srs_overview",
+        "mas_ssb_overview",
+        "cpf_investment_scheme_options",
+        "iras_srs_overview"
+      ],
+      "question": "Can SRS funds be used to invest in Singapore Savings Bonds, and how are the returns treated for tax?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.5,
+      "context_relevance": 0.6025,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_budget_mas_gdp_001",
+      "domain": "budget,mas",
+      "category": "cross_economic_data",
+      "difficulty": "cross_domain",
+      "answer_type": "comparison",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "mas",
+          "document": "mas_macro_review_apr2025"
+        },
+        {
+          "source": "budget",
+          "document": "budget_2026_speech"
+        }
+      ],
+      "must_contain": [
+        "0.0-2.0%",
+        "better-than-expected growth of 5%"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_apr2025",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_oct2024",
+        "mas_macro_review_apr2025",
+        "mas_macro_review_apr2025"
+      ],
+      "question": "How did MAS's April 2025 GDP projection compare to the actual outcome reported in Budget 2026?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.5772,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_hdb_singles_proximity_001",
+      "domain": "hdb,budget",
+      "category": "cross_housing",
+      "difficulty": "standard",
+      "answer_type": "eligibility",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "hdb",
+          "document": "hdb_eligibility_singles"
+        }
+      ],
+      "must_contain": [
+        "Proximity Housing Grant (Singles)",
+        "CPF Housing Grant (Singles)"
+      ],
+      "retrieved_documents": [
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_couples_families",
+        "hdb_eligibility_singles",
+        "hdb_eligibility_couples_families"
+      ],
+      "question": "What housing options and grants are specifically available for single Singapore Citizens who want to buy an HDB flat close to their parents?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.6947,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_cpf_budget_lower_income_001",
+      "domain": "cpf,budget",
+      "category": "cross_retirement",
+      "difficulty": "cross_domain",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_retirement_sums"
+        },
+        {
+          "source": "budget",
+          "document": "budget_2023_speech"
+        }
+      ],
+      "must_contain": [
+        "dollar-for-dollar grant",
+        "$2,000",
+        "Retirement Sum Scheme to $350"
+      ],
+      "retrieved_documents": [
+        "mas_macro_review_oct2024",
+        "budget_2023_speech",
+        "budget_2023_speech",
+        "budget_2026_speech",
+        "cpf_salary_ceiling_budget2023",
+        "budget_2023_speech",
+        "cpf_budget_highlights_2023"
+      ],
+      "question": "How has the government used both CPF policy changes and Budget measures to improve retirement adequacy for lower-income Singaporeans?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 0.5,
+      "evidence_recall": 0.0,
+      "context_relevance": 0.6201,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    },
+    {
+      "id": "cross_cpf_hdb_oa_refund_001",
+      "domain": "cpf,hdb",
+      "category": "cross_cpf_housing",
+      "difficulty": "multi_chunk",
+      "answer_type": "policy_fact",
+      "retrieval_mode": "unstructured",
+      "expected_sources": [
+        {
+          "source": "cpf",
+          "document": "cpf_housing_usage"
+        }
+      ],
+      "must_contain": [
+        "Home Protection Scheme premiums",
+        "refund the amount that you have used plus the interest accrued"
+      ],
+      "retrieved_documents": [
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_housing_usage",
+        "cpf_retirement_at55",
+        "hdb_eligibility_singles",
+        "cpf_housing_usage",
+        "hdb_eligibility_singles"
+      ],
+      "question": "How can CPF Ordinary Account savings be used when buying an HDB flat, and what refund obligation arises when the flat is sold?",
+      "generated_answer": null,
+      "hit_rate_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "evidence_recall": 1.0,
+      "context_relevance": 0.5811,
+      "answer_fact_recall": null,
+      "answer_similarity": null,
+      "faithfulness_nli": null,
+      "faithfulness_llm": null,
+      "answer_relevance_llm": null,
+      "judge_reasoning": ""
+    }
+  ],
+  "models": {
+    "embed": "all-MiniLM-L6-v2",
+    "nli": "cross-encoder/nli-deberta-v3-base",
+    "judge": "llama-3.3-70b-versatile"
+  }
+}

@@ -36,14 +36,14 @@ app:            # opens http://localhost:8501
 eval:           # → eval/results/<mode>_k<k>.json
 	py pipelines/run_eval.py
 
-baseline:       # dense-only run  → eval/results/baseline_k9.json
-	py experiments/baseline.py
+baseline:       # dense-only scored eval  → eval/results/baseline_k7.json
+	py pipelines/run_eval.py --mode baseline --top-k 7 --judge-sample 0
 
-hybrid:         # BM25 + dense + RRF  → eval/results/hybrid_k9.json
-	py experiments/hybrid_retrieval.py
+hybrid:         # BM25 + dense + RRF scored eval  → eval/results/hybrid_k7.json
+	py pipelines/run_eval.py --mode hybrid --top-k 7 --judge-sample 0
 
-reranker:       # hybrid + cross-encoder  → eval/results/hybrid_rerank_k9.json
-	py experiments/with_reranker.py
+reranker:       # hybrid + cross-encoder scored eval  → eval/results/hybrid_rerank_k9.json
+	py pipelines/run_eval.py --mode hybrid_rerank --top-k 9 --judge-sample 10
 
 compare:        # reads eval/results/*.json  → prints table to stdout
 	py experiments/compare_results.py
