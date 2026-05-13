@@ -51,3 +51,4 @@ compare:        # reads eval/results/*.json  → prints table to stdout
 clean:          # deletes data/indexes/chroma/  (run 'make index' to rebuild)
 	rm -rf data/indexes/chroma
 	@echo "Vector index deleted. Run 'make index' to rebuild."
+	# Windows PowerShell alternative: Remove-Item -Recurse -Force data\indexes\chroma
