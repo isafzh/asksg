@@ -383,7 +383,11 @@ With dense-side metadata filtering subsequently added (constraining Chroma dense
 
 NLI faithfulness (0.37) lags the LLM judge (0.96) — the NLI cross-encoder penalises paraphrase even when the claim is factually supported. The LLM judge is the more reliable faithfulness signal.
 
-**Q22 partial improvement:** Dense-side metadata filtering now routes this Budget 2026 query to the correct source (hit=1.0, evidence_recall=0.5, mrr=0.200). One of the two required facts is retrieved; the second Budget 2026 chunk ranks below position 9 after reranking. Not yet a full fix, but no longer a complete miss.
+The sampled LLM judge is used as a grounding/relevance diagnostic, not as the sole correctness metric. Q27 shows why: the answer can be faithful to retrieved context while still missing required benchmark facts — which is captured by `evidence_recall` and `answer_fact_recall`, not by the judge. This is intentional: the metrics cover different failure modes.
+
+**Q22 partial improvement:** Metadata filtering retrieves the Budget 2026 source (hit=1.0, mrr=0.200), but only one of the two required facts appears in the top-9 context (evidence_recall=0.5). The second Budget 2026 chunk ranks below position 9 after reranking.
+
+**Q27 chunk-level evidence failure:** The expected document is retrieved (hit=1.0, mrr=1.0), but the required evidence string is absent from the top-9 chunks (evidence_recall=0.0, answer_fact_recall=0.0). The LLM judge still scores faithfulness=1.0 and answer_relevance=1.0 because the generated answer is grounded in the available context and sounds relevant — it just cannot state the specific fact that was not retrieved. This is a chunk-level retrieval gap, not a corpus gap (the full document is in the index; the required sentence did not surface in the top-9).
 
 To run:
 ```bash
