@@ -352,7 +352,7 @@ Hit rate and evidence recall improve with k, but MRR grows only slightly — the
 
 Hit Rate and MRR are flat across all k — the reranker consistently surfaces the right document regardless of pool size. Evidence recall improves +5pp per step; context relevance falls slightly as less-semantically-tight supporting chunks are added. **k=9 chosen**: maximises evidence recall (73.9%) with an acceptable context relevance trade-off.
 
-With dense-side metadata filtering subsequently added (constraining Chroma dense retrieval by source/year for targeted queries), k=9 further improves: Hit Rate 1.0000 / MRR 0.8272 / Evidence Recall 0.7722 / Context Relevance 0.6077.
+With dense-side metadata filtering subsequently added (constraining Chroma dense retrieval by source/year for targeted queries), k=9 further improves: Hit Rate 1.0000 / MRR 0.8283 / Evidence Recall 0.7722 / Context Relevance 0.6075.
 
 **Reranker ablation — hybrid-only vs hybrid+reranker at k=9 (retrieval metrics):**
 
@@ -370,20 +370,20 @@ With dense-side metadata filtering subsequently added (constraining Chroma dense
 | Layer | Metric | Best dense baseline (k=7) | Hybrid+Rerank+Filter k=9 | Δ |
 |---|---|---|---|---|
 | Retrieval | Hit Rate@K | 0.9000 | **1.0000** | +10.0pp |
-| Retrieval | MRR@K | 0.7020 | **0.8272** | +12.5pp |
+| Retrieval | MRR@K | 0.7020 | **0.8283** | +12.6pp |
 | Retrieval | Evidence Recall | 0.6111 | **0.7722** | +16.1pp |
-| Retrieval | Context Relevance | — | 0.6077 | — |
-| Answer | Answer Fact Recall | — | 0.5167 | — |
-| Answer | Answer Similarity | 0.8284 | 0.8373 | +0.9pp |
-| Answer | Faithfulness (NLI) | 0.4403 | 0.4055 | –3.5pp |
-| Judge (n=10) | Faithfulness (LLM) | — | **0.9200** | — |
-| Judge (n=10) | Answer Relevance (LLM) | — | **0.9600** | — |
+| Retrieval | Context Relevance | — | 0.6075 | — |
+| Answer | Answer Fact Recall | — | 0.5944 | — |
+| Answer | Answer Similarity | 0.8284 | 0.8471 | +1.9pp |
+| Answer | Faithfulness (NLI) | 0.4403 | 0.3671 | –7.3pp |
+| Judge (n=10) | Faithfulness (LLM) | — | **0.9600** | — |
+| Judge (n=10) | Answer Relevance (LLM) | — | **0.9200** | — |
 
-*Retrieval metrics from `hybrid_rerank_k9_retrieval_only.json` (current pipeline with dense-side metadata filtering). Answer and judge metrics from `hybrid_rerank_k9.json` (pre-filter judged run; answer quality is not expected to change materially with filtering).*
+*Metrics from `hybrid_rerank_k9.json`, the final post-filter judged run over all 30 questions.*
 
-NLI faithfulness (0.41) lags the LLM judge (0.92) — the NLI cross-encoder penalises paraphrase even when the claim is factually supported. The LLM judge is the more reliable faithfulness signal.
+NLI faithfulness (0.37) lags the LLM judge (0.96) — the NLI cross-encoder penalises paraphrase even when the claim is factually supported. The LLM judge is the more reliable faithfulness signal.
 
-**Q22 partial improvement:** Dense-side metadata filtering now routes this Budget 2026 query to the correct source (hit=1.0, evidence_recall=0.5, mrr=0.167). One of the two required facts is retrieved; the second Budget 2026 chunk ranks below position 9 after reranking. Not yet a full fix, but no longer a complete miss.
+**Q22 partial improvement:** Dense-side metadata filtering now routes this Budget 2026 query to the correct source (hit=1.0, evidence_recall=0.5, mrr=0.200). One of the two required facts is retrieved; the second Budget 2026 chunk ranks below position 9 after reranking. Not yet a full fix, but no longer a complete miss.
 
 To run:
 ```bash
