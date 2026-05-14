@@ -317,7 +317,21 @@ def main() -> None:
             f"{gen_calls + judge_calls} total\n"
         )
 
-    rows = []
+    # Resume from partial save if config matches — skips already-completed questions
+    already_done: dict[str, dict] = {}
+    if partial_file.exists():
+        try:
+            prev = json.loads(partial_file.read_text(encoding="utf-8"))
+            if (prev.get("mode") == mode and prev.get("top_k") == top_k
+                    and prev.get("retrieval_only") == retrieval_only):
+                for row in prev.get("per_question", []):
+                    already_done[row["id"]] = row
+                if already_done:
+                    print(f"  Resuming: {len(already_done)}/{len(questions)} questions already completed\n")
+        except Exception:
+            pass  # corrupted partial — start fresh
+
+    rows = list(already_done.values())
     total = len(questions)
     for i, item in enumerate(questions, 1):
         q               = item["question"]
@@ -326,6 +340,9 @@ def main() -> None:
         must_contain    = item.get("must_contain", [])
 
         print(f"  [{i:02d}/{total}] {q[:72]}...")
+        if item.get("id") in already_done:
+            print(f"    SKIP (already completed)")
+            continue
 
         # Retrieval (always runs)
         # baseline = pure dense, no filter (preserves benchmark integrity)
