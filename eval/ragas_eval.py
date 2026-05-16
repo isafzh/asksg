@@ -65,7 +65,7 @@ from src.retrieval.reranker import rerank
 from src.retrieval.metadata_filter import detect_filter
 from src.generation.answer import GROQ_MODEL, FETCH
 from src.generation.prompts import SYSTEM_PROMPT, build_context
-from sentence_transformers import CrossEncoder
+from sentence_transformers import CrossEncoder, SentenceTransformer
 
 TEST_SET_FILE = Path(__file__).parent / "test_set.json"
 RESULTS_DIR   = Path(__file__).parent / "results"
