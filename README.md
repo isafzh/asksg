@@ -145,7 +145,7 @@ asksg/
 │   ├── interim/
 │   │   ├── extracted_text/              # Parsed .txt files — tracked in git
 │   │   │   ├── budget/                  # Budget speeches 2023–2026 (4 PDFs)
-│   │   │   ├── mas/                     # MAS Macroeconomic Reviews + MPS (5 PDFs)
+│   │   │   ├── mas/                     # MAS Macroeconomic Reviews (2 PDFs, each includes MPS)
 │   │   │   ├── hdb/                     # HDB eligibility guides (2 JS-rendered HTML)
 │   │   │   ├── cpf/                     # CPF guides — full lifecycle (15 HTML)
 │   │   │   ├── srs/                     # IRAS SRS overview (1 HTML)
@@ -400,7 +400,7 @@ make reranker   # hybrid + reranker, full judged     → eval/results/hybrid_rer
 
 ## Roadmap
 
-- [x] Document ingestion pipeline (28 documents, 6 sources, ~763K chars)
+- [x] Document ingestion pipeline (25 documents, 6 sources, ~762K chars)
 - [x] Text preprocessing and chunking (500-char overlapping windows)
 - [x] Embedding and ChromaDB indexing (all-MiniLM-L6-v2)
 - [x] RAG pipeline (retrieval + Groq LLM)
